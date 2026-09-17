@@ -1,0 +1,97 @@
+from datetime import datetime
+
+from pydantic import BaseModel
+
+from .enums import JobPriority, Skill, TransportType
+
+
+class Engineer(BaseModel):
+    id: str
+    name: str
+    transport_type: TransportType
+    qualifications: list[Skill]
+
+    start_location_id: str
+
+    shift_start: datetime
+    shift_end: datetime
+
+
+class Job(BaseModel):
+    id: str
+    title: str
+
+    location_id: str
+
+    required_skill: Skill
+    priority: JobPriority
+
+    window_start: datetime
+    window_end: datetime
+
+    service_duration_min: int
+
+class TravelMatrixEntry(BaseModel):
+    origin_location_id: str
+    destination_location_id: str
+    transport_type: TransportType
+
+    travel_min: int
+    distance_km: float
+
+    matrix_version: str
+
+
+class Assignment(BaseModel):
+    job_id: str
+    engineer_id: str
+
+
+
+class RouteStop(BaseModel):
+    job_id: str
+    location_id: str
+
+    planned_arrival: datetime
+    planned_start: datetime
+    planned_end: datetime
+
+
+
+class Route(BaseModel):
+    engineer_id: str
+    stops: list[RouteStop]
+
+    total_travel_min: int
+    total_distance_km: float
+
+
+
+class Plan(BaseModel):
+    assignments: list[Assignment]
+    routes: list[Route]
+
+    unassigned_job_ids: list[str]
+
+    status: str
+
+
+class ValidationIssue(BaseModel):
+    code: str
+    message: str
+
+    entity_type: str
+    entity_id: str | None = None
+
+    field: str | None = None
+
+
+
+class ReplanningEvent(BaseModel):
+    event_id: str
+    job_id: str
+
+    old_plan_id: str | None = None
+    new_plan_id: str | None = None
+
+    reason: str

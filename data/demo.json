@@ -1,0 +1,91 @@
+{
+  "jobs": [
+    {
+      "id": "JOB-001",
+      "title": "Ремонт электрооборудования",
+      "location_id": "LOC-A",
+      "required_skill": "ELECTRIC",
+      "priority": "NORMAL",
+      "window_start": "2026-09-17T09:00:00",
+      "window_end": "2026-09-17T13:00:00",
+      "service_duration_min": 60
+    },
+    {
+      "id": "JOB-002",
+      "title": "Настройка сети",
+      "location_id": "LOC-B",
+      "required_skill": "NETWORK",
+      "priority": "HIGH",
+      "window_start": "2026-09-17T10:00:00",
+      "window_end": "2026-09-17T15:00:00",
+      "service_duration_min": 45
+    },
+    {
+      "id": "JOB-003",
+      "title": "Обслуживание механизма",
+      "location_id": "LOC-C",
+      "required_skill": "MECHANIC",
+      "priority": "NORMAL",
+      "window_start": "2026-09-17T11:00:00",
+      "window_end": "2026-09-17T16:00:00",
+      "service_duration_min": 90
+    },
+    {
+      "id": "JOB-004",
+      "title": "Срочный ремонт",
+      "location_id": "LOC-D",
+      "required_skill": "ELECTRIC",
+      "priority": "URGENT",
+      "window_start": "2026-09-17T12:00:00",
+      "window_end": "2026-09-17T14:00:00",
+      "service_duration_min": 30
+    },
+    {
+      "id": "JOB-005",
+      "title": "Диагностика сети",
+      "location_id": "LOC-E",
+      "required_skill": "NETWORK",
+      "priority": "LOW",
+      "window_start": "2026-09-17T13:00:00",
+      "window_end": "2026-09-17T17:00:00",
+      "service_duration_min": 60
+    }
+  ],
+  "engineers": [
+    {
+      "id": "ENG-001",
+      "name": "Иван Петров",
+      "transport_type": "CAR",
+      "qualifications": [
+        "ELECTRIC",
+        "NETWORK"
+      ],
+      "start_location_id": "DEPOT",
+      "shift_start": "2026-09-17T08:00:00",
+      "shift_end": "2026-09-17T17:00:00"
+    },
+    {
+      "id": "ENG-002",
+      "name": "Алексей Смирнов",
+      "transport_type": "TRUCK",
+      "qualifications": [
+        "MECHANIC"
+      ],
+      "start_location_id": "DEPOT",
+      "shift_start": "2026-09-17T09:00:00",
+      "shift_end": "2026-09-17T18:00:00"
+    },
+    {
+      "id": "ENG-003",
+      "name": "Мария Иванова",
+      "transport_type": "MOTORCYCLE",
+      "qualifications": [
+        "ELECTRIC",
+        "NETWORK"
+      ],
+      "start_location_id": "DEPOT",
+      "shift_start": "2026-09-17T08:30:00",
+      "shift_end": "2026-09-17T16:00:00"
+    }
+  ]
+}
