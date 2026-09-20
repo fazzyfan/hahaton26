@@ -1,0 +1,32 @@
+{
+  "version": "1.2",
+
+  "timezone": "Europe/Moscow",
+
+  "datetime": {
+    "format": "%d.%m.%Y %H:%M"
+  },
+
+  "work_types": {
+    "Подключение": {
+      "code": "CONNECTION",
+      "service_duration_min": 90
+    },
+    "Локальная заявка": {
+      "code": "LOCAL_WORK",
+      "service_duration_min": 50
+    },
+    "Глобальная проблема": {
+      "code": "EMERGENCY",
+      "service_duration_min": 100
+    },
+    "Дозаказ": {
+      "code": "ADD_ORDER",
+      "service_duration_min": 40
+    }
+  },
+
+  "unknown_work_type": {
+    "code": "UNKNOWN_WORK_TYPE_MAPPING"
+  }
+}
