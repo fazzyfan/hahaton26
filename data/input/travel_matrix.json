@@ -1,0 +1,674 @@
+[
+  {
+    "origin": "DEPOT",
+    "destination": "LOC-A",
+    "transport_type": "CAR",
+    "travel_min": 15,
+    "distance_km": 8.5,
+    "matrix_version": "synth-v1"
+  },
+  {
+    "origin": "LOC-A",
+    "destination": "DEPOT",
+    "transport_type": "CAR",
+    "travel_min": 15,
+    "distance_km": 8.5,
+    "matrix_version": "synth-v1"
+  },
+  {
+    "origin": "DEPOT",
+    "destination": "LOC-A",
+    "transport_type": "TRUCK",
+    "travel_min": 20,
+    "distance_km": 8.5,
+    "matrix_version": "synth-v1"
+  },
+  {
+    "origin": "LOC-A",
+    "destination": "DEPOT",
+    "transport_type": "TRUCK",
+    "travel_min": 20,
+    "distance_km": 8.5,
+    "matrix_version": "synth-v1"
+  },
+  {
+    "origin": "DEPOT",
+    "destination": "LOC-B",
+    "transport_type": "CAR",
+    "travel_min": 20,
+    "distance_km": 10.2,
+    "matrix_version": "synth-v1"
+  },
+  {
+    "origin": "LOC-B",
+    "destination": "DEPOT",
+    "transport_type": "CAR",
+    "travel_min": 20,
+    "distance_km": 10.2,
+    "matrix_version": "synth-v1"
+  },
+  {
+    "origin": "DEPOT",
+    "destination": "LOC-B",
+    "transport_type": "TRUCK",
+    "travel_min": 26,
+    "distance_km": 10.2,
+    "matrix_version": "synth-v1"
+  },
+  {
+    "origin": "LOC-B",
+    "destination": "DEPOT",
+    "transport_type": "TRUCK",
+    "travel_min": 26,
+    "distance_km": 10.2,
+    "matrix_version": "synth-v1"
+  },
+  {
+    "origin": "DEPOT",
+    "destination": "LOC-C",
+    "transport_type": "CAR",
+    "travel_min": 18,
+    "distance_km": 9.1,
+    "matrix_version": "synth-v1"
+  },
+  {
+    "origin": "LOC-C",
+    "destination": "DEPOT",
+    "transport_type": "CAR",
+    "travel_min": 18,
+    "distance_km": 9.1,
+    "matrix_version": "synth-v1"
+  },
+  {
+    "origin": "DEPOT",
+    "destination": "LOC-C",
+    "transport_type": "TRUCK",
+    "travel_min": 23,
+    "distance_km": 9.1,
+    "matrix_version": "synth-v1"
+  },
+  {
+    "origin": "LOC-C",
+    "destination": "DEPOT",
+    "transport_type": "TRUCK",
+    "travel_min": 23,
+    "distance_km": 9.1,
+    "matrix_version": "synth-v1"
+  },
+  {
+    "origin": "DEPOT",
+    "destination": "LOC-D",
+    "transport_type": "CAR",
+    "travel_min": 12,
+    "distance_km": 6.7,
+    "matrix_version": "synth-v1"
+  },
+  {
+    "origin": "LOC-D",
+    "destination": "DEPOT",
+    "transport_type": "CAR",
+    "travel_min": 12,
+    "distance_km": 6.7,
+    "matrix_version": "synth-v1"
+  },
+  {
+    "origin": "DEPOT",
+    "destination": "LOC-D",
+    "transport_type": "TRUCK",
+    "travel_min": 16,
+    "distance_km": 6.7,
+    "matrix_version": "synth-v1"
+  },
+  {
+    "origin": "LOC-D",
+    "destination": "DEPOT",
+    "transport_type": "TRUCK",
+    "travel_min": 16,
+    "distance_km": 6.7,
+    "matrix_version": "synth-v1"
+  },
+  {
+    "origin": "DEPOT",
+    "destination": "LOC-E",
+    "transport_type": "CAR",
+    "travel_min": 22,
+    "distance_km": 11.5,
+    "matrix_version": "synth-v1"
+  },
+  {
+    "origin": "LOC-E",
+    "destination": "DEPOT",
+    "transport_type": "CAR",
+    "travel_min": 22,
+    "distance_km": 11.5,
+    "matrix_version": "synth-v1"
+  },
+  {
+    "origin": "DEPOT",
+    "destination": "LOC-E",
+    "transport_type": "TRUCK",
+    "travel_min": 29,
+    "distance_km": 11.5,
+    "matrix_version": "synth-v1"
+  },
+  {
+    "origin": "LOC-E",
+    "destination": "DEPOT",
+    "transport_type": "TRUCK",
+    "travel_min": 29,
+    "distance_km": 11.5,
+    "matrix_version": "synth-v1"
+  },
+  {
+    "origin": "DEPOT",
+    "destination": "LOC-F",
+    "transport_type": "CAR",
+    "travel_min": 25,
+    "distance_km": 13.0,
+    "matrix_version": "synth-v1"
+  },
+  {
+    "origin": "LOC-F",
+    "destination": "DEPOT",
+    "transport_type": "CAR",
+    "travel_min": 25,
+    "distance_km": 13.0,
+    "matrix_version": "synth-v1"
+  },
+  {
+    "origin": "DEPOT",
+    "destination": "LOC-F",
+    "transport_type": "TRUCK",
+    "travel_min": 32,
+    "distance_km": 13.0,
+    "matrix_version": "synth-v1"
+  },
+  {
+    "origin": "LOC-F",
+    "destination": "DEPOT",
+    "transport_type": "TRUCK",
+    "travel_min": 32,
+    "distance_km": 13.0,
+    "matrix_version": "synth-v1"
+  },
+  {
+    "origin": "LOC-A",
+    "destination": "LOC-B",
+    "transport_type": "CAR",
+    "travel_min": 10,
+    "distance_km": 5.2,
+    "matrix_version": "synth-v1"
+  },
+  {
+    "origin": "LOC-B",
+    "destination": "LOC-A",
+    "transport_type": "CAR",
+    "travel_min": 10,
+    "distance_km": 5.2,
+    "matrix_version": "synth-v1"
+  },
+  {
+    "origin": "LOC-A",
+    "destination": "LOC-B",
+    "transport_type": "TRUCK",
+    "travel_min": 13,
+    "distance_km": 5.2,
+    "matrix_version": "synth-v1"
+  },
+  {
+    "origin": "LOC-B",
+    "destination": "LOC-A",
+    "transport_type": "TRUCK",
+    "travel_min": 13,
+    "distance_km": 5.2,
+    "matrix_version": "synth-v1"
+  },
+  {
+    "origin": "LOC-A",
+    "destination": "LOC-C",
+    "transport_type": "CAR",
+    "travel_min": 14,
+    "distance_km": 7.0,
+    "matrix_version": "synth-v1"
+  },
+  {
+    "origin": "LOC-C",
+    "destination": "LOC-A",
+    "transport_type": "CAR",
+    "travel_min": 14,
+    "distance_km": 7.0,
+    "matrix_version": "synth-v1"
+  },
+  {
+    "origin": "LOC-A",
+    "destination": "LOC-C",
+    "transport_type": "TRUCK",
+    "travel_min": 18,
+    "distance_km": 7.0,
+    "matrix_version": "synth-v1"
+  },
+  {
+    "origin": "LOC-C",
+    "destination": "LOC-A",
+    "transport_type": "TRUCK",
+    "travel_min": 18,
+    "distance_km": 7.0,
+    "matrix_version": "synth-v1"
+  },
+  {
+    "origin": "LOC-A",
+    "destination": "LOC-D",
+    "transport_type": "CAR",
+    "travel_min": 9,
+    "distance_km": 4.5,
+    "matrix_version": "synth-v1"
+  },
+  {
+    "origin": "LOC-D",
+    "destination": "LOC-A",
+    "transport_type": "CAR",
+    "travel_min": 9,
+    "distance_km": 4.5,
+    "matrix_version": "synth-v1"
+  },
+  {
+    "origin": "LOC-A",
+    "destination": "LOC-D",
+    "transport_type": "TRUCK",
+    "travel_min": 12,
+    "distance_km": 4.5,
+    "matrix_version": "synth-v1"
+  },
+  {
+    "origin": "LOC-D",
+    "destination": "LOC-A",
+    "transport_type": "TRUCK",
+    "travel_min": 12,
+    "distance_km": 4.5,
+    "matrix_version": "synth-v1"
+  },
+  {
+    "origin": "LOC-A",
+    "destination": "LOC-E",
+    "transport_type": "CAR",
+    "travel_min": 16,
+    "distance_km": 8.0,
+    "matrix_version": "synth-v1"
+  },
+  {
+    "origin": "LOC-E",
+    "destination": "LOC-A",
+    "transport_type": "CAR",
+    "travel_min": 16,
+    "distance_km": 8.0,
+    "matrix_version": "synth-v1"
+  },
+  {
+    "origin": "LOC-A",
+    "destination": "LOC-E",
+    "transport_type": "TRUCK",
+    "travel_min": 21,
+    "distance_km": 8.0,
+    "matrix_version": "synth-v1"
+  },
+  {
+    "origin": "LOC-E",
+    "destination": "LOC-A",
+    "transport_type": "TRUCK",
+    "travel_min": 21,
+    "distance_km": 8.0,
+    "matrix_version": "synth-v1"
+  },
+  {
+    "origin": "LOC-A",
+    "destination": "LOC-F",
+    "transport_type": "CAR",
+    "travel_min": 19,
+    "distance_km": 9.5,
+    "matrix_version": "synth-v1"
+  },
+  {
+    "origin": "LOC-F",
+    "destination": "LOC-A",
+    "transport_type": "CAR",
+    "travel_min": 19,
+    "distance_km": 9.5,
+    "matrix_version": "synth-v1"
+  },
+  {
+    "origin": "LOC-A",
+    "destination": "LOC-F",
+    "transport_type": "TRUCK",
+    "travel_min": 25,
+    "distance_km": 9.5,
+    "matrix_version": "synth-v1"
+  },
+  {
+    "origin": "LOC-F",
+    "destination": "LOC-A",
+    "transport_type": "TRUCK",
+    "travel_min": 25,
+    "distance_km": 9.5,
+    "matrix_version": "synth-v1"
+  },
+  {
+    "origin": "LOC-B",
+    "destination": "LOC-C",
+    "transport_type": "CAR",
+    "travel_min": 13,
+    "distance_km": 6.5,
+    "matrix_version": "synth-v1"
+  },
+  {
+    "origin": "LOC-C",
+    "destination": "LOC-B",
+    "transport_type": "CAR",
+    "travel_min": 13,
+    "distance_km": 6.5,
+    "matrix_version": "synth-v1"
+  },
+  {
+    "origin": "LOC-B",
+    "destination": "LOC-C",
+    "transport_type": "TRUCK",
+    "travel_min": 17,
+    "distance_km": 6.5,
+    "matrix_version": "synth-v1"
+  },
+  {
+    "origin": "LOC-C",
+    "destination": "LOC-B",
+    "transport_type": "TRUCK",
+    "travel_min": 17,
+    "distance_km": 6.5,
+    "matrix_version": "synth-v1"
+  },
+  {
+    "origin": "LOC-B",
+    "destination": "LOC-D",
+    "transport_type": "CAR",
+    "travel_min": 16,
+    "distance_km": 8.0,
+    "matrix_version": "synth-v1"
+  },
+  {
+    "origin": "LOC-D",
+    "destination": "LOC-B",
+    "transport_type": "CAR",
+    "travel_min": 16,
+    "distance_km": 8.0,
+    "matrix_version": "synth-v1"
+  },
+  {
+    "origin": "LOC-B",
+    "destination": "LOC-D",
+    "transport_type": "TRUCK",
+    "travel_min": 21,
+    "distance_km": 8.0,
+    "matrix_version": "synth-v1"
+  },
+  {
+    "origin": "LOC-D",
+    "destination": "LOC-B",
+    "transport_type": "TRUCK",
+    "travel_min": 21,
+    "distance_km": 8.0,
+    "matrix_version": "synth-v1"
+  },
+  {
+    "origin": "LOC-B",
+    "destination": "LOC-E",
+    "transport_type": "CAR",
+    "travel_min": 9,
+    "distance_km": 4.8,
+    "matrix_version": "synth-v1"
+  },
+  {
+    "origin": "LOC-E",
+    "destination": "LOC-B",
+    "transport_type": "CAR",
+    "travel_min": 9,
+    "distance_km": 4.8,
+    "matrix_version": "synth-v1"
+  },
+  {
+    "origin": "LOC-B",
+    "destination": "LOC-E",
+    "transport_type": "TRUCK",
+    "travel_min": 12,
+    "distance_km": 4.8,
+    "matrix_version": "synth-v1"
+  },
+  {
+    "origin": "LOC-E",
+    "destination": "LOC-B",
+    "transport_type": "TRUCK",
+    "travel_min": 12,
+    "distance_km": 4.8,
+    "matrix_version": "synth-v1"
+  },
+  {
+    "origin": "LOC-B",
+    "destination": "LOC-F",
+    "transport_type": "CAR",
+    "travel_min": 12,
+    "distance_km": 6.2,
+    "matrix_version": "synth-v1"
+  },
+  {
+    "origin": "LOC-F",
+    "destination": "LOC-B",
+    "transport_type": "CAR",
+    "travel_min": 12,
+    "distance_km": 6.2,
+    "matrix_version": "synth-v1"
+  },
+  {
+    "origin": "LOC-B",
+    "destination": "LOC-F",
+    "transport_type": "TRUCK",
+    "travel_min": 16,
+    "distance_km": 6.2,
+    "matrix_version": "synth-v1"
+  },
+  {
+    "origin": "LOC-F",
+    "destination": "LOC-B",
+    "transport_type": "TRUCK",
+    "travel_min": 16,
+    "distance_km": 6.2,
+    "matrix_version": "synth-v1"
+  },
+  {
+    "origin": "LOC-C",
+    "destination": "LOC-D",
+    "transport_type": "CAR",
+    "travel_min": 12,
+    "distance_km": 6.0,
+    "matrix_version": "synth-v1"
+  },
+  {
+    "origin": "LOC-D",
+    "destination": "LOC-C",
+    "transport_type": "CAR",
+    "travel_min": 12,
+    "distance_km": 6.0,
+    "matrix_version": "synth-v1"
+  },
+  {
+    "origin": "LOC-C",
+    "destination": "LOC-D",
+    "transport_type": "TRUCK",
+    "travel_min": 16,
+    "distance_km": 6.0,
+    "matrix_version": "synth-v1"
+  },
+  {
+    "origin": "LOC-D",
+    "destination": "LOC-C",
+    "transport_type": "TRUCK",
+    "travel_min": 16,
+    "distance_km": 6.0,
+    "matrix_version": "synth-v1"
+  },
+  {
+    "origin": "LOC-C",
+    "destination": "LOC-E",
+    "transport_type": "CAR",
+    "travel_min": 18,
+    "distance_km": 9.0,
+    "matrix_version": "synth-v1"
+  },
+  {
+    "origin": "LOC-E",
+    "destination": "LOC-C",
+    "transport_type": "CAR",
+    "travel_min": 18,
+    "distance_km": 9.0,
+    "matrix_version": "synth-v1"
+  },
+  {
+    "origin": "LOC-C",
+    "destination": "LOC-E",
+    "transport_type": "TRUCK",
+    "travel_min": 23,
+    "distance_km": 9.0,
+    "matrix_version": "synth-v1"
+  },
+  {
+    "origin": "LOC-E",
+    "destination": "LOC-C",
+    "transport_type": "TRUCK",
+    "travel_min": 23,
+    "distance_km": 9.0,
+    "matrix_version": "synth-v1"
+  },
+  {
+    "origin": "LOC-C",
+    "destination": "LOC-F",
+    "transport_type": "CAR",
+    "travel_min": 21,
+    "distance_km": 10.5,
+    "matrix_version": "synth-v1"
+  },
+  {
+    "origin": "LOC-F",
+    "destination": "LOC-C",
+    "transport_type": "CAR",
+    "travel_min": 21,
+    "distance_km": 10.5,
+    "matrix_version": "synth-v1"
+  },
+  {
+    "origin": "LOC-C",
+    "destination": "LOC-F",
+    "transport_type": "TRUCK",
+    "travel_min": 27,
+    "distance_km": 10.5,
+    "matrix_version": "synth-v1"
+  },
+  {
+    "origin": "LOC-F",
+    "destination": "LOC-C",
+    "transport_type": "TRUCK",
+    "travel_min": 27,
+    "distance_km": 10.5,
+    "matrix_version": "synth-v1"
+  },
+  {
+    "origin": "LOC-D",
+    "destination": "LOC-E",
+    "transport_type": "CAR",
+    "travel_min": 20,
+    "distance_km": 10.0,
+    "matrix_version": "synth-v1"
+  },
+  {
+    "origin": "LOC-E",
+    "destination": "LOC-D",
+    "transport_type": "CAR",
+    "travel_min": 20,
+    "distance_km": 10.0,
+    "matrix_version": "synth-v1"
+  },
+  {
+    "origin": "LOC-D",
+    "destination": "LOC-E",
+    "transport_type": "TRUCK",
+    "travel_min": 26,
+    "distance_km": 10.0,
+    "matrix_version": "synth-v1"
+  },
+  {
+    "origin": "LOC-E",
+    "destination": "LOC-D",
+    "transport_type": "TRUCK",
+    "travel_min": 26,
+    "distance_km": 10.0,
+    "matrix_version": "synth-v1"
+  },
+  {
+    "origin": "LOC-D",
+    "destination": "LOC-F",
+    "transport_type": "CAR",
+    "travel_min": 15,
+    "distance_km": 7.6,
+    "matrix_version": "synth-v1"
+  },
+  {
+    "origin": "LOC-F",
+    "destination": "LOC-D",
+    "transport_type": "CAR",
+    "travel_min": 15,
+    "distance_km": 7.6,
+    "matrix_version": "synth-v1"
+  },
+  {
+    "origin": "LOC-D",
+    "destination": "LOC-F",
+    "transport_type": "TRUCK",
+    "travel_min": 20,
+    "distance_km": 7.6,
+    "matrix_version": "synth-v1"
+  },
+  {
+    "origin": "LOC-F",
+    "destination": "LOC-D",
+    "transport_type": "TRUCK",
+    "travel_min": 20,
+    "distance_km": 7.6,
+    "matrix_version": "synth-v1"
+  },
+  {
+    "origin": "LOC-E",
+    "destination": "LOC-F",
+    "transport_type": "CAR",
+    "travel_min": 17,
+    "distance_km": 8.6,
+    "matrix_version": "synth-v1"
+  },
+  {
+    "origin": "LOC-F",
+    "destination": "LOC-E",
+    "transport_type": "CAR",
+    "travel_min": 17,
+    "distance_km": 8.6,
+    "matrix_version": "synth-v1"
+  },
+  {
+    "origin": "LOC-E",
+    "destination": "LOC-F",
+    "transport_type": "TRUCK",
+    "travel_min": 22,
+    "distance_km": 8.6,
+    "matrix_version": "synth-v1"
+  },
+  {
+    "origin": "LOC-F",
+    "destination": "LOC-E",
+    "transport_type": "TRUCK",
+    "travel_min": 22,
+    "distance_km": 8.6,
+    "matrix_version": "synth-v1"
+  }
+]

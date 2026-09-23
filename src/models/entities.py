@@ -2,7 +2,7 @@ from datetime import datetime
 
 from pydantic import BaseModel, Field, field_validator
 
-from .enums import JobPriority, Skill, TransportType
+from .enums import JobPriority, Skill, TransportType, UnassignmentReason
 
 
 class Engineer(BaseModel):
@@ -15,6 +15,24 @@ class Engineer(BaseModel):
 
     shift_start: datetime
     shift_end: datetime
+
+    # Оборудование, которое команда получает утром
+    # и с которым работает весь день.
+    equipment_ids: list[str] = Field(default_factory=list)
+
+    # Зоны обслуживания бригады; пустой список = без ограничений.
+    service_districts: list[str] = Field(default_factory=list)
+
+    # Типы работ, которые бригада может выполнять;
+    # пустой список = без ограничений.
+    allowed_work_types: list[str] = Field(default_factory=list)
+
+
+class Equipment(BaseModel):
+    id: str
+    name: str
+
+    category: str | None = None
 
 
 class Job(BaseModel):
@@ -56,6 +74,8 @@ class RouteStop(BaseModel):
     planned_start: datetime
     planned_end: datetime
 
+    address: str | None = None
+
 
 
 class Route(BaseModel):
@@ -67,11 +87,18 @@ class Route(BaseModel):
 
 
 
+class UnassignedJob(BaseModel):
+    job_id: str
+    reason_code: UnassignmentReason
+    message: str
+
+
 class Plan(BaseModel):
     assignments: list[Assignment]
     routes: list[Route]
 
     unassigned_job_ids: list[str]
+    unassigned: list[UnassignedJob] = Field(default_factory=list)
 
     status: str
 
@@ -123,7 +150,13 @@ class JobRecord(BaseModel):
     priority: str | None = None
     status: str | None = None
     gigabit_connection: bool | None = None
+    # Временное сырое значение колонки «Гигабитное подключение»
+    # до подтверждения маппинга в gigabit_connection по реальным CSV.
+    gigabit_connection_raw: str | None = None
     required_equipment: list[str] = Field(default_factory=list)
+
+    # Идентификатор локации для travel matrix.
+    location_id: str | None = None
 
     source_filename: str
     source_row: int | None = None

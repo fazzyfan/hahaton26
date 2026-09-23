@@ -4,6 +4,7 @@ import csv
 from dataclasses import dataclass
 from datetime import datetime
 from io import StringIO
+from pathlib import Path
 from zoneinfo import ZoneInfo
 from src.config.loader import map_work_type
 
@@ -36,6 +37,11 @@ class ImportResult:
     rows: list[dict]
     errors: list[ImportErrorItem]
     office_locations: list[OfficeLocation]
+
+    # Статистика для отчёта импорта.
+    row_count: int = 0        # непустых строк-заявок (включая ошибочные)
+    skipped_empty: int = 0    # полностью пустых физических строк
+    skipped_office: int = 0   # строк «Адрес офиса»
 
 @dataclass
 class OfficeLocation:
@@ -78,6 +84,10 @@ def load_jobs_bytes(data: bytes, filename: str) -> ImportResult:
     errors: list[ImportErrorItem] = []
     rows: list[dict] = []
     offices: list[OfficeLocation] = []
+
+    row_count = 0
+    skipped_empty = 0
+    skipped_office = 0
 
     # 1. Проверяем кодировку.
     try:
@@ -155,6 +165,7 @@ def load_jobs_bytes(data: bytes, filename: str) -> ImportResult:
 
         # Полностью пустая физическая строка.
         if not values or all(not value.strip() for value in values):
+            skipped_empty += 1
             continue
 
         # Превращаем строку в словарь.
@@ -183,10 +194,14 @@ def load_jobs_bytes(data: bytes, filename: str) -> ImportResult:
                 )
             )
 
+            skipped_office += 1
+
             continue
 
         service_zone = get_service_zone(filename)
         district = row.get("Район", "").strip()
+
+        row_count += 1
 
         imported_row = {
             "source_filename": filename,
@@ -219,10 +234,13 @@ def load_jobs_bytes(data: bytes, filename: str) -> ImportResult:
             errors.append(conversion_error)
 
     return ImportResult(
-                rows=rows,
-                errors=errors,
-                office_locations=offices,
-            )
+        rows=rows,
+        errors=errors,
+        office_locations=offices,
+        row_count=row_count,
+        skipped_empty=skipped_empty,
+        skipped_office=skipped_office,
+    )
 
     # Сохраняем строки как словари.
     for row in reader:
@@ -267,6 +285,27 @@ def load_jobs_file(path) -> ImportResult:
         filename = path_obj.name
 
     return load_jobs_bytes(data, filename)
+
+
+def find_job_csv_files(directory: str | Path) -> list[Path]:
+    """
+    Возвращает отсортированный список официальных CSV-файлов заявок
+    в указанной директории.
+
+    Критерий отбора:
+        * имя файла заканчивается на «Синтетические данные.csv»;
+        * файл лежит непосредственно в директории (не в поддиректориях).
+
+    Контрольные распределения и прочие посторонние файлы игнорируются.
+    """
+    root = Path(directory)
+
+    return sorted(
+        path
+        for path in root.iterdir()
+        if path.is_file() and path.name.endswith("Синтетические данные.csv")
+    )
+
 
 def _get_column_value(row: dict, *names: str) -> tuple[str | None, str | None]:
     normalized = {
@@ -453,6 +492,12 @@ def normalize_job_row(row: dict) -> dict:
     district_value = row.get("district", "").strip()
     if district_value:
         normalized["district"] = district_value
+
+    # Сырое значение «Гигабитное подключение» сохраняется до подтверждения
+    # маппинга в boolean gigabit_connection по реальным CSV.
+    gigabit_value, _ = _get_column_value(row, "Гигабитное подключение")
+    if gigabit_value:
+        normalized["gigabit_connection_raw"] = gigabit_value.strip()
 
     for target_field in ("window_start", "window_end"):
         value = row.get(target_field)

@@ -1,0 +1,7 @@
+[
+  {"id": "EQ-OPTIC-TESTER", "name": "Оптический тестер", "category": "measurement"},
+  {"id": "EQ-SPLICER", "name": "Сварочный аппарат", "category": "installation"},
+  {"id": "EQ-CABLE-DRILL", "name": "Кабельный перфоратор", "category": "installation"},
+  {"id": "EQ-LADDER", "name": "Лестница", "category": "access"},
+  {"id": "EQ-MULTIMETER", "name": "Мультиметр", "category": "measurement"}
+]

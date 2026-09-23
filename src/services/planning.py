@@ -1,0 +1,30 @@
+from __future__ import annotations
+
+from src.models.entities import Plan
+from src.optimizer.route_planner import RoutePlanner
+from src.optimizer.travel import TravelMatrix
+from src.services.import_pipeline import InputBundle
+from src.validation.plan_validator import PlanValidator
+
+
+def build_plan(bundle: InputBundle) -> Plan:
+    """
+    Строит многобригадный статический план и независимо проверяет
+    hard constraints.
+
+    Статус плана:
+        VALID   — нет нарушений hard constraints (неназначенные заявки
+                  допустимы и имеют reason_code);
+        INVALID — найдены нарушения, публиковать такой план нельзя.
+    """
+    travel_matrix = TravelMatrix(bundle.travel_matrix)
+
+    planner = RoutePlanner(travel_matrix)
+    plan = planner.build_plan(bundle.jobs, bundle.engineers)
+
+    validator = PlanValidator(travel_matrix)
+    issues = validator.validate(plan, bundle.jobs, bundle.engineers)
+
+    plan.status = "VALID" if not issues else "INVALID"
+
+    return plan
