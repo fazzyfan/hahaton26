@@ -29,11 +29,13 @@ def load_engineers_file(path: str | Path) -> list[Engineer]:
             id=item["id"],
             name=item["name"],
             transport_type=item["transport_type"],
-            qualifications=item["qualifications"],
+            qualifications=item.get("qualifications", []),
             start_location_id=item["start_location"],
             shift_start=item["shift_start"],
             shift_end=item["shift_end"],
             equipment_ids=item.get("equipment", []),
+            service_districts=item.get("service_districts", []),
+            allowed_work_types=item.get("allowed_work_types", []),
         )
 
         if (

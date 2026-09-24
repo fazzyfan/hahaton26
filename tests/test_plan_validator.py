@@ -141,3 +141,35 @@ def test_validator_detects_travel_underestimate():
     codes = [issue.code for issue in issues]
 
     assert "TRAVEL_VIOLATION" in codes
+
+
+def test_validator_detects_job_not_covered():
+    plan, jobs, engineers = _built_plan()
+
+    # Заявка есть во входных данных, но ни назначена, ни в unassigned.
+    jobs.append(_job("1002"))
+
+    issues = _validate(plan, jobs, engineers)
+
+    codes = [issue.code for issue in issues]
+
+    assert "JOB_NOT_COVERED" in codes
+
+
+def test_validator_detects_job_in_both_lists():
+    plan, jobs, engineers = _built_plan()
+
+    plan.unassigned.append(
+        UnassignedJob(
+            job_id="1001",
+            reason_code=UnassignmentReason.SHIFT_CONFLICT,
+            message="Дубликат",
+        )
+    )
+    plan.unassigned_job_ids.append("1001")
+
+    issues = _validate(plan, jobs, engineers)
+
+    codes = [issue.code for issue in issues]
+
+    assert "BOTH_ASSIGNED_AND_UNASSIGNED" in codes

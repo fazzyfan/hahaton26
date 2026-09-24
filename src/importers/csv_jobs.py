@@ -6,20 +6,44 @@ from datetime import datetime
 from io import StringIO
 from pathlib import Path
 from zoneinfo import ZoneInfo
-from src.config.loader import map_work_type
+
+from src.config.loader import (
+    get_required_equipment,
+    get_work_type_priority,
+    map_work_type,
+)
 
 MOSCOW_TZ = ZoneInfo("Europe/Moscow")
 DATE_FORMAT = "%d.%m.%Y %H:%M"
-REQUIRED_COLUMNS = {
-    "ID",
-    "Адрес",
-    "Тип заявки BK",
+
+# Логическая колонка -> допустимые имена заголовков.
+# Официальные CSV используют «Заявка», «Начало», «Окончание»;
+# легаси-формат (тесты/ранние данные) — «ID», «Начало окна», «Конец окна».
+REQUIRED_ALIASES: dict[str, tuple[str, ...]] = {
+    "Заявка": ("Заявка", "ID"),
+    "Тип заявки BK": ("Тип заявки BK",),
+    "Адрес": ("Адрес",),
+}
+
+DATE_COLUMN_ALIASES: dict[str, tuple[str, ...]] = {
+    "window_start": (
+        "Начало",
+        "Начало окна",
+        "Дата начала окна",
+        "Дата/время начала",
+    ),
+    "window_end": (
+        "Окончание",
+        "Конец окна",
+    ),
 }
 
 NEW_CONTRACT_COLUMNS = {
     "Тип заявки HD",
     "Район",
 }
+
+
 @dataclass
 class ImportErrorItem:
     code: str
@@ -43,11 +67,13 @@ class ImportResult:
     skipped_empty: int = 0    # полностью пустых физических строк
     skipped_office: int = 0   # строк «Адрес офиса»
 
+
 @dataclass
 class OfficeLocation:
     address: str
     source_filename: str
     source_row: int
+
 
 def parse_moscow_datetime(value: str) -> datetime:
     """
@@ -58,14 +84,47 @@ def parse_moscow_datetime(value: str) -> datetime:
     return parsed.replace(tzinfo=MOSCOW_TZ)
 
 
-def _is_blank_row(row: dict) -> bool:
-    """
-    Возвращает True, если вся строка CSV пустая.
-    """
-    return all(
-        value is None or not str(value).strip()
-        for value in row.values()
-    )
+def parse_gigabit_flag(value: str) -> bool:
+    """«Да» -> True, всё остальное («Нет») -> False."""
+    return value.strip().lower() == "да"
+
+
+def _normalize_key(key: str) -> str:
+    return str(key).replace(" ", "").strip().lower()
+
+
+def _get_column_value(
+    row: dict,
+    *names: str,
+) -> tuple[str | None, str | None]:
+    """Возвращает (значение, фактический ключ) по любому из имён колонки."""
+    normalized = {
+        _normalize_key(key): key
+        for key in row
+    }
+
+    for name in names:
+        key = normalized.get(_normalize_key(name))
+        if key is not None:
+            return row.get(key), key
+
+    return None, None
+
+
+def _missing_required_columns(headers: list[str]) -> set[str]:
+    """Возвращает логические обязательные колонки без подходящего заголовка."""
+    normalized_headers = {_normalize_key(header) for header in headers}
+    missing: set[str] = set()
+
+    for canonical, aliases in REQUIRED_ALIASES.items():
+        if not any(_normalize_key(alias) in normalized_headers for alias in aliases):
+            missing.add(canonical)
+
+    return missing
+
+
+def _get_job_id(row: dict) -> tuple[str | None, str | None]:
+    return _get_column_value(row, "Заявка", "ID")
 
 
 def load_jobs_bytes(data: bytes, filename: str) -> ImportResult:
@@ -79,6 +138,10 @@ def load_jobs_bytes(data: bytes, filename: str) -> ImportResult:
     CSV:
         encoding = CP1251
         delimiter = ;
+
+    Официальные колонки:
+        Заявка;Тип заявки BK;Тип заявки HD;Начало;Окончание;Район;Адрес;
+        [Подключение;]Гигабитное подключение
     """
 
     errors: list[ImportErrorItem] = []
@@ -130,15 +193,16 @@ def load_jobs_bytes(data: bytes, filename: str) -> ImportResult:
         )
 
         return ImportResult(
-                        rows=rows,
-                        errors=errors,
-                        office_locations=offices,
-                    )
+            rows=rows,
+            errors=errors,
+            office_locations=offices,
+        )
 
     # Убираем BOM, если он вдруг оказался в первом заголовке.
     if headers:
         headers[0] = headers[0].lstrip("\ufeff")
-    missing_columns = REQUIRED_COLUMNS - set(headers)
+
+    missing_columns = _missing_required_columns(headers)
 
     if missing_columns:
         for column in sorted(missing_columns):
@@ -156,10 +220,11 @@ def load_jobs_bytes(data: bytes, filename: str) -> ImportResult:
             )
 
         return ImportResult(
-        rows=[],
-        errors=errors,
-        office_locations=offices,
-    )
+            rows=[],
+            errors=errors,
+            office_locations=offices,
+        )
+
     # 4. Читаем строки.
     for row_number, values in enumerate(reader, start=2):
 
@@ -168,8 +233,8 @@ def load_jobs_bytes(data: bytes, filename: str) -> ImportResult:
             skipped_empty += 1
             continue
 
-        # Превращаем строку в словарь.
-        row = {}
+        # Превращаем строку в словарь (ключи — исходные заголовки).
+        row: dict[str, str] = {}
 
         for index, header in enumerate(headers):
             value = values[index] if index < len(values) else ""
@@ -180,12 +245,28 @@ def load_jobs_bytes(data: bytes, filename: str) -> ImportResult:
         if len(values) > len(headers):
             row["_extra_values"] = values[len(headers):]
 
-        address = row.get("Адрес", "").lower()
+        job_id_cell, _ = _get_job_id(row)
+        address_cell = row.get("Адрес", "").strip().lower()
 
-        if (
-            "адрес офиса" in address
-            or "адрес офиса" in str(row).lower()
-        ):
+        if (job_id_cell or "").strip().lower().startswith("адрес офиса"):
+            # Официальный формат: первая ячейка «Адрес Офиса»,
+            # фактический адрес — во второй ячейке.
+            office_address = values[1].strip() if len(values) > 1 else ""
+
+            offices.append(
+                OfficeLocation(
+                    address=office_address,
+                    source_filename=filename,
+                    source_row=row_number,
+                )
+            )
+
+            skipped_office += 1
+
+            continue
+
+        if "адрес офиса" in address_cell:
+            # Легаси-формат: «Адрес офиса: ...» в колонке Адрес.
             offices.append(
                 OfficeLocation(
                     address=row.get("Адрес", ""),
@@ -209,7 +290,7 @@ def load_jobs_bytes(data: bytes, filename: str) -> ImportResult:
             "service_zone": service_zone,
             "district": district,
             **row,
-        } 
+        }
 
         row_errors = validate_job_row(
             imported_row,
@@ -242,29 +323,6 @@ def load_jobs_bytes(data: bytes, filename: str) -> ImportResult:
         skipped_office=skipped_office,
     )
 
-    # Сохраняем строки как словари.
-    for row in reader:
-    # csv.DictReader.line_num содержит физический номер
-    # строки исходного CSV-файла.
-        row_number = reader.line_num
-
-    # Полностью пустые строки пропускаем.
-        if _is_blank_row(row):
-            continue
-
-    rows.append(
-        {
-            "source_filename": filename,
-            "source_row": row_number,
-            **{
-                key: value.strip() if isinstance(value, str) else value
-                for key, value in row.items()
-            },
-        }
-    )
-
-    return ImportResult(rows=rows, errors=errors)
-
 
 def load_jobs_file(path) -> ImportResult:
     """
@@ -278,8 +336,6 @@ def load_jobs_file(path) -> ImportResult:
         data = path.read_bytes()
         filename = path.name
     else:
-        from pathlib import Path
-
         path_obj = Path(path)
         data = path_obj.read_bytes()
         filename = path_obj.name
@@ -307,21 +363,6 @@ def find_job_csv_files(directory: str | Path) -> list[Path]:
     )
 
 
-def _get_column_value(row: dict, *names: str) -> tuple[str | None, str | None]:
-    normalized = {
-        str(key).replace(" ", "").strip().lower(): key
-        for key in row
-    }
-
-    for name in names:
-        key = normalized.get(
-            name.replace(" ", "").strip().lower()
-        )
-        if key is not None:
-            return row.get(key), key
-
-    return None, None
-
 def validate_job_row(
     row: dict,
     filename: str,
@@ -329,44 +370,44 @@ def validate_job_row(
 ) -> list[ImportErrorItem]:
     errors = []
 
-    if not row.get("ID", "").strip():
+    job_id, job_id_field = _get_job_id(row)
+
+    if not job_id:
         errors.append(
             ImportErrorItem(
                 code="EMPTY_ID",
                 file=filename,
                 row=row_number,
                 entity_id=None,
-                field="ID",
+                field=job_id_field or "Заявка",
                 message="У заявки отсутствует ID.",
                 level="ERROR",
                 can_skip=True,
             )
         )
+
     if not row.get("Адрес", "").strip():
         errors.append(
             ImportErrorItem(
                 code="EMPTY_ADDRESS",
                 file=filename,
                 row=row_number,
-                entity_id=row.get("ID") or None,
+                entity_id=job_id or None,
                 field="Адрес",
                 message="У заявки отсутствует адрес.",
                 level="ERROR",
                 can_skip=True,
             )
         )
-    date_fields = (
-        "Начало окна",
-        "Дата начала окна",
-        "Дата/время начала",
-        "Конец окна",
+
+    date_fields = set(
+        alias
+        for aliases in DATE_COLUMN_ALIASES.values()
+        for alias in aliases
     )
 
     for field_name in date_fields:
-        value, actual_field = _get_column_value(
-            row,
-            field_name,
-        )
+        value, actual_field = _get_column_value(row, field_name)
 
         if not value:
             continue
@@ -379,18 +420,20 @@ def validate_job_row(
                     code="INVALID_DATE",
                     file=filename,
                     row=row_number,
-                    entity_id=row.get("ID") or None,
+                    entity_id=job_id or None,
                     field=actual_field,
                     message=f"Некорректная дата: {value!r}.",
                     level="ERROR",
                     can_skip=True,
                 )
             )
+
     return errors
 
 
 def get_service_zone(filename: str) -> str:
     return filename.replace(" Синтетические данные.csv", "").strip()
+
 
 def convert_work_type(
     row: dict,
@@ -402,11 +445,14 @@ def convert_work_type(
     Тип заявки BK -> work_type + норматив.
     """
 
-    raw_bk_type = row.get("Тип заявки BK")
+    raw_bk_value, bk_field = _get_column_value(row, "Тип заявки BK")
+    raw_bk_type = raw_bk_value or ""
 
     work_type, service_duration_min, error_code = map_work_type(
         raw_bk_type
     )
+
+    job_id, _ = _get_job_id(row)
 
     if error_code is not None:
         return (
@@ -415,8 +461,8 @@ def convert_work_type(
                 code=error_code,
                 file=filename,
                 row=row_number,
-                entity_id=row.get("ID") or None,
-                field="Тип заявки BK",
+                entity_id=job_id or None,
+                field=bk_field or "Тип заявки BK",
                 message=(
                     f"Неизвестный тип заявки BK: "
                     f"{raw_bk_type!r}."
@@ -437,7 +483,7 @@ def convert_work_type(
 
 def convert_window_datetimes(row: dict) -> dict:
     """
-    Преобразует строки CSV «Начало окна» / «Конец окна»
+    Преобразует строки CSV «Начало» / «Окончание»
     в datetime-поля window_start / window_end
     с часовым поясом Europe/Moscow.
 
@@ -447,11 +493,8 @@ def convert_window_datetimes(row: dict) -> dict:
     """
     converted_row = dict(row)
 
-    for target_field, source_column in (
-        ("window_start", "Начало окна"),
-        ("window_end", "Конец окна"),
-    ):
-        value, _ = _get_column_value(row, source_column)
+    for target_field, source_aliases in DATE_COLUMN_ALIASES.items():
+        value, _ = _get_column_value(row, *source_aliases)
 
         if not value:
             continue
@@ -466,21 +509,30 @@ def convert_window_datetimes(row: dict) -> dict:
 
 def normalize_job_row(row: dict) -> dict:
     """
-    Приводит импортированную строку к каноническому набору полей Job.
+    Приводит импортированную строку к каноническому набору полей JobRecord.
 
     Сырые значения BK и HD сохраняются без изменений
     (source_bk_type / source_hd_type).
-    Необязательные поля включаются в результат, только если присутствуют.
-    received_at будет добавлен, когда станет известна фактическая
-    колонка CSV с датой поступления.
+    Производные поля по правилам MVP:
+        status = NEW
+        priority — из work_type (URGENT/HIGH/NORMAL)
+        gigabit_connection — «Да»/«Нет»
+        required_equipment — из конфигурации (+GIGABIT_TESTER при гигабите)
+    received_at остаётся None до подтверждения реальной колонки.
     """
+    job_id, _ = _get_job_id(row)
+    bk_value, _ = _get_column_value(row, "Тип заявки BK")
+
+    work_type = row.get("work_type")
+    service_duration_min = row.get("service_duration_min")
+
     normalized = {
-        "id": row.get("ID", "").strip(),
-        "source_bk_type": row.get("Тип заявки BK", "").strip(),
-        "work_type": row.get("work_type"),
+        "id": (job_id or "").strip(),
+        "source_bk_type": (bk_value or "").strip(),
+        "work_type": work_type,
         "service_zone": row.get("service_zone", "").strip(),
         "address": row.get("Адрес", "").strip(),
-        "service_duration_min": row.get("service_duration_min"),
+        "service_duration_min": service_duration_min,
         "source_filename": row.get("source_filename", "").strip(),
         "source_row": row.get("source_row"),
     }
@@ -493,11 +545,26 @@ def normalize_job_row(row: dict) -> dict:
     if district_value:
         normalized["district"] = district_value
 
-    # Сырое значение «Гигабитное подключение» сохраняется до подтверждения
-    # маппинга в boolean gigabit_connection по реальным CSV.
     gigabit_value, _ = _get_column_value(row, "Гигабитное подключение")
     if gigabit_value:
-        normalized["gigabit_connection_raw"] = gigabit_value.strip()
+        raw = gigabit_value.strip()
+        normalized["gigabit_connection_raw"] = raw
+        normalized["gigabit_connection"] = parse_gigabit_flag(raw)
+
+    gigabit = normalized.get("gigabit_connection") is True
+
+    # Правила MVP для полей, которых нет в CSV.
+    normalized["status"] = "NEW"
+
+    if work_type:
+        priority = get_work_type_priority(work_type)
+        if priority is not None:
+            normalized["priority"] = priority
+
+        normalized["required_equipment"] = get_required_equipment(
+            work_type,
+            gigabit_connection=gigabit,
+        )
 
     for target_field in ("window_start", "window_end"):
         value = row.get(target_field)
@@ -505,28 +572,3 @@ def normalize_job_row(row: dict) -> dict:
             normalized[target_field] = value
 
     return normalized
-
-
-
-
-def test_empty_id_creates_structured_error():
-    csv_text = (
-        "ID;Адрес;Тип заявки BK\n"
-        ";Адрес клиента;Подключение\n"
-    )
-
-    result = load_jobs_bytes(
-        csv_text.encode("cp1251"),
-        "Восток Синтетические данные.csv",
-    )
-
-    assert len(result.rows) == 1
-    assert len(result.errors) == 1
-
-    error = result.errors[0]
-
-    assert error.code == "EMPTY_ID"
-    assert error.row == 2
-    assert error.entity_id is None
-    assert error.field == "ID"
-    assert error.can_skip is True

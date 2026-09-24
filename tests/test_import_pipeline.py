@@ -63,7 +63,7 @@ def test_load_input_directory_returns_complete_bundle(tmp_path):
     job = bundle.jobs[0]
     assert job.id == "1001"
     assert job.work_type == "CONNECTION"
-    assert job.service_duration_min == 90
+    assert job.service_duration_min == 70
     assert job.service_zone == "Восток"
     assert job.address == "Ростов-на-Дону, ул. Ленина, 1"
     assert job.window_start.tzinfo is not None

@@ -97,7 +97,7 @@ def test_convert_connection():
 
     assert error is None
     assert converted["work_type"] == "CONNECTION"
-    assert converted["service_duration_min"] == 90
+    assert converted["service_duration_min"] == 70
 
 
 def test_convert_emergency():
@@ -114,7 +114,7 @@ def test_convert_emergency():
 
     assert error is None
     assert converted["work_type"] == "EMERGENCY"
-    assert converted["service_duration_min"] == 100
+    assert converted["service_duration_min"] == 80
 
 
 def test_unknown_bk_type_creates_structured_error():
@@ -158,16 +158,16 @@ def test_import_applies_work_type_mapping():
     assert len(result.rows) == 4
 
     assert result.rows[0]["work_type"] == "CONNECTION"
-    assert result.rows[0]["service_duration_min"] == 90
+    assert result.rows[0]["service_duration_min"] == 70
 
     assert result.rows[1]["work_type"] == "EMERGENCY"
-    assert result.rows[1]["service_duration_min"] == 100
+    assert result.rows[1]["service_duration_min"] == 80
 
     assert result.rows[2]["work_type"] == "ADD_ORDER"
-    assert result.rows[2]["service_duration_min"] == 40
+    assert result.rows[2]["service_duration_min"] == 20
 
     assert result.rows[3]["work_type"] == "LOCAL_WORK"
-    assert result.rows[3]["service_duration_min"] == 50
+    assert result.rows[3]["service_duration_min"] == 30
 
 
 def test_import_reports_unknown_work_type():

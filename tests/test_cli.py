@@ -84,3 +84,65 @@ def test_cli_requires_subcommand():
         main([])
 
     assert exc_info.value.code == 2
+
+
+def _write_json_files(tmp_path) -> None:
+    (tmp_path / "engineers.json").write_text("[]", encoding="utf-8")
+    (tmp_path / "equipment.json").write_text("[]", encoding="utf-8")
+    (tmp_path / "travel_matrix.json").write_text("[]", encoding="utf-8")
+
+
+def test_cli_plan_aborts_on_fatal_import_error(tmp_path):
+    input_dir = tmp_path / "input"
+    input_dir.mkdir()
+
+    # Отсутствует обязательная колонка «Заявка» -> MISSING_REQUIRED_COLUMN,
+    # can_skip=False (фатальная ошибка): план строиться не должен.
+    (input_dir / "Восток Синтетические данные.csv").write_text(
+        "Адрес;Тип заявки BK\nАдрес клиента;Подключение\n",
+        encoding="cp1251",
+    )
+    _write_json_files(input_dir)
+
+    output_path = tmp_path / "output" / "plan.json"
+
+    exit_code = main(
+        [
+            "plan",
+            "--input-dir",
+            str(input_dir),
+            "--output",
+            str(output_path),
+        ]
+    )
+
+    assert exit_code == 1
+    assert not output_path.exists()
+
+
+def test_cli_plan_aborts_when_no_jobs_imported(tmp_path):
+    input_dir = tmp_path / "input"
+    input_dir.mkdir()
+
+    # Только строка офиса — ни одной заявки: пустой VALID-план запрещён.
+    (input_dir / "Восток Синтетические данные.csv").write_text(
+        "Заявка;Тип заявки BK;Адрес\n"
+        "Адрес Офиса;г. Москва, ул Тестовая, д 1;\n",
+        encoding="cp1251",
+    )
+    _write_json_files(input_dir)
+
+    output_path = tmp_path / "output" / "plan.json"
+
+    exit_code = main(
+        [
+            "plan",
+            "--input-dir",
+            str(input_dir),
+            "--output",
+            str(output_path),
+        ]
+    )
+
+    assert exit_code == 1
+    assert not output_path.exists()

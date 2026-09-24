@@ -20,7 +20,9 @@ ENGINEERS_JSON = """\
     "start_location": "DEPOT",
     "shift_start": "2026-09-20T09:00:00+03:00",
     "shift_end": "2026-09-20T18:00:00+03:00",
-    "equipment": ["EQ-OPTIC", "EQ-SPLICE"]
+    "equipment": ["EQ-OPTIC", "EQ-SPLICE"],
+    "service_districts": ["Восток", "Югоцентр"],
+    "allowed_work_types": ["CONNECTION", "EMERGENCY"]
   }
 ]
 """
@@ -62,6 +64,8 @@ def test_load_engineers_file_maps_json_contract_to_model(tmp_path):
     assert engineer.qualifications == [Skill.ELECTRIC, Skill.NETWORK]
     assert engineer.start_location_id == "DEPOT"
     assert engineer.equipment_ids == ["EQ-OPTIC", "EQ-SPLICE"]
+    assert engineer.service_districts == ["Восток", "Югоцентр"]
+    assert engineer.allowed_work_types == ["CONNECTION", "EMERGENCY"]
 
     assert engineer.shift_start.tzinfo is not None
     assert engineer.shift_start.hour == 9

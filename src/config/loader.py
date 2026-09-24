@@ -31,3 +31,36 @@ def map_work_type(raw_bk_type: str | None) -> tuple[str | None, int | None, str 
         mapping["service_duration_min"],
         None,
     )
+
+
+def get_work_type_priority(work_type: str) -> str | None:
+    """
+    Возвращает приоритет по коду типа работы
+    (URGENT / HIGH / NORMAL) из конфигурации.
+    """
+    config = load_data_contract()
+
+    for mapping in config["work_types"].values():
+        if mapping["code"] == work_type:
+            return mapping.get("priority")
+
+    return None
+
+
+def get_required_equipment(
+    work_type: str,
+    gigabit_connection: bool = False,
+) -> list[str]:
+    """
+    Возвращает обязательное оборудование заявки из конфигурации.
+
+    Гигабитное подключение дополнительно требует GIGABIT_TESTER.
+    """
+    config = load_data_contract()
+
+    equipment = list(config["equipment_requirements"].get(work_type, []))
+
+    if gigabit_connection:
+        equipment.extend(config["gigabit_extra_equipment"])
+
+    return equipment

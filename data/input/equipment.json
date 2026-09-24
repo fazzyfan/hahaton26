@@ -1,4 +1,8 @@
 [
+  {"id": "INSTALLATION_KIT", "name": "Комплект для подключения", "category": "kit"},
+  {"id": "DIAGNOSTIC_KIT", "name": "Диагностический комплект", "category": "kit"},
+  {"id": "CUSTOMER_EQUIPMENT", "name": "Оборудование для абонента", "category": "device"},
+  {"id": "GIGABIT_TESTER", "name": "Тестер гигабитных линий", "category": "measurement"},
   {"id": "EQ-OPTIC-TESTER", "name": "Оптический тестер", "category": "measurement"},
   {"id": "EQ-SPLICER", "name": "Сварочный аппарат", "category": "installation"},
   {"id": "EQ-CABLE-DRILL", "name": "Кабельный перфоратор", "category": "installation"},

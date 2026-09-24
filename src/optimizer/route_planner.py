@@ -26,15 +26,6 @@ WORK_TYPE_PRIORITY = {
 # балансировки загрузки между бригадами при равной стоимости вставки.
 LOAD_BALANCE_PENALTY_MIN = 10
 
-# Порядок выбора причины неназначения при нескольких неудачах.
-REASON_PRECEDENCE = {
-    UnassignmentReason.NO_QUALIFIED_ENGINEER: 0,
-    UnassignmentReason.NO_TRAVEL_DATA: 1,
-    UnassignmentReason.NO_TIME_WINDOW: 2,
-    UnassignmentReason.SHIFT_CONFLICT: 3,
-    UnassignmentReason.OPTIMIZER_LIMIT: 4,
-}
-
 REASON_MESSAGES = {
     UnassignmentReason.NO_QUALIFIED_ENGINEER: (
         "Нет бригады, подходящей по району, типу работы или оборудованию"
@@ -101,9 +92,17 @@ class RoutePlanner:
                 )
                 continue
 
+            # Причина определяется по выполнимости на пустом маршруте:
+            # если заявку в принципе нельзя выполнить (нет данных о пути,
+            # окно или смена не позволяют) — фиксируем причину сразу.
+            empty_reason = self._empty_route_reason(job, compatible)
+
+            if empty_reason is not None:
+                unassigned.append(self._unassigned(job, empty_reason))
+                continue
+
             # Кандидат: (score, load, -position) -> чем меньше, тем лучше.
             best = None  # (candidate_key, engineer, position)
-            failure_reasons: set[UnassignmentReason] = set()
 
             for engineer in compatible:
                 current_route = routes[engineer.id]
@@ -121,7 +120,6 @@ class RoutePlanner:
                     stops, reason = self._schedule(candidate, engineer)
 
                     if reason is not None:
-                        failure_reasons.add(reason)
                         continue
 
                     extra = (
@@ -138,8 +136,10 @@ class RoutePlanner:
                         best = (key, engineer, position)
 
             if best is None:
+                # Заявка выполнима в принципе, но не помещается ни в один
+                # текущий маршрут — исчерпана ёмкость рабочих смен.
                 unassigned.append(
-                    self._unassigned(job, self._pick_reason(failure_reasons))
+                    self._unassigned(job, UnassignmentReason.SHIFT_CONFLICT)
                 )
                 continue
 
@@ -332,17 +332,35 @@ class RoutePlanner:
 
         return (priority, datetime.max.replace(tzinfo=timezone.utc))
 
-    @staticmethod
-    def _pick_reason(
-        failure_reasons: set[UnassignmentReason],
-    ) -> UnassignmentReason:
-        if not failure_reasons:
-            return UnassignmentReason.OPTIMIZER_LIMIT
+    def _empty_route_reason(
+        self,
+        job: JobRecord,
+        engineers: list[Engineer],
+    ) -> UnassignmentReason | None:
+        """
+        Проверяет выполнимость заявки на пустом маршруте
+        (без учёта уже заполненных смен).
 
-        return min(
-            failure_reasons,
-            key=lambda reason: REASON_PRECEDENCE.get(reason, 99),
-        )
+        None — хотя бы одна совместимая бригада может выполнить заявку;
+        иначе — наиболее точная причина.
+        """
+        reasons: set[UnassignmentReason] = set()
+
+        for engineer in engineers:
+            _, reason = self._schedule([job], engineer)
+
+            if reason is None:
+                return None
+
+            reasons.add(reason)
+
+        if reasons == {UnassignmentReason.NO_TRAVEL_DATA}:
+            return UnassignmentReason.NO_TRAVEL_DATA
+
+        if UnassignmentReason.NO_TIME_WINDOW in reasons:
+            return UnassignmentReason.NO_TIME_WINDOW
+
+        return UnassignmentReason.SHIFT_CONFLICT
 
     def _unassigned(
         self,

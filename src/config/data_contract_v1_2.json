@@ -10,21 +10,34 @@
   "work_types": {
     "Подключение": {
       "code": "CONNECTION",
-      "service_duration_min": 90
+      "service_duration_min": 70,
+      "priority": "HIGH"
     },
     "Локальная заявка": {
       "code": "LOCAL_WORK",
-      "service_duration_min": 50
+      "service_duration_min": 30,
+      "priority": "NORMAL"
     },
     "Глобальная проблема": {
       "code": "EMERGENCY",
-      "service_duration_min": 100
+      "service_duration_min": 80,
+      "priority": "URGENT"
     },
     "Дозаказ": {
       "code": "ADD_ORDER",
-      "service_duration_min": 40
+      "service_duration_min": 20,
+      "priority": "NORMAL"
     }
   },
+
+  "equipment_requirements": {
+    "CONNECTION": ["INSTALLATION_KIT"],
+    "LOCAL_WORK": ["DIAGNOSTIC_KIT"],
+    "EMERGENCY": ["DIAGNOSTIC_KIT"],
+    "ADD_ORDER": ["CUSTOMER_EQUIPMENT"]
+  },
+
+  "gigabit_extra_equipment": ["GIGABIT_TESTER"],
 
   "unknown_work_type": {
     "code": "UNKNOWN_WORK_TYPE_MAPPING"

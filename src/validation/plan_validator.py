@@ -33,6 +33,7 @@ class PlanValidator:
         jobs_by_id = {job.id: job for job in jobs}
         engineers_by_id = {engineer.id: engineer for engineer in engineers}
 
+        self._check_coverage(plan, jobs, issues)
         self._check_unique_assignments(plan, issues)
         self._check_routes_match_assignments(plan, issues)
 
@@ -67,6 +68,56 @@ class PlanValidator:
         self._check_routes_timing(plan, jobs_by_id, engineers_by_id, issues)
 
         return issues
+
+    # --- покрытие -----------------------------------------------------------
+
+    def _check_coverage(
+        self,
+        plan: Plan,
+        jobs: list[JobRecord],
+        issues: list[ValidationIssue],
+    ) -> None:
+        valid_job_ids = {job.id for job in jobs}
+        assigned_ids = {assignment.job_id for assignment in plan.assignments}
+        unassigned_ids = {item.job_id for item in plan.unassigned}
+
+        for job_id in sorted(valid_job_ids):
+            in_assigned = job_id in assigned_ids
+            in_unassigned = job_id in unassigned_ids
+
+            if in_assigned and in_unassigned:
+                issues.append(
+                    self._issue(
+                        "BOTH_ASSIGNED_AND_UNASSIGNED",
+                        f"Заявка {job_id!r} одновременно назначена и неназначена",
+                        "Job",
+                        job_id,
+                    )
+                )
+            elif not in_assigned and not in_unassigned:
+                issues.append(
+                    self._issue(
+                        "JOB_NOT_COVERED",
+                        f"Заявка {job_id!r} отсутствует и в назначениях, "
+                        "и в неназначенных",
+                        "Job",
+                        job_id,
+                    )
+                )
+
+        if len(assigned_ids) + len(unassigned_ids) != len(valid_job_ids):
+            issues.append(
+                self._issue(
+                    "COVERAGE_COUNT",
+                    (
+                        f"len(assignments) + len(unassigned) = "
+                        f"{len(assigned_ids) + len(unassigned_ids)}, "
+                        f"ожидалось {len(valid_job_ids)}"
+                    ),
+                    "Plan",
+                    "-",
+                )
+            )
 
     # --- назначения ---------------------------------------------------------
 

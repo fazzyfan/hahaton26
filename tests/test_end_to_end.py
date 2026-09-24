@@ -18,7 +18,7 @@ ENGINEERS_JSON = """\
     "start_location": "DEPOT",
     "shift_start": "2026-09-20T09:00:00+03:00",
     "shift_end": "2026-09-20T18:00:00+03:00",
-    "equipment": ["EQ-OPTIC"],
+    "equipment": ["EQ-OPTIC", "INSTALLATION_KIT", "DIAGNOSTIC_KIT"],
     "service_districts": ["Восток"],
     "allowed_work_types": ["CONNECTION", "EMERGENCY"]
   }
