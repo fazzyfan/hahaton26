@@ -1,0 +1,16 @@
+# Тема Streamlit-приложения: тёмная, с жёлтыми акцентами.
+# Компоненты (кнопки, селекты, таблицы, вкладки) используют эти цвета.
+
+[theme]
+base = "dark"
+primaryColor = "#F5C518"
+backgroundColor = "#0F1115"
+secondaryBackgroundColor = "#181B21"
+textColor = "#E8EAF0"
+font = "sans serif"
+
+[browser]
+gatherUsageStats = false
+
+[server]
+headless = true

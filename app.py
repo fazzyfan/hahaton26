@@ -52,59 +52,35 @@ REFERENCE_FILES = [
 
 YELLOW = "#F5C518"
 YELLOW_DARK = "#E0AE00"
-DARK = "#1A1A1A"
-LIGHT = "#FAFAF7"
-MUTED = "#6B7280"
+
+# Тёмная тема.
+BG = "#0F1115"
+PANEL = "#181B21"
+BORDER = "#262B33"
+TEXT = "#E8EAF0"
+MUTED = "#9AA3B2"
 
 PAGE_CSS = f"""
 <style>
-    :root {{
-        --yellow: {YELLOW};
-        --dark: {DARK};
-        --muted: {MUTED};
-    }}
-
     .stApp {{
-        background-color: {LIGHT};
-        color: {DARK};
+        background-color: {BG};
+        color: {TEXT};
         font-family: "Segoe UI", -apple-system, "Helvetica Neue", Arial, sans-serif;
     }}
 
-    /* Заголовки */
     h1, h2, h3 {{
-        color: {DARK};
+        color: {TEXT};
         letter-spacing: -0.2px;
-    }}
-
-    .app-hero {{
-        background: linear-gradient(135deg, #ffffff 0%, #fff8e1 100%);
-        border: 1px solid #f0e6c0;
-        border-radius: 14px;
-        padding: 18px 22px;
-        margin-bottom: 18px;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-    }}
-    .app-hero h1 {{
-        margin: 0;
-        font-size: 26px;
-        display: flex;
-        align-items: center;
-        gap: 10px;
-    }}
-    .app-hero .tagline {{
-        color: {MUTED};
-        margin-top: 4px;
-        font-size: 14px;
     }}
 
     /* Карточки метрик */
     .metric-card {{
-        background-color: #ffffff;
-        border: 1px solid #ece9df;
+        background-color: {PANEL};
+        border: 1px solid {BORDER};
         border-radius: 12px;
         padding: 12px 16px;
         margin-bottom: 8px;
-        box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+        box-shadow: 0 2px 8px rgba(0,0,0,0.25);
         transition: transform 0.08s ease;
     }}
     .metric-card:hover {{ transform: translateY(-1px); }}
@@ -119,7 +95,7 @@ PAGE_CSS = f"""
     .metric-value {{
         font-size: 24px;
         font-weight: 800;
-        color: {DARK};
+        color: {TEXT};
         margin-top: 2px;
     }}
     .metric-accent {{
@@ -134,55 +110,56 @@ PAGE_CSS = f"""
         font-size: 13px;
         font-weight: 600;
     }}
-    .badge-ok {{ background: #e6f4ea; color: #1a7f37; }}
-    .badge-bad {{ background: #fdecea; color: #c62828; }}
-    .badge-warn {{ background: #fff4e0; color: #b26a00; }}
+    .badge-ok {{ background: #123524; color: #4ade80; }}
+    .badge-bad {{ background: #3b1216; color: #f87171; }}
+    .badge-warn {{ background: #33270f; color: #fbbf24; }}
 
     /* Карточка файла */
     .file-card {{
-        background: #ffffff;
-        border: 1px solid #ece9df;
+        background: {PANEL};
+        border: 1px solid {BORDER};
         border-radius: 10px;
         padding: 8px 12px;
         margin: 4px 0;
         font-size: 14px;
+        color: {TEXT};
     }}
 
     /* Объяснение назначения */
-    .explain-ok {{ color: #1a7f37; }}
-    .explain-bad {{ color: #c62828; }}
-    .explain-info {{ color: #555555; }}
+    .explain-ok {{ color: #4ade80; }}
+    .explain-bad {{ color: #f87171; }}
+    .explain-info {{ color: {MUTED}; }}
 
-    /* Primary-кнопки */
+    /* Primary-кнопки (жёлтые, контраст на тёмном) */
     .stButton > button[kind="primary"] {{
         background-color: {YELLOW};
-        color: {DARK};
+        color: #141414;
         border: none;
         border-radius: 10px;
         font-weight: 700;
         padding: 0.55rem 1.1rem;
-        box-shadow: 0 2px 6px rgba(224,174,0,0.35);
+        box-shadow: 0 2px 10px rgba(245,197,24,0.25);
         transition: background-color 0.12s ease;
     }}
     .stButton > button[kind="primary"]:hover {{
         background-color: {YELLOW_DARK};
-        color: {DARK};
+        color: #141414;
     }}
 
     /* Боковая панель */
     [data-testid="stSidebar"] {{
-        background-color: #ffffff;
-        border-right: 1px solid #ece9df;
+        background-color: {PANEL};
+        border-right: 1px solid {BORDER};
     }}
 
     /* Таблицы */
     [data-testid="stDataFrame"] {{
         border-radius: 10px;
         overflow: hidden;
-        border: 1px solid #ece9df;
+        border: 1px solid {BORDER};
     }}
 
-    /* Tabs */
+    /* Вкладки */
     .stTabs [data-baseweb="tab-list"] {{
         gap: 6px;
     }}
@@ -190,6 +167,11 @@ PAGE_CSS = f"""
         border-radius: 8px 8px 0 0;
         padding: 8px 16px;
         font-weight: 600;
+    }}
+
+    /* Подписи и мелкий текст */
+    .stCaption, [data-testid="stCaptionContainer"] p {{
+        color: {MUTED};
     }}
 </style>
 """

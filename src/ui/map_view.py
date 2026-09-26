@@ -2,16 +2,17 @@
 
 Точки остановок — ScatterplotLayer, линия в порядке посещения — PathLayer.
 Линия соединяет координаты напрямую, поэтому под картой выводится
-подпись «Схематический маршрут».
+подпись «Схематический маршрут». Карта использует тёмную подложку
+в тон интерфейсу.
 """
 from __future__ import annotations
 
 import pydeck as pdk
 
-# Жёлтый акцент интерфейса (точки) и тёмный цвет линии.
+# Жёлтый акцент интерфейса (точки) и светлая линия на тёмной подложке.
 POINT_FILL = [245, 197, 24]
-POINT_STROKE = [26, 26, 26]
-LINE_COLOR = [26, 26, 26]
+POINT_STROKE = [20, 22, 28]
+LINE_COLOR = [200, 210, 230]
 
 
 def _location_coords(
@@ -118,6 +119,6 @@ def build_route_deck(
     return pdk.Deck(
         layers=layers,
         initial_view_state=view_state,
-        tooltip={"html": "{label}", "style": {"color": "#1a1a1a"}},
-        map_style="light",
+        tooltip={"html": "{label}", "style": {"color": "#E8EAF0"}},
+        map_style="dark",
     )
