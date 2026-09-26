@@ -926,164 +926,164 @@
   {
     "location_id": "LOC-00155",
     "address": "Домодедово, проезд.Кутузовский, д. 16",
-    "latitude": 55.642526,
-    "longitude": 37.741891
+    "latitude": 55.429226,
+    "longitude": 37.758591
   },
   {
     "location_id": "LOC-00156",
     "address": "Домодедово, проезд.Советский 1-й, д. 1А",
-    "latitude": 55.658105,
-    "longitude": 37.740067
+    "latitude": 55.444805,
+    "longitude": 37.756767
   },
   {
     "location_id": "LOC-00157",
     "address": "Домодедово, ул.1-я Коммунистическая, д. 39",
-    "latitude": 55.65888,
-    "longitude": 37.75867
+    "latitude": 55.44558,
+    "longitude": 37.77537
   },
   {
     "location_id": "LOC-00158",
     "address": "Домодедово, ул.Гагарина, д. 55/2",
-    "latitude": 55.64964,
-    "longitude": 37.742359
+    "latitude": 55.43634,
+    "longitude": 37.759059
   },
   {
     "location_id": "LOC-00159",
     "address": "Домодедово, ул.Зеленая, д. 85",
-    "latitude": 55.646904,
-    "longitude": 37.750939
+    "latitude": 55.433604,
+    "longitude": 37.767639
   },
   {
     "location_id": "LOC-00160",
     "address": "Домодедово, ул.Ильюшина, д. 11 к 2",
-    "latitude": 55.651219,
-    "longitude": 37.741039
+    "latitude": 55.437919,
+    "longitude": 37.757739
   },
   {
     "location_id": "LOC-00161",
     "address": "Домодедово, ул.Ильюшина, д. 20",
-    "latitude": 55.660622,
-    "longitude": 37.743325
+    "latitude": 55.447322,
+    "longitude": 37.760025
   },
   {
     "location_id": "LOC-00162",
     "address": "Домодедово, ул.Корнеева, д. 40",
-    "latitude": 55.650535,
-    "longitude": 37.755976
+    "latitude": 55.437235,
+    "longitude": 37.772676
   },
   {
     "location_id": "LOC-00163",
     "address": "Домодедово, ул.Корнеева, д. 48",
-    "latitude": 55.660464,
-    "longitude": 37.753162
+    "latitude": 55.447164,
+    "longitude": 37.769862
   },
   {
     "location_id": "LOC-00164",
     "address": "Домодедово, ул.Корнеева, д. 50",
-    "latitude": 55.645006,
-    "longitude": 37.73689
+    "latitude": 55.431706,
+    "longitude": 37.75359
   },
   {
     "location_id": "LOC-00165",
     "address": "Кашира, ул.8 Марта, д. 22",
-    "latitude": 55.639171,
-    "longitude": 37.748926
+    "latitude": 54.842771,
+    "longitude": 38.152226
   },
   {
     "location_id": "LOC-00166",
     "address": "Кашира, ул.Кржижановского, д. 7",
-    "latitude": 55.652004,
-    "longitude": 37.762972
+    "latitude": 54.855604,
+    "longitude": 38.166272
   },
   {
     "location_id": "LOC-00167",
     "address": "Кашира, ул.Ленина, д. 11 к 3",
-    "latitude": 55.658371,
-    "longitude": 37.758856
+    "latitude": 54.861971,
+    "longitude": 38.162156
   },
   {
     "location_id": "LOC-00168",
     "address": "Кашира, ул.Металлургов, д. 5 к 3",
-    "latitude": 55.651795,
-    "longitude": 37.758721
+    "latitude": 54.855395,
+    "longitude": 38.162021
   },
   {
     "location_id": "LOC-00169",
     "address": "Кашира, ул.Победы, д. 9",
-    "latitude": 55.638893,
-    "longitude": 37.753651
+    "latitude": 54.842493,
+    "longitude": 38.156951
   },
   {
     "location_id": "LOC-00170",
     "address": "Кашира, ул.Садовая, д. 18",
-    "latitude": 55.645606,
-    "longitude": 37.763221
+    "latitude": 54.849206,
+    "longitude": 38.166521
   },
   {
     "location_id": "LOC-00171",
     "address": "Кашира, ул.Садовая, д. 2/11",
-    "latitude": 55.646112,
-    "longitude": 37.744159
+    "latitude": 54.849712,
+    "longitude": 38.147459
   },
   {
     "location_id": "LOC-00172",
     "address": "Кашира, ул.Юбилейная, д. 8",
-    "latitude": 55.661726,
-    "longitude": 37.750681
+    "latitude": 54.865326,
+    "longitude": 38.153981
   },
   {
     "location_id": "LOC-00173",
     "address": "Кашира, ул.Юбилейная, д. 9",
-    "latitude": 55.64051,
-    "longitude": 37.736209
+    "latitude": 54.84411,
+    "longitude": 38.139509
   },
   {
     "location_id": "LOC-00174",
     "address": "МО, г. Кашира Кржижановского ул. д. 5/1",
-    "latitude": 55.656698,
-    "longitude": 37.738903
+    "latitude": 54.860298,
+    "longitude": 38.142203
   },
   {
     "location_id": "LOC-00175",
     "address": "МО, г. Кашира Кржижановского ул. д. 5/2",
-    "latitude": 55.66079,
-    "longitude": 37.749685
+    "latitude": 54.86439,
+    "longitude": 38.152985
   },
   {
     "location_id": "LOC-00176",
     "address": "МО, г. Кашира Кржижановского ул. д. 5/3",
-    "latitude": 55.638043,
-    "longitude": 37.747507
+    "latitude": 54.841643,
+    "longitude": 38.150807
   },
   {
     "location_id": "LOC-00177",
     "address": "МО, г. Кашира Кржижановского ул. д. 7к2",
-    "latitude": 55.64688,
-    "longitude": 37.742176
+    "latitude": 54.85048,
+    "longitude": 38.145476
   },
   {
     "location_id": "LOC-00178",
     "address": "МО, г. Кашира Центральная ул. д. 19",
-    "latitude": 55.653362,
-    "longitude": 37.759192
+    "latitude": 54.856962,
+    "longitude": 38.162492
   },
   {
     "location_id": "LOC-00179",
     "address": "МО, г. Кашира Центральная ул. д. 21",
-    "latitude": 55.641012,
-    "longitude": 37.753858
+    "latitude": 54.844612,
+    "longitude": 38.157158
   },
   {
     "location_id": "LOC-00180",
     "address": "МО, г. Ступино Андропова ул. д. 33",
-    "latitude": 55.651867,
-    "longitude": 37.761976
+    "latitude": 54.902667,
+    "longitude": 38.080876
   },
   {
     "location_id": "LOC-00181",
     "address": "МО, г. Ступино Андропова ул. д. 37",
-    "latitude": 55.660087,
-    "longitude": 37.744087
+    "latitude": 54.910887,
+    "longitude": 38.062987
   },
   {
     "location_id": "LOC-00182",
@@ -1106,8 +1106,8 @@
   {
     "location_id": "LOC-00185",
     "address": "Ступино, ул.Калинина, д. 34",
-    "latitude": 55.63867,
-    "longitude": 37.736503
+    "latitude": 54.88947,
+    "longitude": 38.055403
   },
   {
     "location_id": "LOC-00186",
@@ -1166,8 +1166,8 @@
   {
     "location_id": "LOC-00195",
     "address": "обл.Московская область, г.Домодедово, пгт.Востряково-1, ул.Жуковского, д. 14/18",
-    "latitude": 55.649782,
-    "longitude": 37.748815
+    "latitude": 55.436482,
+    "longitude": 37.765515
   },
   {
     "location_id": "OFFICE_VOSTOK",

@@ -277,6 +277,11 @@ def test_shift_conflict_still_reported_on_empty_route():
 
 
 def test_input_validator_rejects_empty_engineer_capabilities():
+    """Пустой allowed_work_types не означает «разрешено всё».
+
+    По Data Contract v1.2 допуск бригады — единственный источник
+    (типы работ из конфигурации); устаревшие квалификации не влияют.
+    """
     validator = InputValidator()
 
     data = {
@@ -284,14 +289,14 @@ def test_input_validator_rejects_empty_engineer_capabilities():
         "engineers": [
             {
                 "id": "ENG-1",
-                "name": "Без квалификаций",
+                "name": "Без допускаемых типов работ",
                 "transport_type": "CAR",
-                "qualifications": [],
+                "qualifications": ["ELECTRIC"],
                 "start_location_id": "DEPOT",
                 "shift_start": "2026-09-20T09:00:00+03:00",
                 "shift_end": "2026-09-20T18:00:00+03:00",
                 "service_districts": ["Восток"],
-                "allowed_work_types": ["CONNECTION"],
+                "allowed_work_types": [],
             }
         ],
     }
@@ -300,7 +305,7 @@ def test_input_validator_rejects_empty_engineer_capabilities():
 
     codes = [issue.code for issue in issues]
 
-    assert "EMPTY_QUALIFICATIONS" in codes
+    assert "EMPTY_ALLOWED_WORK_TYPES" in codes
 
 
 def test_input_validator_rejects_empty_service_districts():

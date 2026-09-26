@@ -16,8 +16,9 @@ from __future__ import annotations
 
 import shutil
 import tempfile
-from datetime import date
+from datetime import date, datetime, time
 from pathlib import Path
+from zoneinfo import ZoneInfo
 
 import pandas as pd
 import streamlit as st
@@ -26,6 +27,10 @@ from src.models.entities import Engineer, JobRecord
 from src.optimizer.travel import TravelMatrix
 from src.services.import_pipeline import load_input_directory
 from src.services.planning import PlanningResult, run_planning
+from src.services.replanning import (
+    ReplanningResult,
+    replan_after_unavailability,
+)
 from src.ui.explain import explain_assignment
 from src.ui.map_view import build_route_deck
 from src.ui.tables import (
@@ -39,6 +44,10 @@ from src.ui.tables import (
 )
 
 DEMO_INPUT_DIR = Path("data/input")
+
+# Дата набора демонстрационных данных фиксирована (см. CSV 17.08.2026).
+DEMO_DATE = date(2026, 8, 17)
+MOSCOW_TZ = ZoneInfo("Europe/Moscow")
 
 # Допустимые зоны для пользовательской загрузки CSV.
 ZONES = ["Восток", "Юго-восток", "Югоцентр"]
@@ -188,7 +197,7 @@ def init_state() -> None:
         "planning": None,
         "skip_rows": set(),
         "selected_engineer": None,
-        "plan_date": date.today(),
+        "replanning": None,
     }
 
     for key, value in defaults.items():
@@ -264,9 +273,12 @@ def render_load() -> None:
     mode = "demo" if selected_mode == "Демонстрационный набор" else "upload"
     st.session_state["mode"] = mode
 
-    st.session_state["plan_date"] = st.date_input(
-        "Дата планирования",
-        value=st.session_state["plan_date"],
+    # Дата набора фиксирована (17.08.2026): статический план привязан
+    # к дате заявок, выбор «даты планирования» на расчёт не влияет,
+    # поэтому вместо ввода показываем дату набора.
+    st.caption(
+        "📅 Набор заявок: 17.08.2026 · расчёт статического плана привязан "
+        "к дате набора и не зависит от текущей даты."
     )
 
     if mode == "demo":
@@ -403,6 +415,30 @@ def _reimport(skip_rows: set[tuple[str, int]]) -> None:
     st.session_state["planning"] = None
 
 
+def plan_building_gate(bundle) -> tuple[bool, str | None]:
+    """
+    Гейт построения плана на экране «Проверка данных».
+
+    План НЕ строится, пока не разрешены ошибки импорта: диспетчер должен
+    явно выбрать одно из действий — «Исправить и загрузить повторно»,
+    «Пропустить выбранные ошибочные записи» или «Отменить загрузку».
+
+    Возвращает (можно_строить, причина_блокировки).
+    """
+    if not bundle.jobs:
+        return False, "Не осталось принятых заявок — построить план невозможно."
+
+    if bundle.errors:
+        return False, (
+            "Ошибки импорта не разрешены. Построить план невозможно, "
+            "пока диспетчер явно не выберет действие: «Исправить и загрузить "
+            "повторно», «Пропустить выбранные ошибочные записи» или "
+            "«Отменить загрузку»."
+        )
+
+    return True, None
+
+
 def render_validate() -> None:
     bundle = _current_bundle()
 
@@ -537,12 +573,15 @@ def render_validate() -> None:
 
         st.divider()
 
-    if not bundle.jobs:
-        st.warning("Не осталось принятых заявок — построить план невозможно.")
+    can_build, gate_message = plan_building_gate(bundle)
 
-        if st.button("Вернуться к загрузке"):
-            set_stage("load")
-            st.rerun()
+    if not can_build:
+        st.warning(gate_message)
+
+        if not bundle.jobs:
+            if st.button("Вернуться к загрузке"):
+                set_stage("load")
+                st.rerun()
 
         return
 
@@ -719,6 +758,8 @@ def render_result() -> None:
         mime="application/json",
     )
 
+    render_replanning(result)
+
     st.subheader("Маршрут бригады")
 
     engineer_options = {
@@ -736,6 +777,164 @@ def render_result() -> None:
         st.session_state["selected_engineer"] = selected
         set_stage("route")
         st.rerun()
+
+
+def render_replanning(result: PlanningResult) -> None:
+    """Секция «Событие: инженер стал недоступен» (демонстрация одного события).
+
+    Диспетчер задаёт время события; завершённые работы инженера сохраняются,
+    будущие заявки пересчитываются, невозможные остаются неназначенными
+    с причиной. GPS, дорожные происшествия и универсальный обработчик
+    всех ЧП в MVP не входят.
+    """
+    bundle = result.bundle
+    plan = result.plan
+
+    st.divider()
+    st.subheader("🔄 Событие: инженер стал недоступен")
+
+    engineer_options = {
+        engineer.id: f"{engineer.id} — {engineer.name}"
+        for engineer in bundle.engineers
+    }
+
+    used_ids = {assignment.engineer_id for assignment in plan.assignments}
+    candidates = [eid for eid in engineer_options if eid in used_ids]
+
+    if not candidates:
+        st.info("Нет задействованных бригад — событие недоступно.")
+        return
+
+    col_eng, col_time, col_btn = st.columns([2, 1, 1])
+
+    with col_eng:
+        selected = st.selectbox(
+            "Инженер, ставший недоступным",
+            candidates,
+            format_func=lambda key: engineer_options[key],
+        )
+
+    with col_time:
+        event_time = st.time_input(
+            "Время события (17.08.2026)",
+            value=time(12, 0),
+        )
+
+    with col_btn:
+        st.write("")
+        st.write("")
+
+        if st.button("Пересчитать план", type="primary"):
+            event_at = datetime.combine(DEMO_DATE, event_time, tzinfo=MOSCOW_TZ)
+
+            with st.spinner("Пересчитываем будущие заявки…"):
+                st.session_state["replanning"] = replan_after_unavailability(
+                    bundle,
+                    plan,
+                    engineer_id=selected,
+                    event_time=event_at,
+                )
+
+            st.rerun()
+
+    replan: ReplanningResult | None = st.session_state.get("replanning")
+
+    if replan is None or replan.engineer_id != selected:
+        st.caption(
+            "Демонстрация одного события: завершённые до события работы "
+            "инженера сохраняются, будущие заявки пересчитываются другими "
+            "бригадами; невозможные назначения остаются неназначенными "
+            "с причиной."
+        )
+        return
+
+    jobs_by_id = {job.id: job for job in bundle.jobs}
+
+    c1, c2, c3, c4 = st.columns(4)
+
+    cards = [
+        ("📥", "Назначено до", replan.assigned_before),
+        ("✅", "Назначено после", replan.assigned_after),
+        ("🧾", "Сохранено работ", len(replan.preserved_job_ids)),
+        ("📤", "Будущих заявок", len(replan.released_job_ids)),
+    ]
+
+    for column, (icon, label, value) in zip((c1, c2, c3, c4), cards):
+        with column:
+            st.markdown(
+                '<div class="metric-card metric-accent">'
+                f'<div class="metric-icon">{icon}</div>'
+                f'<div class="metric-label">{label}</div>'
+                f'<div class="metric-value">{value}</div></div>',
+                unsafe_allow_html=True,
+            )
+
+    if replan.issues:
+        st.error(
+            f"План после события содержит {len(replan.issues)} нарушений "
+            "независимой проверки."
+        )
+    else:
+        st.markdown(
+            '<span class="badge badge-ok">✅ План после события прошёл '
+            "независимую проверку</span>",
+            unsafe_allow_html=True,
+        )
+
+    preserved_df = pd.DataFrame(
+        [
+            {"Заявка": job_id, "Адрес": jobs_by_id.get(job_id).address if jobs_by_id.get(job_id) else "—"}
+            for job_id in replan.preserved_job_ids
+        ]
+    )
+
+    reassigned_df = pd.DataFrame(
+        [
+            {
+                "Заявка": job_id,
+                "Новая бригада": engineer_options.get(engineer_id, engineer_id),
+            }
+            for job_id, engineer_id in replan.reassigned
+        ]
+    )
+
+    unassigned_df = pd.DataFrame(
+        [
+            {
+                "Заявка": item.job_id,
+                "Причина": item.reason_code.value,
+                "Описание": item.message,
+            }
+            for item in replan.unassigned_released
+        ]
+    )
+
+    tab_preserved, tab_reassigned, tab_unassigned = st.tabs(
+        ["Сохранённые работы", "Переназначенные заявки", "Неназначенные"]
+    )
+
+    with tab_preserved:
+        if preserved_df.empty:
+            st.info("Завершённых работ у инженера нет.")
+        else:
+            st.dataframe(preserved_df, use_container_width=True, hide_index=True)
+
+    with tab_reassigned:
+        if reassigned_df.empty:
+            st.info("Переназначений не потребовалось.")
+        else:
+            st.dataframe(reassigned_df, use_container_width=True, hide_index=True)
+
+    with tab_unassigned:
+        if unassigned_df.empty:
+            st.success("Все освобождённые заявки переназначены.")
+        else:
+            st.dataframe(unassigned_df, use_container_width=True, hide_index=True)
+            st.caption(
+                "Причины неназначения — те же коды, что и в основном плане "
+                "(например, NO_QUALIFIED_ENGINEER — нет бригады по району/"
+                "типу/оборудованию)."
+            )
 
 
 # --- Экран «Маршрут бригады» -------------------------------------------------

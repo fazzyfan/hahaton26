@@ -9,7 +9,17 @@ class Engineer(BaseModel):
     id: str
     name: str
     transport_type: TransportType
-    qualifications: list[Skill]
+
+    # УСТАРЕВШЕЕ поле: тестовые навыки ELECTRIC/NETWORK/MECHANIC.
+    # По Data Contract v1.2 допуск задаётся ЕДИНСТВЕННЫМ источником —
+    # allowed_work_types (официальные типы работ из конфигурации).
+    # Поле сохраняется только для обратной совместимости JSON-файлов
+    # и НЕ участвует в выборе бригад (планировщик и валидатор его
+    # игнорируют).
+    qualifications: list[Skill] = Field(
+        default_factory=list,
+        deprecated=True,
+    )
 
     start_location_id: str
 
@@ -23,8 +33,8 @@ class Engineer(BaseModel):
     # Зоны обслуживания бригады; пустой список = без ограничений.
     service_districts: list[str] = Field(default_factory=list)
 
-    # Типы работ, которые бригада может выполнять;
-    # пустой список = без ограничений.
+    # Типы работ, которые бригада может выполнять (единственный
+    # источник допуска); пустой список = без ограничений.
     allowed_work_types: list[str] = Field(default_factory=list)
 
 

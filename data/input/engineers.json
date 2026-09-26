@@ -43,7 +43,7 @@
     "start_location": "OFFICE_YUGO_VOSTOK",
     "shift_start": "2026-08-17T10:00:00+03:00",
     "shift_end": "2026-08-17T22:00:00+03:00",
-    "equipment": ["INSTALLATION_KIT", "DIAGNOSTIC_KIT", "CUSTOMER_EQUIPMENT", "GIGABIT_TESTER"],
+    "equipment": ["INSTALLATION_KIT", "DIAGNOSTIC_KIT", "CUSTOMER_EQUIPMENT"],
     "service_districts": ["Юго-восток"],
     "allowed_work_types": ["CONNECTION", "LOCAL_WORK", "ADD_ORDER", "EMERGENCY"]
   },
@@ -55,7 +55,7 @@
     "start_location": "OFFICE_YUGO_VOSTOK",
     "shift_start": "2026-08-17T09:00:00+03:00",
     "shift_end": "2026-08-17T21:00:00+03:00",
-    "equipment": ["INSTALLATION_KIT", "DIAGNOSTIC_KIT", "CUSTOMER_EQUIPMENT", "GIGABIT_TESTER"],
+    "equipment": ["INSTALLATION_KIT", "DIAGNOSTIC_KIT", "CUSTOMER_EQUIPMENT"],
     "service_districts": ["Юго-восток"],
     "allowed_work_types": ["CONNECTION", "LOCAL_WORK", "ADD_ORDER"]
   },
@@ -67,7 +67,7 @@
     "start_location": "OFFICE_YUGO_VOSTOK",
     "shift_start": "2026-08-17T12:00:00+03:00",
     "shift_end": "2026-08-17T22:00:00+03:00",
-    "equipment": ["INSTALLATION_KIT", "DIAGNOSTIC_KIT", "CUSTOMER_EQUIPMENT", "GIGABIT_TESTER"],
+    "equipment": ["INSTALLATION_KIT", "DIAGNOSTIC_KIT", "CUSTOMER_EQUIPMENT"],
     "service_districts": ["Юго-восток"],
     "allowed_work_types": ["CONNECTION", "LOCAL_WORK", "ADD_ORDER", "EMERGENCY"]
   },
@@ -79,7 +79,7 @@
     "start_location": "OFFICE_YUGO_CENTER",
     "shift_start": "2026-08-17T08:00:00+03:00",
     "shift_end": "2026-08-17T20:00:00+03:00",
-    "equipment": ["INSTALLATION_KIT", "DIAGNOSTIC_KIT", "CUSTOMER_EQUIPMENT", "GIGABIT_TESTER"],
+    "equipment": ["INSTALLATION_KIT", "DIAGNOSTIC_KIT", "CUSTOMER_EQUIPMENT"],
     "service_districts": ["Югоцентр"],
     "allowed_work_types": ["CONNECTION", "LOCAL_WORK", "ADD_ORDER", "EMERGENCY"]
   },
@@ -91,7 +91,7 @@
     "start_location": "OFFICE_YUGO_CENTER",
     "shift_start": "2026-08-17T09:00:00+03:00",
     "shift_end": "2026-08-17T21:00:00+03:00",
-    "equipment": ["INSTALLATION_KIT", "DIAGNOSTIC_KIT", "CUSTOMER_EQUIPMENT", "GIGABIT_TESTER"],
+    "equipment": ["INSTALLATION_KIT", "DIAGNOSTIC_KIT", "CUSTOMER_EQUIPMENT"],
     "service_districts": ["Югоцентр"],
     "allowed_work_types": ["CONNECTION", "LOCAL_WORK", "ADD_ORDER"]
   },
@@ -103,7 +103,7 @@
     "start_location": "OFFICE_YUGO_CENTER",
     "shift_start": "2026-08-17T12:00:00+03:00",
     "shift_end": "2026-08-17T22:00:00+03:00",
-    "equipment": ["INSTALLATION_KIT", "DIAGNOSTIC_KIT", "CUSTOMER_EQUIPMENT", "GIGABIT_TESTER"],
+    "equipment": ["INSTALLATION_KIT", "DIAGNOSTIC_KIT", "CUSTOMER_EQUIPMENT"],
     "service_districts": ["Югоцентр"],
     "allowed_work_types": ["CONNECTION", "LOCAL_WORK", "ADD_ORDER", "EMERGENCY"]
   },

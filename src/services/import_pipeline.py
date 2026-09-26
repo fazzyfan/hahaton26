@@ -73,16 +73,19 @@ def _validate_engineers(
     engineers: list[Engineer],
 ) -> list[ImportErrorItem]:
     """
-    Пустые списки квалификаций и разрешённых зон НЕ означают
+    Пустые списки зон обслуживания и допускаемых типов работ НЕ означают
     «разрешено всё»: такие бригады считаются фатальной ошибкой набора.
+
+    Допуск бригады задаётся ЕДИНСТВЕННЫМ полем allowed_work_types
+    (официальные типы работ из конфигурации). Устаревшее поле
+    qualifications (ELECTRIC/NETWORK/MECHANIC) в проверке не участвует —
+    по Data Contract v1.2 тестовые навыки заменены типами работ.
     """
     errors: list[ImportErrorItem] = []
 
     for engineer in engineers:
         empty_fields = []
 
-        if not engineer.qualifications:
-            empty_fields.append("qualifications")
         if not engineer.service_districts:
             empty_fields.append("service_districts")
         if not engineer.allowed_work_types:

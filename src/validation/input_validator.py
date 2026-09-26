@@ -246,26 +246,18 @@ class InputValidator:
         engineers: list[Engineer],
     ) -> list[ValidationIssue]:
         """
-        Пустые списки квалификаций и разрешённых зон НЕ означают
+        Пустые списки зон и допускаемых типов работ НЕ означают
         «разрешено всё»: такие бригады отклоняются.
+
+        Допуск бригады задаётся единственным полем allowed_work_types;
+        устаревшее поле qualifications (ELECTRIC/NETWORK/MECHANIC)
+        не проверяется — по Data Contract v1.2 тестовые навыки заменены
+        официальными типами работ из конфигурации.
         """
 
         issues = []
 
         for engineer in engineers:
-            if not engineer.qualifications:
-                issues.append(
-                    ValidationIssue(
-                        code="EMPTY_QUALIFICATIONS",
-                        message=(
-                            "engineer must have at least one qualification"
-                        ),
-                        entity_type="Engineer",
-                        entity_id=engineer.id,
-                        field="qualifications",
-                    )
-                )
-
             if not engineer.service_districts:
                 issues.append(
                     ValidationIssue(

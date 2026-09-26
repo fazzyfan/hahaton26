@@ -1,42 +1,47 @@
 {
   "metrics": {
     "main": {
-      "assigned": 97,
-      "unassigned": 108,
+      "assigned": 81,
+      "unassigned": 124,
       "used_engineers": 10,
-      "total_travel_min": 773,
-      "total_distance_km": 146.1
+      "total_travel_min": 1754,
+      "total_distance_km": 463.5
     },
     "baseline": {
-      "assigned": 34,
-      "unassigned": 171,
+      "assigned": 29,
+      "unassigned": 176,
       "used_engineers": 10,
-      "total_travel_min": 333,
-      "total_distance_km": 78.6
+      "total_travel_min": 650,
+      "total_distance_km": 192.2
     }
   },
   "by_priority": [
     {
       "priority": "HIGH",
-      "main": 35,
-      "baseline": 12
+      "main": 29,
+      "baseline": 11
     },
     {
       "priority": "NORMAL",
-      "main": 43,
-      "baseline": 21
+      "main": 37,
+      "baseline": 18
     },
     {
       "priority": "URGENT",
-      "main": 19,
-      "baseline": 1
+      "main": 15,
+      "baseline": 0
     }
   ],
   "unassigned_by_reason": [
     {
       "reason_code": "NO_FEASIBLE_INSERTION",
-      "main": 108,
-      "baseline": 171
+      "main": 121,
+      "baseline": 173
+    },
+    {
+      "reason_code": "NO_TIME_WINDOW",
+      "main": 3,
+      "baseline": 3
     }
   ],
   "by_engineer": [
@@ -69,30 +74,30 @@
     },
     {
       "engineer_id": "ENG-3",
-      "main_stops": 10,
-      "baseline_stops": 7,
-      "main_travel_min": 98,
-      "baseline_travel_min": 90,
-      "main_distance_km": 17.1,
-      "baseline_distance_km": 16.5
+      "main_stops": 3,
+      "baseline_stops": 6,
+      "main_travel_min": 443,
+      "baseline_travel_min": 233,
+      "main_distance_km": 87.5,
+      "baseline_distance_km": 42.8
     },
     {
       "engineer_id": "ENG-7",
-      "main_stops": 11,
-      "baseline_stops": 5,
-      "main_travel_min": 72,
-      "baseline_travel_min": 43,
-      "main_distance_km": 19.8,
-      "baseline_distance_km": 14.8
+      "main_stops": 8,
+      "baseline_stops": 2,
+      "main_travel_min": 222,
+      "baseline_travel_min": 25,
+      "main_distance_km": 91.6,
+      "baseline_distance_km": 9.2
     },
     {
       "engineer_id": "ENG-9",
-      "main_stops": 7,
-      "baseline_stops": 4,
-      "main_travel_min": 51,
-      "baseline_travel_min": 40,
-      "main_distance_km": 14.6,
-      "baseline_distance_km": 14.2
+      "main_stops": 5,
+      "baseline_stops": 3,
+      "main_travel_min": 231,
+      "baseline_travel_min": 232,
+      "main_distance_km": 103.7,
+      "baseline_distance_km": 107.1
     },
     {
       "engineer_id": "ENG-4",
@@ -123,11 +128,11 @@
     },
     {
       "engineer_id": "ENG-6",
-      "main_stops": 8,
+      "main_stops": 4,
       "baseline_stops": 2,
-      "main_travel_min": 136,
+      "main_travel_min": 442,
       "baseline_travel_min": 39,
-      "main_distance_km": 13.3,
+      "main_distance_km": 99.4,
       "baseline_distance_km": 4.2
     }
   ]

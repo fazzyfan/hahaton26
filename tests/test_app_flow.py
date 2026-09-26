@@ -5,6 +5,7 @@
 происходит по кнопкам и оптимизатор не пересчитывается при переключении.
 """
 from pathlib import Path
+from types import SimpleNamespace
 
 from streamlit.testing.v1 import AppTest
 
@@ -65,6 +66,48 @@ def test_full_user_scenario_demo_mode():
 
     assert "Бригада" in selectbox_labels
     assert "Заявка" in selectbox_labels
+
+
+def test_demo_mode_shows_dataset_date_and_no_date_input():
+    """Вместо «Даты планирования» показывается дата набора 17.08.2026."""
+    at = AppTest.from_file(str(APP_PATH), default_timeout=60)
+    at.run()
+
+    # Выбор «Даты планирования» убран: виджет date_input отсутствует.
+    assert not at.date_input
+
+    # Дата набора отображается подписью (caption), а не выбирается.
+    captions = [str(item.value) for item in at.caption]
+
+    assert any("17.08.2026" in text for text in captions)
+
+
+def test_plan_building_gate_blocks_plan_while_import_errors_unresolved():
+    """План не строится, пока ошибки импорта не разрешены явным действием."""
+    from app import plan_building_gate
+
+    ok_bundle = SimpleNamespace(jobs=[object()], errors=[])
+
+    can_build, message = plan_building_gate(ok_bundle)
+
+    assert can_build is True
+    assert message is None
+
+    # Исправимая ошибка импорта не разрешена — план недоступен.
+    bad_bundle = SimpleNamespace(jobs=[object()], errors=["ошибка строки 5"])
+
+    can_build, message = plan_building_gate(bad_bundle)
+
+    assert can_build is False
+    assert "Ошибки импорта не разрешены" in message
+
+    # Нет заявок — план невозможен.
+    empty_bundle = SimpleNamespace(jobs=[], errors=[])
+
+    can_build, message = plan_building_gate(empty_bundle)
+
+    assert can_build is False
+    assert "Не осталось принятых заявок" in message
 
 
 def test_upload_mode_requires_csv_file():
