@@ -39,7 +39,7 @@ def test_service_returns_none_for_missing_route(tmp_path):
     result = service.get_travel(
         "DEPOT",
         "LOC-A",
-        TransportType.MOTORCYCLE,
+        TransportType.WALK,
     )
 
     assert result is None

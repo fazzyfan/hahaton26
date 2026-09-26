@@ -102,6 +102,10 @@ class InputValidator:
         issues.extend(self._check_job_times(jobs))
         issues.extend(self._check_engineer_shifts(engineers))
 
+        # Пустые списки квалификаций/зон не должны означать
+        # «разрешено всё».
+        issues.extend(self._check_engineer_requirements(engineers))
+
         return jobs, engineers, issues
 
     def _pydantic_issues(
@@ -232,6 +236,59 @@ class InputValidator:
                         entity_type="Engineer",
                         entity_id=engineer.id,
                         field="shift_end",
+                    )
+                )
+
+        return issues
+
+    def _check_engineer_requirements(
+        self,
+        engineers: list[Engineer],
+    ) -> list[ValidationIssue]:
+        """
+        Пустые списки квалификаций и разрешённых зон НЕ означают
+        «разрешено всё»: такие бригады отклоняются.
+        """
+
+        issues = []
+
+        for engineer in engineers:
+            if not engineer.qualifications:
+                issues.append(
+                    ValidationIssue(
+                        code="EMPTY_QUALIFICATIONS",
+                        message=(
+                            "engineer must have at least one qualification"
+                        ),
+                        entity_type="Engineer",
+                        entity_id=engineer.id,
+                        field="qualifications",
+                    )
+                )
+
+            if not engineer.service_districts:
+                issues.append(
+                    ValidationIssue(
+                        code="EMPTY_SERVICE_DISTRICTS",
+                        message=(
+                            "engineer must serve at least one district"
+                        ),
+                        entity_type="Engineer",
+                        entity_id=engineer.id,
+                        field="service_districts",
+                    )
+                )
+
+            if not engineer.allowed_work_types:
+                issues.append(
+                    ValidationIssue(
+                        code="EMPTY_ALLOWED_WORK_TYPES",
+                        message=(
+                            "engineer must support at least one work type"
+                        ),
+                        entity_type="Engineer",
+                        entity_id=engineer.id,
+                        field="allowed_work_types",
                     )
                 )
 

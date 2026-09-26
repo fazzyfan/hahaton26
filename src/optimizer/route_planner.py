@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from datetime import datetime, timedelta, timezone
+from datetime import datetime, timezone
 
 from src.models.entities import (
     Assignment,
@@ -8,18 +8,26 @@ from src.models.entities import (
     JobRecord,
     Plan,
     Route,
-    RouteStop,
     UnassignedJob,
 )
 from src.models.enums import UnassignmentReason
+from src.optimizer.scheduling import (
+    empty_route_reason,
+    is_active,
+    is_compatible,
+    schedule_route,
+    total_distance_km,
+    total_travel_min,
+)
 from src.optimizer.travel import TravelMatrix
 
 # Официальный порядок приоритетов: авария -> подключение -> локальная/дозаказ.
+# LOCAL_WORK и ADD_ORDER имеют ОДИНАКОВЫЙ бизнес-приоритет (NORMAL).
 WORK_TYPE_PRIORITY = {
     "EMERGENCY": 0,
     "CONNECTION": 1,
     "LOCAL_WORK": 2,
-    "ADD_ORDER": 3,
+    "ADD_ORDER": 2,
 }
 
 # Штраф (минуты) за каждую уже назначенную остановку: эвристика
@@ -31,13 +39,17 @@ REASON_MESSAGES = {
         "Нет бригады, подходящей по району, типу работы или оборудованию"
     ),
     UnassignmentReason.NO_TIME_WINDOW: (
-        "Окно обслуживания не пересекается с возможным временем приезда"
+        "Окно обслуживания не вмещает работу целиком "
+        "(начало или окончание вне окна)"
     ),
     UnassignmentReason.SHIFT_CONFLICT: (
         "Работа не помещается в рабочую смену бригады"
     ),
     UnassignmentReason.NO_TRAVEL_DATA: (
         "Нет данных о времени пути до локации заявки"
+    ),
+    UnassignmentReason.NO_FEASIBLE_INSERTION: (
+        "Заявка выполнима в принципе, но не встаёт ни в один текущий маршрут"
     ),
     UnassignmentReason.OPTIMIZER_LIMIT: (
         "Ограничение оптимизатора не позволило назначить заявку"
@@ -52,12 +64,15 @@ class RoutePlanner:
     Hard constraints:
         * район (service_districts);
         * тип работы (allowed_work_types);
+        * требуемый тип транспорта (required_transport_type, если задан);
         * оборудование (required_equipment ⊆ equipment_ids);
         * данные о времени пути (travel matrix);
-        * окно обслуживания (planned_start внутри окна);
-        * рабочая смена (конец работы ≤ конец смены).
+        * окно обслуживания (planned_start >= window_start и
+          planned_end <= window_end);
+        * рабочая смена (конец работы <= конец смены).
 
-    Неназначенные заявки получают стабильный reason_code.
+    Заявки со статусом COMPLETED/CANCELLED в активное планирование
+    не попадают. Неназначенные заявки получают стабильный reason_code.
     """
 
     def __init__(self, travel_matrix: TravelMatrix) -> None:
@@ -74,13 +89,14 @@ class RoutePlanner:
         assignments: list[Assignment] = []
         unassigned: list[UnassignedJob] = []
 
-        ordered_jobs = sorted(jobs, key=self._sort_key)
+        active_jobs = [job for job in jobs if is_active(job)]
+        ordered_jobs = sorted(active_jobs, key=self._sort_key)
 
         for job in ordered_jobs:
             compatible = [
                 engineer
                 for engineer in engineers
-                if self._is_compatible(job, engineer)
+                if is_compatible(job, engineer)
             ]
 
             if not compatible:
@@ -95,7 +111,7 @@ class RoutePlanner:
             # Причина определяется по выполнимости на пустом маршруте:
             # если заявку в принципе нельзя выполнить (нет данных о пути,
             # окно или смена не позволяют) — фиксируем причину сразу.
-            empty_reason = self._empty_route_reason(job, compatible)
+            empty_reason = empty_route_reason(self.travel, job, compatible)
 
             if empty_reason is not None:
                 unassigned.append(self._unassigned(job, empty_reason))
@@ -106,7 +122,8 @@ class RoutePlanner:
 
             for engineer in compatible:
                 current_route = routes[engineer.id]
-                current_travel = self._total_travel_min(
+                current_travel = total_travel_min(
+                    self.travel,
                     current_route,
                     engineer,
                 )
@@ -117,13 +134,17 @@ class RoutePlanner:
                         + [job]
                         + current_route[position:]
                     )
-                    stops, reason = self._schedule(candidate, engineer)
+                    stops, reason = schedule_route(
+                        self.travel,
+                        candidate,
+                        engineer,
+                    )
 
                     if reason is not None:
                         continue
 
                     extra = (
-                        self._total_travel_min(candidate, engineer)
+                        total_travel_min(self.travel, candidate, engineer)
                         - current_travel
                     )
 
@@ -136,10 +157,14 @@ class RoutePlanner:
                         best = (key, engineer, position)
 
             if best is None:
-                # Заявка выполнима в принципе, но не помещается ни в один
-                # текущий маршрут — исчерпана ёмкость рабочих смен.
+                # Заявка выполнима на пустом маршруте, но жадная вставка
+                # не нашла позиции в текущих маршрутах. Это не конфликт
+                # смены как таковой — фиксируем NO_FEASIBLE_INSERTION.
                 unassigned.append(
-                    self._unassigned(job, UnassignmentReason.SHIFT_CONFLICT)
+                    self._unassigned(
+                        job,
+                        UnassignmentReason.NO_FEASIBLE_INSERTION,
+                    )
                 )
                 continue
 
@@ -160,84 +185,6 @@ class RoutePlanner:
             status="PLANNED",
         )
 
-    # --- совместимость -----------------------------------------------------
-
-    def _is_compatible(self, job: JobRecord, engineer: Engineer) -> bool:
-        if (
-            engineer.service_districts
-            and job.service_zone not in engineer.service_districts
-        ):
-            return False
-
-        if (
-            engineer.allowed_work_types
-            and job.work_type not in engineer.allowed_work_types
-        ):
-            return False
-
-        if job.required_equipment and not set(job.required_equipment).issubset(
-            set(engineer.equipment_ids)
-        ):
-            return False
-
-        return True
-
-    # --- расписание ---------------------------------------------------------
-
-    def _schedule(
-        self,
-        jobs: list[JobRecord],
-        engineer: Engineer,
-    ) -> tuple[list[RouteStop] | None, UnassignmentReason | None]:
-        """Считает времена остановок; при нарушении возвращает причину."""
-        stops: list[RouteStop] = []
-        cursor = engineer.shift_start
-        prev_location = engineer.start_location_id
-
-        for job in jobs:
-            travel_min = self.travel.travel_min(
-                prev_location,
-                job.location_id,
-                engineer.transport_type,
-            )
-
-            if travel_min is None:
-                return None, UnassignmentReason.NO_TRAVEL_DATA
-
-            arrival = cursor + timedelta(minutes=travel_min)
-
-            if arrival > engineer.shift_end:
-                return None, UnassignmentReason.SHIFT_CONFLICT
-
-            if job.window_start is not None:
-                start = max(arrival, job.window_start)
-            else:
-                start = arrival
-
-            if job.window_end is not None and start > job.window_end:
-                return None, UnassignmentReason.NO_TIME_WINDOW
-
-            end = start + timedelta(minutes=job.service_duration_min)
-
-            if end > engineer.shift_end:
-                return None, UnassignmentReason.SHIFT_CONFLICT
-
-            stops.append(
-                RouteStop(
-                    job_id=job.id,
-                    location_id=job.location_id,
-                    planned_arrival=arrival,
-                    planned_start=start,
-                    planned_end=end,
-                    address=job.address,
-                )
-            )
-
-            cursor = end
-            prev_location = job.location_id
-
-        return stops, None
-
     # --- итоговые маршруты --------------------------------------------------
 
     def _build_routes(
@@ -253,17 +200,19 @@ class RoutePlanner:
             if not route_jobs:
                 continue
 
-            stops, _ = self._schedule(route_jobs, engineer)
+            stops, _ = schedule_route(self.travel, route_jobs, engineer)
 
             result.append(
                 Route(
                     engineer_id=engineer.id,
                     stops=stops,
-                    total_travel_min=self._total_travel_min(
+                    total_travel_min=total_travel_min(
+                        self.travel,
                         route_jobs,
                         engineer,
                     ),
-                    total_distance_km=self._total_distance_km(
+                    total_distance_km=total_distance_km(
+                        self.travel,
                         route_jobs,
                         engineer,
                     ),
@@ -271,55 +220,6 @@ class RoutePlanner:
             )
 
         return result
-
-    def _total_travel_min(
-        self,
-        jobs: list[JobRecord],
-        engineer: Engineer,
-    ) -> int:
-        total = 0
-        prev_location = engineer.start_location_id
-
-        for job in jobs:
-            travel_min = self.travel.travel_min(
-                prev_location,
-                job.location_id,
-                engineer.transport_type,
-            )
-
-            if travel_min is None:
-                return 0
-
-            total += travel_min
-            prev_location = job.location_id
-
-        return total
-
-    def _total_distance_km(
-        self,
-        jobs: list[JobRecord],
-        engineer: Engineer,
-    ) -> float:
-        total = 0.0
-        prev_location = engineer.start_location_id
-
-        for job in jobs:
-            if prev_location == job.location_id:
-                continue
-
-            entry = self.travel.find(
-                prev_location,
-                job.location_id,
-                engineer.transport_type,
-            )
-
-            if entry is None:
-                return 0.0
-
-            total += entry.distance_km
-            prev_location = job.location_id
-
-        return total
 
     # --- вспомогательное ----------------------------------------------------
 
@@ -332,38 +232,8 @@ class RoutePlanner:
 
         return (priority, datetime.max.replace(tzinfo=timezone.utc))
 
-    def _empty_route_reason(
-        self,
-        job: JobRecord,
-        engineers: list[Engineer],
-    ) -> UnassignmentReason | None:
-        """
-        Проверяет выполнимость заявки на пустом маршруте
-        (без учёта уже заполненных смен).
-
-        None — хотя бы одна совместимая бригада может выполнить заявку;
-        иначе — наиболее точная причина.
-        """
-        reasons: set[UnassignmentReason] = set()
-
-        for engineer in engineers:
-            _, reason = self._schedule([job], engineer)
-
-            if reason is None:
-                return None
-
-            reasons.add(reason)
-
-        if reasons == {UnassignmentReason.NO_TRAVEL_DATA}:
-            return UnassignmentReason.NO_TRAVEL_DATA
-
-        if UnassignmentReason.NO_TIME_WINDOW in reasons:
-            return UnassignmentReason.NO_TIME_WINDOW
-
-        return UnassignmentReason.SHIFT_CONFLICT
-
+    @staticmethod
     def _unassigned(
-        self,
         job: JobRecord,
         reason: UnassignmentReason,
     ) -> UnassignedJob:

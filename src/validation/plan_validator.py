@@ -237,6 +237,23 @@ class PlanValidator:
                 )
             )
 
+        if (
+            job.required_transport_type is not None
+            and engineer.transport_type != job.required_transport_type
+        ):
+            issues.append(
+                self._issue(
+                    "INCOMPATIBLE_ENGINEER",
+                    (
+                        f"Заявка {job_id!r} требует транспорт "
+                        f"{job.required_transport_type.value!r}, "
+                        f"у бригады — {engineer.transport_type.value!r}"
+                    ),
+                    "Assignment",
+                    job_id,
+                )
+            )
+
     # --- тайминги маршрутов --------------------------------------------------
 
     def _check_routes_timing(
@@ -330,6 +347,25 @@ class PlanValidator:
                                 (
                                     f"Начало работы {stop.job_id!r} позже "
                                     "конца окна обслуживания"
+                                ),
+                                "RouteStop",
+                                stop.job_id,
+                            )
+                        )
+
+                    # Работа должна завершиться не позже конца клиентского
+                    # окна: planned_end <= window_end. Окончание ровно на
+                    # границе допустимо.
+                    if (
+                        job.window_end is not None
+                        and stop.planned_end > job.window_end
+                    ):
+                        issues.append(
+                            self._issue(
+                                "WINDOW_VIOLATION",
+                                (
+                                    f"Работа {stop.job_id!r} заканчивается "
+                                    "позже конца окна обслуживания"
                                 ),
                                 "RouteStop",
                                 stop.job_id,

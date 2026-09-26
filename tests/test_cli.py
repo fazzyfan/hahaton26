@@ -18,7 +18,9 @@ ENGINEERS_JSON = """\
     "start_location": "DEPOT",
     "shift_start": "2026-09-20T09:00:00+03:00",
     "shift_end": "2026-09-20T18:00:00+03:00",
-    "equipment": ["EQ-OPTIC"]
+    "equipment": ["EQ-OPTIC"],
+    "service_districts": ["Восток"],
+    "allowed_work_types": ["CONNECTION"]
   }
 ]
 """
@@ -77,6 +79,50 @@ def test_cli_plan_writes_plan_json(tmp_path):
 
     assert set(plan) >= {"assignments", "routes", "unassigned_job_ids", "status"}
     assert plan["unassigned_job_ids"] == ["1001"]
+
+
+def test_cli_plan_writes_baseline_and_comparison(tmp_path):
+    input_dir = tmp_path / "input"
+    input_dir.mkdir()
+    _write_input_files(input_dir)
+
+    output_path = tmp_path / "output" / "plan.json"
+
+    exit_code = main(
+        [
+            "plan",
+            "--input-dir",
+            str(input_dir),
+            "--output",
+            str(output_path),
+        ]
+    )
+
+    assert exit_code == 0
+
+    baseline_path = tmp_path / "output" / "baseline.json"
+    comparison_path = tmp_path / "output" / "comparison.json"
+
+    assert baseline_path.exists()
+    assert comparison_path.exists()
+
+    baseline = json.loads(baseline_path.read_text(encoding="utf-8"))
+    comparison = json.loads(comparison_path.read_text(encoding="utf-8"))
+
+    # Оба плана построены на одинаковых заявках/бригадах/матрице.
+    assert set(baseline) >= {
+        "assignments",
+        "routes",
+        "unassigned_job_ids",
+        "status",
+    }
+    assert comparison["metrics"]["main"]["assigned"] == len(
+        json.loads(output_path.read_text(encoding="utf-8"))["assignments"]
+    )
+    assert comparison["metrics"]["baseline"]["assigned"] == len(
+        baseline["assignments"]
+    )
+    assert len(comparison["by_engineer"]) == 1
 
 
 def test_cli_requires_subcommand():

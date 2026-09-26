@@ -68,6 +68,9 @@ def load_locations_file(path: str | Path) -> dict[str, str]:
 
     JSON-контракт записи:
         address, location_id
+
+    Полезно для обратной совместимости; для карты используйте
+    load_locations_registry() — там есть широта и долгота.
     """
     locations: dict[str, str] = {}
 
@@ -75,6 +78,33 @@ def load_locations_file(path: str | Path) -> dict[str, str]:
         locations[item["address"]] = item["location_id"]
 
     return locations
+
+
+def load_locations_registry(path: str | Path) -> list[dict]:
+    """
+    Загружает полный реестр локаций из locations.json.
+
+    JSON-контракт записи:
+        location_id, address, latitude, longitude
+
+    Координаты нужны для карты маршрутов (pydeck) и для расчёта времени
+    поездки по географии. Источник и точность координат фиксируются
+    в README (MVP: документированная оценка по району + детерминированный
+    сдвиг, офисы — реальные координаты).
+    """
+    registry: list[dict] = []
+
+    for item in _load_json_array(path):
+        registry.append(
+            {
+                "location_id": item["location_id"],
+                "address": item.get("address", ""),
+                "latitude": item.get("latitude"),
+                "longitude": item.get("longitude"),
+            }
+        )
+
+    return registry
 
 
 def load_travel_matrix_file(path: str | Path) -> list[TravelMatrixEntry]:
@@ -88,10 +118,32 @@ def load_travel_matrix_file(path: str | Path) -> list[TravelMatrixEntry]:
     Контракт адаптируется к модели TravelMatrixEntry:
         origin      -> origin_location_id
         destination -> destination_location_id
+
+    Уникальность ключа (origin, destination, transport_type,
+    matrix_version) проверяется при загрузке ДО расчёта: дубликаты дают
+    понятную ошибку вместо молчаливой перезаписи значений.
     """
     entries = []
+    seen: set[tuple[str, str, str, str]] = set()
 
     for item in _load_json_array(path):
+        key = (
+            item["origin"],
+            item["destination"],
+            item["transport_type"],
+            item["matrix_version"],
+        )
+
+        if key in seen:
+            raise ValueError(
+                "Дубликат записи матрицы перемещений: "
+                f"{key[0]!r} -> {key[1]!r} / {key[2]!r} "
+                f"(matrix_version {key[3]!r}). "
+                "Каждая направленная пара должна встречаться ровно один раз."
+            )
+
+        seen.add(key)
+
         entries.append(
             TravelMatrixEntry(
                 origin_location_id=item["origin"],

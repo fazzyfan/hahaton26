@@ -127,7 +127,11 @@ def _get_job_id(row: dict) -> tuple[str | None, str | None]:
     return _get_column_value(row, "Заявка", "ID")
 
 
-def load_jobs_bytes(data: bytes, filename: str) -> ImportResult:
+def load_jobs_bytes(
+    data: bytes,
+    filename: str,
+    zone: str | None = None,
+) -> ImportResult:
     """
     Основная функция импорта CSV.
 
@@ -279,7 +283,8 @@ def load_jobs_bytes(data: bytes, filename: str) -> ImportResult:
 
             continue
 
-        service_zone = get_service_zone(filename)
+        # Зона обслуживания: явная (из интерфейса) либо из имени файла.
+        service_zone = zone if zone is not None else get_service_zone(filename)
         district = row.get("Район", "").strip()
 
         row_count += 1
@@ -324,11 +329,17 @@ def load_jobs_bytes(data: bytes, filename: str) -> ImportResult:
     )
 
 
-def load_jobs_file(path) -> ImportResult:
+def load_jobs_file(
+    path,
+    zone: str | None = None,
+) -> ImportResult:
     """
     Адаптер для загрузки CSV с диска.
 
     Основная логика остаётся в load_jobs_bytes().
+
+    zone: явная зона обслуживания (если не указана — берётся из имени
+    файла через get_service_zone).
     """
     path = path if hasattr(path, "read_bytes") else str(path)
 
@@ -340,26 +351,30 @@ def load_jobs_file(path) -> ImportResult:
         data = path_obj.read_bytes()
         filename = path_obj.name
 
-    return load_jobs_bytes(data, filename)
+    return load_jobs_bytes(data, filename, zone=zone)
 
 
-def find_job_csv_files(directory: str | Path) -> list[Path]:
+def find_job_csv_files(
+    directory: str | Path,
+    suffix: str = "Синтетические данные.csv",
+) -> list[Path]:
     """
-    Возвращает отсортированный список официальных CSV-файлов заявок
-    в указанной директории.
+    Возвращает отсортированный список CSV-файлов заявок в директории.
 
     Критерий отбора:
-        * имя файла заканчивается на «Синтетические данные.csv»;
+        * имя файла заканчивается на suffix (по умолчанию —
+          «Синтетические данные.csv»);
         * файл лежит непосредственно в директории (не в поддиректориях).
 
-    Контрольные распределения и прочие посторонние файлы игнорируются.
+    suffix='' позволяет подхватывать любые CSV (пользовательская загрузка
+    через интерфейс, где файлы переименованы под зону).
     """
     root = Path(directory)
 
     return sorted(
         path
         for path in root.iterdir()
-        if path.is_file() and path.name.endswith("Синтетические данные.csv")
+        if path.is_file() and path.name.endswith(suffix)
     )
 
 

@@ -89,12 +89,18 @@ class MatrixDatabase:
         distance_km: float,
         matrix_version: str,
     ) -> None:
-        """Добавляет поездку между двумя точками."""
+        """
+        Добавляет поездку между двумя точками.
+
+        Повторная вставка того же ключа (origin, destination,
+        transport_type) приводит к sqlite3.IntegrityError: молчаливая
+        перезапись значений запрещена.
+        """
 
         with self.connect() as connection:
             connection.execute(
                 """
-                INSERT OR REPLACE INTO travel_matrix (
+                INSERT INTO travel_matrix (
                     origin_location_id,
                     destination_location_id,
                     transport_type,

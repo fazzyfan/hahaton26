@@ -155,6 +155,10 @@ class JobRecord(BaseModel):
     gigabit_connection_raw: str | None = None
     required_equipment: list[str] = Field(default_factory=list)
 
+    # Если заказчик требует конкретный тип транспорта — только бригады
+    # с этим типом считаются совместимыми. None = без ограничения.
+    required_transport_type: TransportType | None = None
+
     # Идентификатор локации для travel matrix.
     location_id: str | None = None
 

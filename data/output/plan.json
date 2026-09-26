@@ -2,11 +2,11 @@
   "assignments": [
     {
       "job_id": "78673",
-      "engineer_id": "ENG-6"
+      "engineer_id": "ENG-9"
     },
     {
       "job_id": "98998",
-      "engineer_id": "ENG-3"
+      "engineer_id": "ENG-9"
     },
     {
       "job_id": "32589",
@@ -14,19 +14,19 @@
     },
     {
       "job_id": "51774",
-      "engineer_id": "ENG-3"
-    },
-    {
-      "job_id": "90915",
-      "engineer_id": "ENG-3"
-    },
-    {
-      "job_id": "45243",
       "engineer_id": "ENG-9"
     },
     {
+      "job_id": "90915",
+      "engineer_id": "ENG-6"
+    },
+    {
+      "job_id": "45243",
+      "engineer_id": "ENG-6"
+    },
+    {
       "job_id": "81698",
-      "engineer_id": "ENG-3"
+      "engineer_id": "ENG-6"
     },
     {
       "job_id": "97168",
@@ -42,15 +42,15 @@
     },
     {
       "job_id": "31495",
-      "engineer_id": "ENG-9"
+      "engineer_id": "ENG-3"
     },
     {
       "job_id": "54964",
-      "engineer_id": "ENG-6"
+      "engineer_id": "ENG-1"
     },
     {
       "job_id": "24980",
-      "engineer_id": "ENG-1"
+      "engineer_id": "ENG-6"
     },
     {
       "job_id": "17349",
@@ -62,15 +62,11 @@
     },
     {
       "job_id": "41962",
-      "engineer_id": "ENG-6"
+      "engineer_id": "ENG-1"
     },
     {
       "job_id": "97886",
       "engineer_id": "ENG-8"
-    },
-    {
-      "job_id": "15648",
-      "engineer_id": "ENG-1"
     },
     {
       "job_id": "21367",
@@ -78,23 +74,11 @@
     },
     {
       "job_id": "7258",
-      "engineer_id": "ENG-9"
+      "engineer_id": "ENG-3"
     },
     {
       "job_id": "74949",
       "engineer_id": "ENG-2"
-    },
-    {
-      "job_id": "37272",
-      "engineer_id": "ENG-1"
-    },
-    {
-      "job_id": "34366",
-      "engineer_id": "ENG-2"
-    },
-    {
-      "job_id": "98182",
-      "engineer_id": "ENG-6"
     },
     {
       "job_id": "66944",
@@ -102,14 +86,6 @@
     },
     {
       "job_id": "23807",
-      "engineer_id": "ENG-7"
-    },
-    {
-      "job_id": "75745",
-      "engineer_id": "ENG-3"
-    },
-    {
-      "job_id": "876",
       "engineer_id": "ENG-3"
     },
     {
@@ -118,14 +94,6 @@
     },
     {
       "job_id": "23142",
-      "engineer_id": "ENG-5"
-    },
-    {
-      "job_id": "94447",
-      "engineer_id": "ENG-4"
-    },
-    {
-      "job_id": "94431",
       "engineer_id": "ENG-4"
     },
     {
@@ -134,7 +102,7 @@
     },
     {
       "job_id": "93086",
-      "engineer_id": "ENG-8"
+      "engineer_id": "ENG-1"
     },
     {
       "job_id": "23380",
@@ -142,10 +110,6 @@
     },
     {
       "job_id": "67554",
-      "engineer_id": "ENG-1"
-    },
-    {
-      "job_id": "94409",
       "engineer_id": "ENG-6"
     },
     {
@@ -154,11 +118,15 @@
     },
     {
       "job_id": "58066",
+      "engineer_id": "ENG-3"
+    },
+    {
+      "job_id": "2915",
       "engineer_id": "ENG-9"
     },
     {
       "job_id": "55711",
-      "engineer_id": "ENG-10"
+      "engineer_id": "ENG-5"
     },
     {
       "job_id": "76452",
@@ -169,20 +137,20 @@
       "engineer_id": "ENG-4"
     },
     {
-      "job_id": "93544",
-      "engineer_id": "ENG-5"
-    },
-    {
       "job_id": "57866",
-      "engineer_id": "ENG-1"
+      "engineer_id": "ENG-2"
     },
     {
       "job_id": "82388",
-      "engineer_id": "ENG-2"
+      "engineer_id": "ENG-1"
     },
     {
       "job_id": "60484",
       "engineer_id": "ENG-7"
+    },
+    {
+      "job_id": "63591",
+      "engineer_id": "ENG-3"
     },
     {
       "job_id": "75881",
@@ -190,19 +158,19 @@
     },
     {
       "job_id": "61540",
-      "engineer_id": "ENG-1"
-    },
-    {
-      "job_id": "87693",
-      "engineer_id": "ENG-2"
-    },
-    {
-      "job_id": "35675",
       "engineer_id": "ENG-2"
     },
     {
       "job_id": "67472",
       "engineer_id": "ENG-7"
+    },
+    {
+      "job_id": "14416",
+      "engineer_id": "ENG-9"
+    },
+    {
+      "job_id": "68359",
+      "engineer_id": "ENG-3"
     },
     {
       "job_id": "76944",
@@ -217,20 +185,16 @@
       "engineer_id": "ENG-4"
     },
     {
-      "job_id": "80548",
-      "engineer_id": "ENG-5"
-    },
-    {
-      "job_id": "47560",
-      "engineer_id": "ENG-4"
-    },
-    {
       "job_id": "86160",
-      "engineer_id": "ENG-2"
+      "engineer_id": "ENG-1"
     },
     {
       "job_id": "50104",
-      "engineer_id": "ENG-1"
+      "engineer_id": "ENG-2"
+    },
+    {
+      "job_id": "10135",
+      "engineer_id": "ENG-8"
     },
     {
       "job_id": "84466",
@@ -242,39 +206,139 @@
     },
     {
       "job_id": "78540",
-      "engineer_id": "ENG-10"
-    },
-    {
-      "job_id": "66376",
       "engineer_id": "ENG-5"
     },
     {
+      "job_id": "66376",
+      "engineer_id": "ENG-4"
+    },
+    {
+      "job_id": "23637",
+      "engineer_id": "ENG-10"
+    },
+    {
+      "job_id": "69967",
+      "engineer_id": "ENG-1"
+    },
+    {
+      "job_id": "33527",
+      "engineer_id": "ENG-2"
+    },
+    {
+      "job_id": "40111",
+      "engineer_id": "ENG-7"
+    },
+    {
+      "job_id": "20263",
+      "engineer_id": "ENG-4"
+    },
+    {
+      "job_id": "12263",
+      "engineer_id": "ENG-5"
+    },
+    {
+      "job_id": "48227",
+      "engineer_id": "ENG-8"
+    },
+    {
+      "job_id": "60720",
+      "engineer_id": "ENG-1"
+    },
+    {
+      "job_id": "41912",
+      "engineer_id": "ENG-2"
+    },
+    {
+      "job_id": "4893",
+      "engineer_id": "ENG-6"
+    },
+    {
       "job_id": "88209",
+      "engineer_id": "ENG-7"
+    },
+    {
+      "job_id": "46199",
       "engineer_id": "ENG-3"
     },
     {
-      "job_id": "19216",
-      "engineer_id": "ENG-9"
+      "job_id": "51133",
+      "engineer_id": "ENG-10"
     },
     {
       "job_id": "84074",
-      "engineer_id": "ENG-4"
+      "engineer_id": "ENG-5"
+    },
+    {
+      "job_id": "22634",
+      "engineer_id": "ENG-8"
+    },
+    {
+      "job_id": "48238",
+      "engineer_id": "ENG-1"
+    },
+    {
+      "job_id": "47330",
+      "engineer_id": "ENG-2"
+    },
+    {
+      "job_id": "72476",
+      "engineer_id": "ENG-7"
     },
     {
       "job_id": "86002",
       "engineer_id": "ENG-4"
     },
     {
+      "job_id": "13203",
+      "engineer_id": "ENG-10"
+    },
+    {
+      "job_id": "87819",
+      "engineer_id": "ENG-4"
+    },
+    {
+      "job_id": "17896",
+      "engineer_id": "ENG-5"
+    },
+    {
+      "job_id": "26645",
+      "engineer_id": "ENG-8"
+    },
+    {
+      "job_id": "90989",
+      "engineer_id": "ENG-7"
+    },
+    {
+      "job_id": "90709",
+      "engineer_id": "ENG-10"
+    },
+    {
+      "job_id": "93276",
+      "engineer_id": "ENG-4"
+    },
+    {
+      "job_id": "61311",
+      "engineer_id": "ENG-5"
+    },
+    {
+      "job_id": "92031",
+      "engineer_id": "ENG-1"
+    },
+    {
+      "job_id": "98815",
+      "engineer_id": "ENG-2"
+    },
+    {
       "job_id": "21571",
       "engineer_id": "ENG-8"
     },
     {
-      "job_id": "17892",
-      "engineer_id": "ENG-8"
+      "job_id": "2427",
+      "engineer_id": "ENG-6"
     },
     {
-      "job_id": "76643",
-      "engineer_id": "ENG-2"
+      "job_id": "51603",
+      "engineer_id": "ENG-3"
     },
     {
       "job_id": "7660",
@@ -282,15 +346,47 @@
     },
     {
       "job_id": "27023",
+      "engineer_id": "ENG-10"
+    },
+    {
+      "job_id": "77795",
+      "engineer_id": "ENG-5"
+    },
+    {
+      "job_id": "26896",
       "engineer_id": "ENG-4"
     },
     {
-      "job_id": "95501",
-      "engineer_id": "ENG-5"
+      "job_id": "31260",
+      "engineer_id": "ENG-1"
+    },
+    {
+      "job_id": "47670",
+      "engineer_id": "ENG-2"
+    },
+    {
+      "job_id": "43506",
+      "engineer_id": "ENG-8"
+    },
+    {
+      "job_id": "13404",
+      "engineer_id": "ENG-3"
+    },
+    {
+      "job_id": "65268",
+      "engineer_id": "ENG-7"
     },
     {
       "job_id": "78036",
       "engineer_id": "ENG-10"
+    },
+    {
+      "job_id": "49105",
+      "engineer_id": "ENG-5"
+    },
+    {
+      "job_id": "26177",
+      "engineer_id": "ENG-5"
     }
   ],
   "routes": [
@@ -298,677 +394,877 @@
       "engineer_id": "ENG-1",
       "stops": [
         {
-          "job_id": "24980",
-          "location_id": "LOC-00189",
-          "planned_arrival": "2026-08-17T09:09:00+03:00",
+          "job_id": "69967",
+          "location_id": "LOC-00067",
+          "planned_arrival": "2026-08-17T09:06:00+03:00",
           "planned_start": "2026-08-17T10:00:00+03:00",
-          "planned_end": "2026-08-17T11:20:00+03:00",
-          "address": "г.Город Москва, наб.Семеновская, д. 3/1к2"
+          "planned_end": "2026-08-17T10:20:00+03:00",
+          "address": "Город Москва, ул.Боровая, д. 14"
         },
         {
-          "job_id": "37272",
-          "location_id": "LOC-00136",
-          "planned_arrival": "2026-08-17T11:45:00+03:00",
-          "planned_start": "2026-08-17T11:45:00+03:00",
-          "planned_end": "2026-08-17T12:55:00+03:00",
-          "address": "Город Москва, ул.Талалихина, д. 2/1 к 4"
+          "job_id": "54964",
+          "location_id": "LOC-00194",
+          "planned_arrival": "2026-08-17T10:25:00+03:00",
+          "planned_start": "2026-08-17T10:25:00+03:00",
+          "planned_end": "2026-08-17T11:45:00+03:00",
+          "address": "г.Город Москва, ул.Ташкентская, д. 16к2"
         },
         {
-          "job_id": "67554",
-          "location_id": "LOC-00070",
-          "planned_arrival": "2026-08-17T13:21:00+03:00",
-          "planned_start": "2026-08-17T13:21:00+03:00",
-          "planned_end": "2026-08-17T14:31:00+03:00",
-          "address": "Город Москва, ул.Бронницкая, д. 12"
+          "job_id": "93086",
+          "location_id": "LOC-00120",
+          "planned_arrival": "2026-08-17T11:51:00+03:00",
+          "planned_start": "2026-08-17T12:00:00+03:00",
+          "planned_end": "2026-08-17T13:10:00+03:00",
+          "address": "Город Москва, ул.Паперника, д. 19"
         },
         {
-          "job_id": "57866",
-          "location_id": "LOC-00117",
-          "planned_arrival": "2026-08-17T14:50:00+03:00",
-          "planned_start": "2026-08-17T14:50:00+03:00",
-          "planned_end": "2026-08-17T16:00:00+03:00",
-          "address": "Город Москва, ул.Окская, д. 48/2"
+          "job_id": "60720",
+          "location_id": "LOC-00001",
+          "planned_arrival": "2026-08-17T13:16:00+03:00",
+          "planned_start": "2026-08-17T13:16:00+03:00",
+          "planned_end": "2026-08-17T13:46:00+03:00",
+          "address": "Город Москва, б-р.Волжский, д. 50 к 2"
         },
         {
-          "job_id": "61540",
-          "location_id": "LOC-00152",
-          "planned_arrival": "2026-08-17T16:08:00+03:00",
-          "planned_start": "2026-08-17T16:08:00+03:00",
-          "planned_end": "2026-08-17T17:18:00+03:00",
-          "address": "Город Москва, ул.Юных Ленинцев, д. 84"
+          "job_id": "82388",
+          "location_id": "LOC-00042",
+          "planned_arrival": "2026-08-17T13:51:00+03:00",
+          "planned_start": "2026-08-17T14:00:00+03:00",
+          "planned_end": "2026-08-17T15:10:00+03:00",
+          "address": "Город Москва, ул.1-я Дубровская, д. 6"
         },
         {
-          "job_id": "15648",
-          "location_id": "LOC-00188",
-          "planned_arrival": "2026-08-17T17:29:00+03:00",
-          "planned_start": "2026-08-17T17:29:00+03:00",
-          "planned_end": "2026-08-17T18:49:00+03:00",
-          "address": "г.Город Москва, наб.Семеновская, д. 2/1"
+          "job_id": "48238",
+          "location_id": "LOC-00057",
+          "planned_arrival": "2026-08-17T15:15:00+03:00",
+          "planned_start": "2026-08-17T15:15:00+03:00",
+          "planned_end": "2026-08-17T15:45:00+03:00",
+          "address": "Город Москва, ул.Артюхиной, д. 3"
         },
         {
-          "job_id": "50104",
-          "location_id": "LOC-00078",
-          "planned_arrival": "2026-08-17T19:28:00+03:00",
-          "planned_start": "2026-08-17T19:28:00+03:00",
-          "planned_end": "2026-08-17T20:38:00+03:00",
-          "address": "Город Москва, ул.Грайвороновская, д. 10 к 2"
+          "job_id": "41962",
+          "location_id": "LOC-00187",
+          "planned_arrival": "2026-08-17T15:50:00+03:00",
+          "planned_start": "2026-08-17T16:00:00+03:00",
+          "planned_end": "2026-08-17T17:20:00+03:00",
+          "address": "г.Город Москва, б-р.Самаркандский, д. 32к1"
+        },
+        {
+          "job_id": "86160",
+          "location_id": "LOC-00015",
+          "planned_arrival": "2026-08-17T17:26:00+03:00",
+          "planned_start": "2026-08-17T18:00:00+03:00",
+          "planned_end": "2026-08-17T19:10:00+03:00",
+          "address": "Город Москва, пер.Маяковского, д. 2"
+        },
+        {
+          "job_id": "92031",
+          "location_id": "LOC-00141",
+          "planned_arrival": "2026-08-17T19:15:00+03:00",
+          "planned_start": "2026-08-17T19:15:00+03:00",
+          "planned_end": "2026-08-17T19:35:00+03:00",
+          "address": "Город Москва, ул.Ферганская, д. 28/7"
+        },
+        {
+          "job_id": "31260",
+          "location_id": "LOC-00007",
+          "planned_arrival": "2026-08-17T19:41:00+03:00",
+          "planned_start": "2026-08-17T20:00:00+03:00",
+          "planned_end": "2026-08-17T20:20:00+03:00",
+          "address": "Город Москва, б-р.Самаркандский Квартал 137а, д. к5"
         }
       ],
-      "total_travel_min": 137,
-      "total_distance_km": 66.5
+      "total_travel_min": 55,
+      "total_distance_km": 14.8
     },
     {
       "engineer_id": "ENG-2",
       "stops": [
         {
-          "job_id": "34366",
-          "location_id": "LOC-00101",
-          "planned_arrival": "2026-08-17T09:17:00+03:00",
+          "job_id": "33527",
+          "location_id": "LOC-00184",
+          "planned_arrival": "2026-08-17T09:06:00+03:00",
           "planned_start": "2026-08-17T10:00:00+03:00",
-          "planned_end": "2026-08-17T11:10:00+03:00",
-          "address": "Город Москва, ул.Малышева, д. 13"
+          "planned_end": "2026-08-17T10:20:00+03:00",
+          "address": "Москва, проезд Орехово-Зуевский, д. 18/8"
         },
         {
           "job_id": "74949",
           "location_id": "LOC-00106",
-          "planned_arrival": "2026-08-17T11:31:00+03:00",
-          "planned_start": "2026-08-17T11:31:00+03:00",
-          "planned_end": "2026-08-17T12:41:00+03:00",
+          "planned_arrival": "2026-08-17T10:26:00+03:00",
+          "planned_start": "2026-08-17T10:26:00+03:00",
+          "planned_end": "2026-08-17T11:36:00+03:00",
           "address": "Город Москва, ул.Международная, д. 28 стр. 1"
         },
         {
           "job_id": "41077",
           "location_id": "LOC-00115",
-          "planned_arrival": "2026-08-17T13:03:00+03:00",
-          "planned_start": "2026-08-17T13:03:00+03:00",
-          "planned_end": "2026-08-17T14:13:00+03:00",
+          "planned_arrival": "2026-08-17T11:41:00+03:00",
+          "planned_start": "2026-08-17T12:00:00+03:00",
+          "planned_end": "2026-08-17T13:10:00+03:00",
           "address": "Город Москва, ул.Новорогожская, д. 8"
         },
         {
-          "job_id": "82388",
-          "location_id": "LOC-00042",
-          "planned_arrival": "2026-08-17T14:31:00+03:00",
-          "planned_start": "2026-08-17T14:31:00+03:00",
-          "planned_end": "2026-08-17T15:41:00+03:00",
-          "address": "Город Москва, ул.1-я Дубровская, д. 6"
+          "job_id": "41912",
+          "location_id": "LOC-00040",
+          "planned_arrival": "2026-08-17T13:16:00+03:00",
+          "planned_start": "2026-08-17T13:16:00+03:00",
+          "planned_end": "2026-08-17T13:46:00+03:00",
+          "address": "Город Москва, проезд.Ферганский, д. 7 к 5"
         },
         {
-          "job_id": "87693",
-          "location_id": "LOC-00144",
-          "planned_arrival": "2026-08-17T15:53:00+03:00",
+          "job_id": "47330",
+          "location_id": "LOC-00094",
+          "planned_arrival": "2026-08-17T13:51:00+03:00",
+          "planned_start": "2026-08-17T14:00:00+03:00",
+          "planned_end": "2026-08-17T14:30:00+03:00",
+          "address": "Город Москва, ул.Красноказарменная, д. 9Б стр. 1"
+        },
+        {
+          "job_id": "57866",
+          "location_id": "LOC-00117",
+          "planned_arrival": "2026-08-17T14:35:00+03:00",
+          "planned_start": "2026-08-17T14:35:00+03:00",
+          "planned_end": "2026-08-17T15:45:00+03:00",
+          "address": "Город Москва, ул.Окская, д. 48/2"
+        },
+        {
+          "job_id": "61540",
+          "location_id": "LOC-00152",
+          "planned_arrival": "2026-08-17T15:50:00+03:00",
           "planned_start": "2026-08-17T16:00:00+03:00",
           "planned_end": "2026-08-17T17:10:00+03:00",
-          "address": "Город Москва, ул.Чистова, д. 12"
+          "address": "Город Москва, ул.Юных Ленинцев, д. 84"
         },
         {
-          "job_id": "35675",
-          "location_id": "LOC-00137",
-          "planned_arrival": "2026-08-17T17:41:00+03:00",
-          "planned_start": "2026-08-17T17:41:00+03:00",
-          "planned_end": "2026-08-17T18:51:00+03:00",
-          "address": "Город Москва, ул.Трофимова, д. 24 к 2"
+          "job_id": "98815",
+          "location_id": "LOC-00046",
+          "planned_arrival": "2026-08-17T17:16:00+03:00",
+          "planned_start": "2026-08-17T18:00:00+03:00",
+          "planned_end": "2026-08-17T18:20:00+03:00",
+          "address": "Город Москва, ул.2-я Синичкина, д. 9 к 1"
         },
         {
-          "job_id": "76643",
-          "location_id": "LOC-00061",
-          "planned_arrival": "2026-08-17T18:56:00+03:00",
-          "planned_start": "2026-08-17T18:56:00+03:00",
-          "planned_end": "2026-08-17T19:26:00+03:00",
-          "address": "Город Москва, ул.Большая Калитниковская, д. 38"
+          "job_id": "50104",
+          "location_id": "LOC-00078",
+          "planned_arrival": "2026-08-17T18:25:00+03:00",
+          "planned_start": "2026-08-17T18:25:00+03:00",
+          "planned_end": "2026-08-17T19:35:00+03:00",
+          "address": "Город Москва, ул.Грайвороновская, д. 10 к 2"
         },
         {
-          "job_id": "86160",
-          "location_id": "LOC-00015",
-          "planned_arrival": "2026-08-17T19:36:00+03:00",
-          "planned_start": "2026-08-17T19:36:00+03:00",
-          "planned_end": "2026-08-17T20:46:00+03:00",
-          "address": "Город Москва, пер.Маяковского, д. 2"
+          "job_id": "47670",
+          "location_id": "LOC-00104",
+          "planned_arrival": "2026-08-17T19:40:00+03:00",
+          "planned_start": "2026-08-17T20:00:00+03:00",
+          "planned_end": "2026-08-17T20:30:00+03:00",
+          "address": "Город Москва, ул.Машкова, д. 13 стр. 1"
         }
       ],
-      "total_travel_min": 136,
-      "total_distance_km": 64.7
+      "total_travel_min": 54,
+      "total_distance_km": 17.0
     },
     {
       "engineer_id": "ENG-8",
       "stops": [
         {
-          "job_id": "93086",
-          "location_id": "LOC-00120",
-          "planned_arrival": "2026-08-17T12:27:00+03:00",
-          "planned_start": "2026-08-17T12:27:00+03:00",
-          "planned_end": "2026-08-17T13:37:00+03:00",
-          "address": "Город Москва, ул.Паперника, д. 19"
-        },
-        {
           "job_id": "23380",
           "location_id": "LOC-00125",
-          "planned_arrival": "2026-08-17T13:47:00+03:00",
-          "planned_start": "2026-08-17T13:47:00+03:00",
-          "planned_end": "2026-08-17T14:57:00+03:00",
+          "planned_arrival": "2026-08-17T12:07:00+03:00",
+          "planned_start": "2026-08-17T12:07:00+03:00",
+          "planned_end": "2026-08-17T13:17:00+03:00",
           "address": "Город Москва, ул.Рогожский Вал, д. 2/50"
+        },
+        {
+          "job_id": "48227",
+          "location_id": "LOC-00135",
+          "planned_arrival": "2026-08-17T13:22:00+03:00",
+          "planned_start": "2026-08-17T13:22:00+03:00",
+          "planned_end": "2026-08-17T13:52:00+03:00",
+          "address": "Город Москва, ул.Талалихина, д. 16"
         },
         {
           "job_id": "17349",
           "location_id": "LOC-00192",
-          "planned_arrival": "2026-08-17T15:37:00+03:00",
-          "planned_start": "2026-08-17T15:37:00+03:00",
-          "planned_end": "2026-08-17T16:57:00+03:00",
+          "planned_arrival": "2026-08-17T13:57:00+03:00",
+          "planned_start": "2026-08-17T14:00:00+03:00",
+          "planned_end": "2026-08-17T15:20:00+03:00",
           "address": "г.Город Москва, ул.Новорогожская, д. 20"
+        },
+        {
+          "job_id": "22634",
+          "location_id": "LOC-00131",
+          "planned_arrival": "2026-08-17T15:26:00+03:00",
+          "planned_start": "2026-08-17T15:26:00+03:00",
+          "planned_end": "2026-08-17T15:46:00+03:00",
+          "address": "Город Москва, ул.Стройковская, д. 8"
         },
         {
           "job_id": "97886",
           "location_id": "LOC-00186",
-          "planned_arrival": "2026-08-17T17:07:00+03:00",
-          "planned_start": "2026-08-17T17:07:00+03:00",
-          "planned_end": "2026-08-17T18:27:00+03:00",
+          "planned_arrival": "2026-08-17T15:51:00+03:00",
+          "planned_start": "2026-08-17T16:00:00+03:00",
+          "planned_end": "2026-08-17T17:20:00+03:00",
           "address": "г.Город Москва, б-р.Самаркандский, д. 10к2"
         },
         {
-          "job_id": "17892",
-          "location_id": "LOC-00044",
-          "planned_arrival": "2026-08-17T18:47:00+03:00",
-          "planned_start": "2026-08-17T18:47:00+03:00",
-          "planned_end": "2026-08-17T19:17:00+03:00",
-          "address": "Город Москва, ул.11-я Текстильщиков, д. 10"
+          "job_id": "26645",
+          "location_id": "LOC-00130",
+          "planned_arrival": "2026-08-17T17:26:00+03:00",
+          "planned_start": "2026-08-17T17:26:00+03:00",
+          "planned_end": "2026-08-17T17:56:00+03:00",
+          "address": "Город Москва, ул.Сторожевая, д. 31"
         },
         {
           "job_id": "21571",
           "location_id": "LOC-00014",
-          "planned_arrival": "2026-08-17T19:34:00+03:00",
-          "planned_start": "2026-08-17T19:34:00+03:00",
-          "planned_end": "2026-08-17T20:04:00+03:00",
+          "planned_arrival": "2026-08-17T18:02:00+03:00",
+          "planned_start": "2026-08-17T18:02:00+03:00",
+          "planned_end": "2026-08-17T18:32:00+03:00",
           "address": "Город Москва, пер.Большой Рогожский, д. 10 к 2"
+        },
+        {
+          "job_id": "10135",
+          "location_id": "LOC-00047",
+          "planned_arrival": "2026-08-17T18:37:00+03:00",
+          "planned_start": "2026-08-17T18:37:00+03:00",
+          "planned_end": "2026-08-17T19:47:00+03:00",
+          "address": "Город Москва, ул.3-я Институтская, д. 5 к 2"
         },
         {
           "job_id": "21367",
           "location_id": "LOC-00193",
-          "planned_arrival": "2026-08-17T20:37:00+03:00",
-          "planned_start": "2026-08-17T20:37:00+03:00",
-          "planned_end": "2026-08-17T21:57:00+03:00",
+          "planned_arrival": "2026-08-17T19:52:00+03:00",
+          "planned_start": "2026-08-17T20:00:00+03:00",
+          "planned_end": "2026-08-17T21:20:00+03:00",
           "address": "г.Город Москва, ул.Саратовская, д. 16"
+        },
+        {
+          "job_id": "43506",
+          "location_id": "LOC-00007",
+          "planned_arrival": "2026-08-17T21:26:00+03:00",
+          "planned_start": "2026-08-17T21:26:00+03:00",
+          "planned_end": "2026-08-17T21:56:00+03:00",
+          "address": "Город Москва, б-р.Самаркандский Квартал 137а, д. к5"
         }
       ],
-      "total_travel_min": 157,
-      "total_distance_km": 74.7
+      "total_travel_min": 56,
+      "total_distance_km": 12.1
     },
     {
       "engineer_id": "ENG-3",
       "stops": [
         {
-          "job_id": "876",
+          "job_id": "23807",
           "location_id": "LOC-00036",
-          "planned_arrival": "2026-08-17T10:08:00+03:00",
-          "planned_start": "2026-08-17T10:08:00+03:00",
-          "planned_end": "2026-08-17T11:18:00+03:00",
+          "planned_arrival": "2026-08-17T10:44:00+03:00",
+          "planned_start": "2026-08-17T10:44:00+03:00",
+          "planned_end": "2026-08-17T11:54:00+03:00",
           "address": "Город Москва, проезд.Загорьевский, д. 9"
         },
         {
-          "job_id": "75745",
-          "location_id": "LOC-00159",
-          "planned_arrival": "2026-08-17T11:51:00+03:00",
-          "planned_start": "2026-08-17T11:51:00+03:00",
-          "planned_end": "2026-08-17T13:01:00+03:00",
-          "address": "Домодедово, ул.Зеленая, д. 85"
+          "job_id": "46199",
+          "location_id": "LOC-00160",
+          "planned_arrival": "2026-08-17T12:02:00+03:00",
+          "planned_start": "2026-08-17T12:02:00+03:00",
+          "planned_end": "2026-08-17T12:32:00+03:00",
+          "address": "Домодедово, ул.Ильюшина, д. 11 к 2"
         },
         {
-          "job_id": "88209",
-          "location_id": "LOC-00080",
-          "planned_arrival": "2026-08-17T13:30:00+03:00",
-          "planned_start": "2026-08-17T13:30:00+03:00",
-          "planned_end": "2026-08-17T14:00:00+03:00",
-          "address": "Город Москва, ул.Домодедовская, д. 31"
+          "job_id": "58066",
+          "location_id": "LOC-00069",
+          "planned_arrival": "2026-08-17T12:40:00+03:00",
+          "planned_start": "2026-08-17T12:40:00+03:00",
+          "planned_end": "2026-08-17T13:50:00+03:00",
+          "address": "Город Москва, ул.Братеевская, д. 18 к 1"
         },
         {
-          "job_id": "51774",
-          "location_id": "LOC-00176",
-          "planned_arrival": "2026-08-17T14:34:00+03:00",
-          "planned_start": "2026-08-17T14:34:00+03:00",
-          "planned_end": "2026-08-17T15:54:00+03:00",
-          "address": "МО, г. Кашира Кржижановского ул. д. 5/3"
+          "job_id": "63591",
+          "location_id": "LOC-00058",
+          "planned_arrival": "2026-08-17T13:55:00+03:00",
+          "planned_start": "2026-08-17T14:00:00+03:00",
+          "planned_end": "2026-08-17T15:10:00+03:00",
+          "address": "Город Москва, ул.Бирюлёвская, д. 39"
         },
         {
-          "job_id": "98998",
-          "location_id": "LOC-00174",
-          "planned_arrival": "2026-08-17T16:01:00+03:00",
-          "planned_start": "2026-08-17T16:01:00+03:00",
-          "planned_end": "2026-08-17T17:21:00+03:00",
-          "address": "МО, г. Кашира Кржижановского ул. д. 5/1"
+          "job_id": "31495",
+          "location_id": "LOC-00183",
+          "planned_arrival": "2026-08-17T15:15:00+03:00",
+          "planned_start": "2026-08-17T15:15:00+03:00",
+          "planned_end": "2026-08-17T16:35:00+03:00",
+          "address": "Москва Булатниковский пр-зд. д. 6к1"
         },
         {
-          "job_id": "90915",
-          "location_id": "LOC-00175",
-          "planned_arrival": "2026-08-17T17:31:00+03:00",
-          "planned_start": "2026-08-17T17:31:00+03:00",
-          "planned_end": "2026-08-17T18:51:00+03:00",
-          "address": "МО, г. Кашира Кржижановского ул. д. 5/2"
+          "job_id": "68359",
+          "location_id": "LOC-00153",
+          "planned_arrival": "2026-08-17T16:43:00+03:00",
+          "planned_start": "2026-08-17T16:43:00+03:00",
+          "planned_end": "2026-08-17T17:53:00+03:00",
+          "address": "Город Москва, ш.Каширское, д. 136"
         },
         {
           "job_id": "1287",
           "location_id": "LOC-00182",
-          "planned_arrival": "2026-08-17T19:01:00+03:00",
-          "planned_start": "2026-08-17T19:01:00+03:00",
-          "planned_end": "2026-08-17T20:21:00+03:00",
+          "planned_arrival": "2026-08-17T17:58:00+03:00",
+          "planned_start": "2026-08-17T17:58:00+03:00",
+          "planned_end": "2026-08-17T19:18:00+03:00",
           "address": "Москва Бирюлевская ул. д. 44"
         },
         {
-          "job_id": "81698",
-          "location_id": "LOC-00181",
-          "planned_arrival": "2026-08-17T20:31:00+03:00",
-          "planned_start": "2026-08-17T20:31:00+03:00",
-          "planned_end": "2026-08-17T21:51:00+03:00",
-          "address": "МО, г. Ступино Андропова ул. д. 37"
+          "job_id": "51603",
+          "location_id": "LOC-00064",
+          "planned_arrival": "2026-08-17T19:23:00+03:00",
+          "planned_start": "2026-08-17T19:23:00+03:00",
+          "planned_end": "2026-08-17T19:43:00+03:00",
+          "address": "Город Москва, ул.Борисовские Пруды, д. 20 к 1"
+        },
+        {
+          "job_id": "7258",
+          "location_id": "LOC-00195",
+          "planned_arrival": "2026-08-17T19:48:00+03:00",
+          "planned_start": "2026-08-17T20:00:00+03:00",
+          "planned_end": "2026-08-17T21:20:00+03:00",
+          "address": "обл.Московская область, г.Домодедово, пгт.Востряково-1, ул.Жуковского, д. 14/18"
+        },
+        {
+          "job_id": "13404",
+          "location_id": "LOC-00166",
+          "planned_arrival": "2026-08-17T21:25:00+03:00",
+          "planned_start": "2026-08-17T21:25:00+03:00",
+          "planned_end": "2026-08-17T21:45:00+03:00",
+          "address": "Кашира, ул.Кржижановского, д. 7"
         }
       ],
-      "total_travel_min": 141,
-      "total_distance_km": 80.0
+      "total_travel_min": 98,
+      "total_distance_km": 17.099999999999998
     },
     {
       "engineer_id": "ENG-7",
       "stops": [
         {
-          "job_id": "23807",
-          "location_id": "LOC-00036",
-          "planned_arrival": "2026-08-17T09:10:00+03:00",
+          "job_id": "40111",
+          "location_id": "LOC-00185",
+          "planned_arrival": "2026-08-17T09:16:00+03:00",
           "planned_start": "2026-08-17T10:00:00+03:00",
-          "planned_end": "2026-08-17T11:10:00+03:00",
-          "address": "Город Москва, проезд.Загорьевский, д. 9"
+          "planned_end": "2026-08-17T10:30:00+03:00",
+          "address": "Ступино, ул.Калинина, д. 34"
         },
         {
           "job_id": "66944",
           "location_id": "LOC-00159",
-          "planned_arrival": "2026-08-17T11:50:00+03:00",
-          "planned_start": "2026-08-17T11:50:00+03:00",
-          "planned_end": "2026-08-17T13:00:00+03:00",
+          "planned_arrival": "2026-08-17T10:36:00+03:00",
+          "planned_start": "2026-08-17T10:36:00+03:00",
+          "planned_end": "2026-08-17T11:46:00+03:00",
           "address": "Домодедово, ул.Зеленая, д. 85"
         },
         {
           "job_id": "52041",
           "location_id": "LOC-00108",
-          "planned_arrival": "2026-08-17T13:26:00+03:00",
-          "planned_start": "2026-08-17T13:26:00+03:00",
-          "planned_end": "2026-08-17T14:36:00+03:00",
+          "planned_arrival": "2026-08-17T11:52:00+03:00",
+          "planned_start": "2026-08-17T12:00:00+03:00",
+          "planned_end": "2026-08-17T13:10:00+03:00",
           "address": "Город Москва, ул.Москворечье, д. 4 к 6"
+        },
+        {
+          "job_id": "88209",
+          "location_id": "LOC-00080",
+          "planned_arrival": "2026-08-17T13:16:00+03:00",
+          "planned_start": "2026-08-17T13:16:00+03:00",
+          "planned_end": "2026-08-17T13:46:00+03:00",
+          "address": "Город Москва, ул.Домодедовская, д. 31"
         },
         {
           "job_id": "60484",
           "location_id": "LOC-00050",
-          "planned_arrival": "2026-08-17T15:20:00+03:00",
-          "planned_start": "2026-08-17T15:20:00+03:00",
-          "planned_end": "2026-08-17T16:30:00+03:00",
+          "planned_arrival": "2026-08-17T13:52:00+03:00",
+          "planned_start": "2026-08-17T14:00:00+03:00",
+          "planned_end": "2026-08-17T15:10:00+03:00",
           "address": "Город Москва, ул.6-я Радиальная, д. 5 к 3"
+        },
+        {
+          "job_id": "72476",
+          "location_id": "LOC-00105",
+          "planned_arrival": "2026-08-17T15:15:00+03:00",
+          "planned_start": "2026-08-17T15:15:00+03:00",
+          "planned_end": "2026-08-17T15:35:00+03:00",
+          "address": "Город Москва, ул.Медынская, д. 5 к 1"
         },
         {
           "job_id": "67472",
           "location_id": "LOC-00156",
-          "planned_arrival": "2026-08-17T17:46:00+03:00",
-          "planned_start": "2026-08-17T17:46:00+03:00",
-          "planned_end": "2026-08-17T18:56:00+03:00",
+          "planned_arrival": "2026-08-17T15:40:00+03:00",
+          "planned_start": "2026-08-17T16:00:00+03:00",
+          "planned_end": "2026-08-17T17:10:00+03:00",
           "address": "Домодедово, проезд.Советский 1-й, д. 1А"
         },
         {
-          "job_id": "7660",
-          "location_id": "LOC-00157",
-          "planned_arrival": "2026-08-17T19:11:00+03:00",
-          "planned_start": "2026-08-17T19:11:00+03:00",
-          "planned_end": "2026-08-17T19:41:00+03:00",
-          "address": "Домодедово, ул.1-я Коммунистическая, д. 39"
+          "job_id": "90989",
+          "location_id": "LOC-00158",
+          "planned_arrival": "2026-08-17T17:15:00+03:00",
+          "planned_start": "2026-08-17T17:15:00+03:00",
+          "planned_end": "2026-08-17T17:45:00+03:00",
+          "address": "Домодедово, ул.Гагарина, д. 55/2"
         },
         {
           "job_id": "84466",
           "location_id": "LOC-00034",
-          "planned_arrival": "2026-08-17T19:46:00+03:00",
-          "planned_start": "2026-08-17T19:46:00+03:00",
-          "planned_end": "2026-08-17T20:56:00+03:00",
+          "planned_arrival": "2026-08-17T17:51:00+03:00",
+          "planned_start": "2026-08-17T18:00:00+03:00",
+          "planned_end": "2026-08-17T19:10:00+03:00",
           "address": "Город Москва, проезд.Гурьевский, д. 23 к 1"
+        },
+        {
+          "job_id": "7660",
+          "location_id": "LOC-00157",
+          "planned_arrival": "2026-08-17T19:15:00+03:00",
+          "planned_start": "2026-08-17T19:15:00+03:00",
+          "planned_end": "2026-08-17T19:45:00+03:00",
+          "address": "Домодедово, ул.1-я Коммунистическая, д. 39"
+        },
+        {
+          "job_id": "65268",
+          "location_id": "LOC-00185",
+          "planned_arrival": "2026-08-17T19:51:00+03:00",
+          "planned_start": "2026-08-17T20:00:00+03:00",
+          "planned_end": "2026-08-17T20:30:00+03:00",
+          "address": "Ступино, ул.Калинина, д. 34"
         }
       ],
-      "total_travel_min": 216,
-      "total_distance_km": 100.3
+      "total_travel_min": 72,
+      "total_distance_km": 19.8
     },
     {
       "engineer_id": "ENG-9",
       "stops": [
         {
-          "job_id": "19216",
-          "location_id": "LOC-00098",
-          "planned_arrival": "2026-08-17T12:12:00+03:00",
-          "planned_start": "2026-08-17T12:12:00+03:00",
-          "planned_end": "2026-08-17T12:42:00+03:00",
-          "address": "Город Москва, ул.Луганская, д. 3 к 1"
+          "job_id": "2915",
+          "location_id": "LOC-00004",
+          "planned_arrival": "2026-08-17T12:20:00+03:00",
+          "planned_start": "2026-08-17T12:20:00+03:00",
+          "planned_end": "2026-08-17T13:30:00+03:00",
+          "address": "Город Москва, б-р.Ореховый, д. 35 к 1"
         },
         {
-          "job_id": "58066",
-          "location_id": "LOC-00069",
-          "planned_arrival": "2026-08-17T13:01:00+03:00",
-          "planned_start": "2026-08-17T13:01:00+03:00",
-          "planned_end": "2026-08-17T14:11:00+03:00",
-          "address": "Город Москва, ул.Братеевская, д. 18 к 1"
+          "job_id": "51774",
+          "location_id": "LOC-00176",
+          "planned_arrival": "2026-08-17T13:35:00+03:00",
+          "planned_start": "2026-08-17T13:35:00+03:00",
+          "planned_end": "2026-08-17T14:55:00+03:00",
+          "address": "МО, г. Кашира Кржижановского ул. д. 5/3"
         },
         {
-          "job_id": "45243",
+          "job_id": "78673",
+          "location_id": "LOC-00179",
+          "planned_arrival": "2026-08-17T15:00:00+03:00",
+          "planned_start": "2026-08-17T15:00:00+03:00",
+          "planned_end": "2026-08-17T16:20:00+03:00",
+          "address": "МО, г. Кашира Центральная ул. д. 21"
+        },
+        {
+          "job_id": "14416",
+          "location_id": "LOC-00095",
+          "planned_arrival": "2026-08-17T16:26:00+03:00",
+          "planned_start": "2026-08-17T16:26:00+03:00",
+          "planned_end": "2026-08-17T17:36:00+03:00",
+          "address": "Город Москва, ул.Кустанайская, д. 8 к 1"
+        },
+        {
+          "job_id": "98998",
           "location_id": "LOC-00174",
-          "planned_arrival": "2026-08-17T14:37:00+03:00",
-          "planned_start": "2026-08-17T14:37:00+03:00",
-          "planned_end": "2026-08-17T15:57:00+03:00",
+          "planned_arrival": "2026-08-17T17:41:00+03:00",
+          "planned_start": "2026-08-17T17:41:00+03:00",
+          "planned_end": "2026-08-17T19:01:00+03:00",
           "address": "МО, г. Кашира Кржижановского ул. д. 5/1"
-        },
-        {
-          "job_id": "31495",
-          "location_id": "LOC-00183",
-          "planned_arrival": "2026-08-17T16:03:00+03:00",
-          "planned_start": "2026-08-17T16:03:00+03:00",
-          "planned_end": "2026-08-17T17:23:00+03:00",
-          "address": "Москва Булатниковский пр-зд. д. 6к1"
         },
         {
           "job_id": "32589",
           "location_id": "LOC-00177",
-          "planned_arrival": "2026-08-17T17:30:00+03:00",
-          "planned_start": "2026-08-17T17:30:00+03:00",
-          "planned_end": "2026-08-17T18:50:00+03:00",
+          "planned_arrival": "2026-08-17T19:06:00+03:00",
+          "planned_start": "2026-08-17T19:06:00+03:00",
+          "planned_end": "2026-08-17T20:26:00+03:00",
           "address": "МО, г. Кашира Кржижановского ул. д. 7к2"
         },
         {
           "job_id": "97168",
           "location_id": "LOC-00180",
-          "planned_arrival": "2026-08-17T19:09:00+03:00",
-          "planned_start": "2026-08-17T19:09:00+03:00",
-          "planned_end": "2026-08-17T20:29:00+03:00",
+          "planned_arrival": "2026-08-17T20:31:00+03:00",
+          "planned_start": "2026-08-17T20:31:00+03:00",
+          "planned_end": "2026-08-17T21:51:00+03:00",
           "address": "МО, г. Ступино Андропова ул. д. 33"
-        },
-        {
-          "job_id": "7258",
-          "location_id": "LOC-00195",
-          "planned_arrival": "2026-08-17T20:40:00+03:00",
-          "planned_start": "2026-08-17T20:40:00+03:00",
-          "planned_end": "2026-08-17T22:00:00+03:00",
-          "address": "обл.Московская область, г.Домодедово, пгт.Востряково-1, ул.Жуковского, д. 14/18"
         }
       ],
-      "total_travel_min": 100,
-      "total_distance_km": 46.49999999999999
+      "total_travel_min": 51,
+      "total_distance_km": 14.600000000000001
     },
     {
       "engineer_id": "ENG-4",
       "stops": [
         {
-          "job_id": "94447",
-          "location_id": "LOC-00084",
-          "planned_arrival": "2026-08-17T08:45:00+03:00",
+          "job_id": "20263",
+          "location_id": "LOC-00060",
+          "planned_arrival": "2026-08-17T08:17:00+03:00",
           "planned_start": "2026-08-17T10:00:00+03:00",
-          "planned_end": "2026-08-17T11:10:00+03:00",
-          "address": "Город Москва, ул.Затонная, д. 11 к 3"
+          "planned_end": "2026-08-17T10:30:00+03:00",
+          "address": "Город Москва, ул.Болотниковская, д. 9 к 2"
         },
         {
-          "job_id": "94431",
-          "location_id": "LOC-00146",
-          "planned_arrival": "2026-08-17T11:51:00+03:00",
-          "planned_start": "2026-08-17T11:51:00+03:00",
-          "planned_end": "2026-08-17T13:01:00+03:00",
-          "address": "Город Москва, ул.Шверника, д. 12/2 к 3"
-        },
-        {
-          "job_id": "84074",
-          "location_id": "LOC-00013",
-          "planned_arrival": "2026-08-17T13:13:00+03:00",
-          "planned_start": "2026-08-17T13:13:00+03:00",
-          "planned_end": "2026-08-17T13:43:00+03:00",
-          "address": "Город Москва, наб.Нагатинская, д. 60 к 2"
+          "job_id": "23142",
+          "location_id": "LOC-00133",
+          "planned_arrival": "2026-08-17T10:46:00+03:00",
+          "planned_start": "2026-08-17T10:46:00+03:00",
+          "planned_end": "2026-08-17T11:56:00+03:00",
+          "address": "Город Москва, ул.Судостроительная, д. 31 к 3"
         },
         {
           "job_id": "10776",
           "location_id": "LOC-00134",
-          "planned_arrival": "2026-08-17T13:54:00+03:00",
-          "planned_start": "2026-08-17T13:54:00+03:00",
-          "planned_end": "2026-08-17T15:04:00+03:00",
+          "planned_arrival": "2026-08-17T12:10:00+03:00",
+          "planned_start": "2026-08-17T12:10:00+03:00",
+          "planned_end": "2026-08-17T13:20:00+03:00",
           "address": "Город Москва, ул.Судостроительная, д. 36"
         },
         {
           "job_id": "86002",
           "location_id": "LOC-00077",
-          "planned_arrival": "2026-08-17T15:20:00+03:00",
-          "planned_start": "2026-08-17T15:20:00+03:00",
-          "planned_end": "2026-08-17T15:50:00+03:00",
+          "planned_arrival": "2026-08-17T13:34:00+03:00",
+          "planned_start": "2026-08-17T14:00:00+03:00",
+          "planned_end": "2026-08-17T14:30:00+03:00",
           "address": "Город Москва, ул.Городская, д. 9"
+        },
+        {
+          "job_id": "87819",
+          "location_id": "LOC-00100",
+          "planned_arrival": "2026-08-17T14:47:00+03:00",
+          "planned_start": "2026-08-17T14:47:00+03:00",
+          "planned_end": "2026-08-17T15:17:00+03:00",
+          "address": "Город Москва, ул.Люсиновская, д. 4"
         },
         {
           "job_id": "19376",
           "location_id": "LOC-00073",
-          "planned_arrival": "2026-08-17T16:28:00+03:00",
-          "planned_start": "2026-08-17T16:28:00+03:00",
-          "planned_end": "2026-08-17T17:38:00+03:00",
+          "planned_arrival": "2026-08-17T15:31:00+03:00",
+          "planned_start": "2026-08-17T16:00:00+03:00",
+          "planned_end": "2026-08-17T17:10:00+03:00",
           "address": "Город Москва, ул.Винокурова, д. 12 к 4"
         },
         {
-          "job_id": "47560",
-          "location_id": "LOC-00062",
-          "planned_arrival": "2026-08-17T17:49:00+03:00",
-          "planned_start": "2026-08-17T17:49:00+03:00",
-          "planned_end": "2026-08-17T18:59:00+03:00",
-          "address": "Город Москва, ул.Большая Пионерская, д. 33 к 2"
+          "job_id": "93276",
+          "location_id": "LOC-00045",
+          "planned_arrival": "2026-08-17T17:25:00+03:00",
+          "planned_start": "2026-08-17T17:25:00+03:00",
+          "planned_end": "2026-08-17T17:55:00+03:00",
+          "address": "Город Москва, ул.2-я Рощинская, д. 11"
         },
         {
-          "job_id": "27023",
-          "location_id": "LOC-00150",
-          "planned_arrival": "2026-08-17T19:10:00+03:00",
-          "planned_start": "2026-08-17T19:10:00+03:00",
-          "planned_end": "2026-08-17T19:40:00+03:00",
-          "address": "Город Москва, ул.Шверника, д. 5 к 2"
+          "job_id": "66376",
+          "location_id": "LOC-00081",
+          "planned_arrival": "2026-08-17T18:08:00+03:00",
+          "planned_start": "2026-08-17T18:08:00+03:00",
+          "planned_end": "2026-08-17T19:18:00+03:00",
+          "address": "Город Москва, ул.Дубининская, д. 59 к 2"
+        },
+        {
+          "job_id": "26896",
+          "location_id": "LOC-00012",
+          "planned_arrival": "2026-08-17T19:30:00+03:00",
+          "planned_start": "2026-08-17T19:30:00+03:00",
+          "planned_end": "2026-08-17T20:00:00+03:00",
+          "address": "Город Москва, б-р.Чонгарский, д. 22 к 2"
         }
       ],
-      "total_travel_min": 185,
-      "total_distance_km": 72.20000000000002
+      "total_travel_min": 132,
+      "total_distance_km": 9.199999999999998
     },
     {
       "engineer_id": "ENG-5",
       "stops": [
         {
-          "job_id": "23142",
-          "location_id": "LOC-00133",
-          "planned_arrival": "2026-08-17T09:15:00+03:00",
+          "job_id": "12263",
+          "location_id": "LOC-00037",
+          "planned_arrival": "2026-08-17T09:06:00+03:00",
           "planned_start": "2026-08-17T10:00:00+03:00",
-          "planned_end": "2026-08-17T11:10:00+03:00",
-          "address": "Город Москва, ул.Судостроительная, д. 31 к 3"
+          "planned_end": "2026-08-17T10:30:00+03:00",
+          "address": "Город Москва, проезд.Коломенский, д. 27 к 3"
         },
         {
           "job_id": "79707",
           "location_id": "LOC-00122",
-          "planned_arrival": "2026-08-17T11:36:00+03:00",
-          "planned_start": "2026-08-17T11:36:00+03:00",
-          "planned_end": "2026-08-17T12:46:00+03:00",
+          "planned_arrival": "2026-08-17T10:35:00+03:00",
+          "planned_start": "2026-08-17T10:35:00+03:00",
+          "planned_end": "2026-08-17T11:45:00+03:00",
           "address": "Город Москва, ул.Плющиха, д. 42"
         },
         {
-          "job_id": "93544",
-          "location_id": "LOC-00010",
-          "planned_arrival": "2026-08-17T13:35:00+03:00",
-          "planned_start": "2026-08-17T13:35:00+03:00",
-          "planned_end": "2026-08-17T14:45:00+03:00",
-          "address": "Город Москва, б-р.Черноморский, д. 19 к 2"
+          "job_id": "55711",
+          "location_id": "LOC-00143",
+          "planned_arrival": "2026-08-17T11:50:00+03:00",
+          "planned_start": "2026-08-17T12:00:00+03:00",
+          "planned_end": "2026-08-17T13:10:00+03:00",
+          "address": "Город Москва, ул.Херсонская, д. 18"
+        },
+        {
+          "job_id": "84074",
+          "location_id": "LOC-00013",
+          "planned_arrival": "2026-08-17T13:16:00+03:00",
+          "planned_start": "2026-08-17T13:16:00+03:00",
+          "planned_end": "2026-08-17T13:46:00+03:00",
+          "address": "Город Москва, наб.Нагатинская, д. 60 к 2"
         },
         {
           "job_id": "75881",
           "location_id": "LOC-00079",
-          "planned_arrival": "2026-08-17T15:04:00+03:00",
-          "planned_start": "2026-08-17T15:04:00+03:00",
-          "planned_end": "2026-08-17T16:14:00+03:00",
+          "planned_arrival": "2026-08-17T13:51:00+03:00",
+          "planned_start": "2026-08-17T14:00:00+03:00",
+          "planned_end": "2026-08-17T15:10:00+03:00",
           "address": "Город Москва, ул.Дмитрия Ульянова, д. 27"
+        },
+        {
+          "job_id": "17896",
+          "location_id": "LOC-00090",
+          "planned_arrival": "2026-08-17T15:15:00+03:00",
+          "planned_start": "2026-08-17T15:15:00+03:00",
+          "planned_end": "2026-08-17T15:45:00+03:00",
+          "address": "Город Москва, ул.Керченская, д. 10 к 2"
         },
         {
           "job_id": "85188",
           "location_id": "LOC-00140",
-          "planned_arrival": "2026-08-17T16:27:00+03:00",
-          "planned_start": "2026-08-17T16:27:00+03:00",
-          "planned_end": "2026-08-17T17:37:00+03:00",
+          "planned_arrival": "2026-08-17T15:50:00+03:00",
+          "planned_start": "2026-08-17T16:00:00+03:00",
+          "planned_end": "2026-08-17T17:10:00+03:00",
           "address": "Город Москва, ул.Усачёва, д. 29 к 1"
         },
         {
-          "job_id": "80548",
-          "location_id": "LOC-00126",
-          "planned_arrival": "2026-08-17T17:52:00+03:00",
-          "planned_start": "2026-08-17T17:52:00+03:00",
-          "planned_end": "2026-08-17T19:02:00+03:00",
-          "address": "Город Москва, ул.Садовники, д. 10 к 1"
+          "job_id": "61311",
+          "location_id": "LOC-00016",
+          "planned_arrival": "2026-08-17T17:16:00+03:00",
+          "planned_start": "2026-08-17T17:16:00+03:00",
+          "planned_end": "2026-08-17T17:46:00+03:00",
+          "address": "Город Москва, пер.Ослябинский, д. 3"
         },
         {
-          "job_id": "66376",
-          "location_id": "LOC-00081",
-          "planned_arrival": "2026-08-17T19:09:00+03:00",
-          "planned_start": "2026-08-17T19:09:00+03:00",
-          "planned_end": "2026-08-17T20:19:00+03:00",
-          "address": "Город Москва, ул.Дубининская, д. 59 к 2"
+          "job_id": "77795",
+          "location_id": "LOC-00074",
+          "planned_arrival": "2026-08-17T17:51:00+03:00",
+          "planned_start": "2026-08-17T18:00:00+03:00",
+          "planned_end": "2026-08-17T18:30:00+03:00",
+          "address": "Город Москва, ул.Винокурова, д. 5/6 к 2"
         },
         {
-          "job_id": "95501",
-          "location_id": "LOC-00085",
-          "planned_arrival": "2026-08-17T20:30:00+03:00",
-          "planned_start": "2026-08-17T20:30:00+03:00",
-          "planned_end": "2026-08-17T21:00:00+03:00",
-          "address": "Город Москва, ул.Затонная, д. 12 к 1"
+          "job_id": "78540",
+          "location_id": "LOC-00075",
+          "planned_arrival": "2026-08-17T18:35:00+03:00",
+          "planned_start": "2026-08-17T18:35:00+03:00",
+          "planned_end": "2026-08-17T19:45:00+03:00",
+          "address": "Город Москва, ул.Восточная, д. 2 к 2"
+        },
+        {
+          "job_id": "49105",
+          "location_id": "LOC-00124",
+          "planned_arrival": "2026-08-17T19:50:00+03:00",
+          "planned_start": "2026-08-17T20:00:00+03:00",
+          "planned_end": "2026-08-17T20:20:00+03:00",
+          "address": "Город Москва, ул.Ремизова, д. 15 к 2"
+        },
+        {
+          "job_id": "26177",
+          "location_id": "LOC-00054",
+          "planned_arrival": "2026-08-17T20:26:00+03:00",
+          "planned_start": "2026-08-17T20:26:00+03:00",
+          "planned_end": "2026-08-17T20:56:00+03:00",
+          "address": "Город Москва, ул.Академика Миллионщикова, д. 13 к 1"
         }
       ],
-      "total_travel_min": 155,
-      "total_distance_km": 75.7
+      "total_travel_min": 64,
+      "total_distance_km": 16.0
     },
     {
       "engineer_id": "ENG-10",
       "stops": [
         {
-          "job_id": "55711",
-          "location_id": "LOC-00143",
-          "planned_arrival": "2026-08-17T12:05:00+03:00",
-          "planned_start": "2026-08-17T12:05:00+03:00",
-          "planned_end": "2026-08-17T13:15:00+03:00",
-          "address": "Город Москва, ул.Херсонская, д. 18"
-        },
-        {
           "job_id": "76452",
           "location_id": "LOC-00089",
-          "planned_arrival": "2026-08-17T13:25:00+03:00",
-          "planned_start": "2026-08-17T13:25:00+03:00",
-          "planned_end": "2026-08-17T14:35:00+03:00",
+          "planned_arrival": "2026-08-17T12:07:00+03:00",
+          "planned_start": "2026-08-17T12:07:00+03:00",
+          "planned_end": "2026-08-17T13:17:00+03:00",
           "address": "Город Москва, ул.Каховка, д. 7 к 1"
+        },
+        {
+          "job_id": "51133",
+          "location_id": "LOC-00138",
+          "planned_arrival": "2026-08-17T13:22:00+03:00",
+          "planned_start": "2026-08-17T13:22:00+03:00",
+          "planned_end": "2026-08-17T13:52:00+03:00",
+          "address": "Город Москва, ул.Трофимова, д. 4А"
         },
         {
           "job_id": "18023",
           "location_id": "LOC-00191",
-          "planned_arrival": "2026-08-17T15:05:00+03:00",
-          "planned_start": "2026-08-17T15:05:00+03:00",
-          "planned_end": "2026-08-17T16:25:00+03:00",
+          "planned_arrival": "2026-08-17T13:57:00+03:00",
+          "planned_start": "2026-08-17T14:00:00+03:00",
+          "planned_end": "2026-08-17T15:20:00+03:00",
           "address": "г.Город Москва, пр-кт.Ленинский, д. 70/11"
+        },
+        {
+          "job_id": "13203",
+          "location_id": "LOC-00023",
+          "planned_arrival": "2026-08-17T15:26:00+03:00",
+          "planned_start": "2026-08-17T15:26:00+03:00",
+          "planned_end": "2026-08-17T15:56:00+03:00",
+          "address": "Город Москва, пр-кт.Нахимовский, д. 50"
+        },
+        {
+          "job_id": "90709",
+          "location_id": "LOC-00092",
+          "planned_arrival": "2026-08-17T16:01:00+03:00",
+          "planned_start": "2026-08-17T16:01:00+03:00",
+          "planned_end": "2026-08-17T16:31:00+03:00",
+          "address": "Город Москва, ул.Коломенская, д. 21"
         },
         {
           "job_id": "76944",
           "location_id": "LOC-00018",
-          "planned_arrival": "2026-08-17T16:43:00+03:00",
-          "planned_start": "2026-08-17T16:43:00+03:00",
-          "planned_end": "2026-08-17T17:53:00+03:00",
+          "planned_arrival": "2026-08-17T16:37:00+03:00",
+          "planned_start": "2026-08-17T16:37:00+03:00",
+          "planned_end": "2026-08-17T17:47:00+03:00",
           "address": "Город Москва, пр-кт.60-летия Октября, д. 18 к 2"
-        },
-        {
-          "job_id": "78540",
-          "location_id": "LOC-00075",
-          "planned_arrival": "2026-08-17T18:18:00+03:00",
-          "planned_start": "2026-08-17T18:18:00+03:00",
-          "planned_end": "2026-08-17T19:28:00+03:00",
-          "address": "Город Москва, ул.Восточная, д. 2 к 2"
         },
         {
           "job_id": "32840",
           "location_id": "LOC-00029",
-          "planned_arrival": "2026-08-17T19:45:00+03:00",
-          "planned_start": "2026-08-17T19:45:00+03:00",
-          "planned_end": "2026-08-17T20:55:00+03:00",
+          "planned_arrival": "2026-08-17T17:52:00+03:00",
+          "planned_start": "2026-08-17T18:00:00+03:00",
+          "planned_end": "2026-08-17T19:10:00+03:00",
           "address": "Город Москва, проезд.3-й Павелецкий, д. 9"
+        },
+        {
+          "job_id": "27023",
+          "location_id": "LOC-00150",
+          "planned_arrival": "2026-08-17T19:15:00+03:00",
+          "planned_start": "2026-08-17T19:15:00+03:00",
+          "planned_end": "2026-08-17T19:45:00+03:00",
+          "address": "Город Москва, ул.Шверника, д. 5 к 2"
         },
         {
           "job_id": "78036",
           "location_id": "LOC-00017",
-          "planned_arrival": "2026-08-17T21:32:00+03:00",
-          "planned_start": "2026-08-17T21:32:00+03:00",
-          "planned_end": "2026-08-17T21:52:00+03:00",
+          "planned_arrival": "2026-08-17T19:51:00+03:00",
+          "planned_start": "2026-08-17T20:00:00+03:00",
+          "planned_end": "2026-08-17T20:20:00+03:00",
           "address": "Город Москва, пр-кт.60-летия Октября, д. 17"
+        },
+        {
+          "job_id": "23637",
+          "location_id": "LOC-00148",
+          "planned_arrival": "2026-08-17T20:25:00+03:00",
+          "planned_start": "2026-08-17T20:25:00+03:00",
+          "planned_end": "2026-08-17T21:35:00+03:00",
+          "address": "Город Москва, ул.Шверника, д. 18 к 2"
         }
       ],
-      "total_travel_min": 142,
-      "total_distance_km": 68.2
+      "total_travel_min": 55,
+      "total_distance_km": 12.2
     },
     {
       "engineer_id": "ENG-6",
       "stops": [
         {
-          "job_id": "98182",
-          "location_id": "LOC-00113",
-          "planned_arrival": "2026-08-17T09:45:00+03:00",
+          "job_id": "24980",
+          "location_id": "LOC-00189",
+          "planned_arrival": "2026-08-17T09:24:00+03:00",
           "planned_start": "2026-08-17T10:00:00+03:00",
-          "planned_end": "2026-08-17T11:10:00+03:00",
-          "address": "Город Москва, ул.Нижегородская, д. 63"
+          "planned_end": "2026-08-17T11:20:00+03:00",
+          "address": "г.Город Москва, наб.Семеновская, д. 3/1к2"
         },
         {
-          "job_id": "54964",
-          "location_id": "LOC-00194",
-          "planned_arrival": "2026-08-17T11:47:00+03:00",
-          "planned_start": "2026-08-17T11:47:00+03:00",
-          "planned_end": "2026-08-17T13:07:00+03:00",
-          "address": "г.Город Москва, ул.Ташкентская, д. 16к2"
+          "job_id": "67554",
+          "location_id": "LOC-00070",
+          "planned_arrival": "2026-08-17T11:37:00+03:00",
+          "planned_start": "2026-08-17T12:00:00+03:00",
+          "planned_end": "2026-08-17T13:10:00+03:00",
+          "address": "Город Москва, ул.Бронницкая, д. 12"
         },
         {
-          "job_id": "94409",
-          "location_id": "LOC-00052",
-          "planned_arrival": "2026-08-17T13:57:00+03:00",
-          "planned_start": "2026-08-17T13:57:00+03:00",
-          "planned_end": "2026-08-17T15:07:00+03:00",
-          "address": "Город Москва, ул.Авиамоторная, д. 14"
+          "job_id": "4893",
+          "location_id": "LOC-00087",
+          "planned_arrival": "2026-08-17T13:21:00+03:00",
+          "planned_start": "2026-08-17T13:21:00+03:00",
+          "planned_end": "2026-08-17T13:51:00+03:00",
+          "address": "Город Москва, ул.Земляной Вал, д. 24/30 стр. 1"
         },
         {
-          "job_id": "78673",
-          "location_id": "LOC-00179",
-          "planned_arrival": "2026-08-17T16:09:00+03:00",
-          "planned_start": "2026-08-17T16:09:00+03:00",
-          "planned_end": "2026-08-17T17:29:00+03:00",
-          "address": "МО, г. Кашира Центральная ул. д. 21"
+          "job_id": "90915",
+          "location_id": "LOC-00175",
+          "planned_arrival": "2026-08-17T14:24:00+03:00",
+          "planned_start": "2026-08-17T14:24:00+03:00",
+          "planned_end": "2026-08-17T15:44:00+03:00",
+          "address": "МО, г. Кашира Кржижановского ул. д. 5/2"
         },
         {
-          "job_id": "41962",
-          "location_id": "LOC-00187",
-          "planned_arrival": "2026-08-17T17:57:00+03:00",
-          "planned_start": "2026-08-17T17:57:00+03:00",
-          "planned_end": "2026-08-17T19:17:00+03:00",
-          "address": "г.Город Москва, б-р.Самаркандский, д. 32к1"
+          "job_id": "81698",
+          "location_id": "LOC-00181",
+          "planned_arrival": "2026-08-17T15:56:00+03:00",
+          "planned_start": "2026-08-17T15:56:00+03:00",
+          "planned_end": "2026-08-17T17:16:00+03:00",
+          "address": "МО, г. Ступино Андропова ул. д. 37"
+        },
+        {
+          "job_id": "45243",
+          "location_id": "LOC-00174",
+          "planned_arrival": "2026-08-17T17:29:00+03:00",
+          "planned_start": "2026-08-17T17:29:00+03:00",
+          "planned_end": "2026-08-17T18:49:00+03:00",
+          "address": "МО, г. Кашира Кржижановского ул. д. 5/1"
+        },
+        {
+          "job_id": "2427",
+          "location_id": "LOC-00025",
+          "planned_arrival": "2026-08-17T19:05:00+03:00",
+          "planned_start": "2026-08-17T19:05:00+03:00",
+          "planned_end": "2026-08-17T19:25:00+03:00",
+          "address": "Город Москва, пр-кт.Пролетарский, д. 18 к 4"
         },
         {
           "job_id": "65034",
           "location_id": "LOC-00178",
-          "planned_arrival": "2026-08-17T19:28:00+03:00",
-          "planned_start": "2026-08-17T19:28:00+03:00",
-          "planned_end": "2026-08-17T20:48:00+03:00",
+          "planned_arrival": "2026-08-17T19:35:00+03:00",
+          "planned_start": "2026-08-17T19:35:00+03:00",
+          "planned_end": "2026-08-17T20:55:00+03:00",
           "address": "МО, г. Кашира Центральная ул. д. 19"
         }
       ],
-      "total_travel_min": 233,
-      "total_distance_km": 88.50000000000001
+      "total_travel_min": 136,
+      "total_distance_km": 13.299999999999999
     }
   ],
   "unassigned_job_ids": [
+    "15648",
     "57299",
+    "37272",
+    "34366",
     "52405",
+    "98182",
     "77563",
+    "75745",
     "65717",
     "44117",
+    "876",
     "62011",
     "14494",
     "78876",
     "79144",
     "58129",
     "93798",
+    "94447",
+    "94431",
     "16024",
     "6957",
+    "94409",
     "10245",
     "76082",
     "29890",
     "53587",
     "7939",
-    "2915",
     "3566",
     "55454",
     "57353",
@@ -977,81 +1273,65 @@
     "60141",
     "79450",
     "40698",
+    "93544",
     "19203",
     "90373",
     "79719",
     "71388",
     "30769",
     "82808",
-    "63591",
     "53552",
     "35057",
     "2245",
     "89696",
     "20362",
-    "14416",
-    "68359",
+    "87693",
+    "35675",
     "68946",
     "76173",
+    "80548",
+    "47560",
     "66315",
-    "10135",
     "18754",
     "6185",
     "94575",
     "74198",
     "46393",
     "84627",
-    "23637",
     "97770",
     "52576",
     "68476",
     "50219",
     "76678",
     "32807",
-    "40111",
     "63577",
     "11899",
     "40919",
     "95692",
-    "20263",
-    "12263",
     "80308",
     "46513",
     "5406",
-    "48227",
-    "60720",
-    "41912",
-    "4893",
     "24076",
-    "46199",
+    "19216",
     "63894",
     "12329",
     "3151",
     "20055",
-    "51133",
     "26845",
-    "48238",
-    "47330",
     "73572",
     "11872",
     "32066",
     "13583",
     "45778",
-    "13203",
-    "87819",
-    "17896",
-    "26645",
-    "90989",
     "75282",
     "54422",
     "60886",
     "64168",
-    "90709",
-    "93276",
-    "61311",
     "35265",
     "86864",
+    "17892",
     "51115",
+    "76643",
     "48174",
     "30243",
     "89067",
@@ -1059,690 +1339,554 @@
     "7610",
     "4724",
     "36961",
-    "77795",
     "99841",
     "92618",
-    "26896",
-    "47670",
-    "43506",
-    "65268",
     "33880",
     "37590",
     "24482",
-    "26177",
     "24132",
-    "69967",
-    "33527",
-    "22634",
-    "72476",
-    "92031",
-    "98815",
-    "2427",
-    "51603",
-    "31260",
-    "13404",
-    "49105"
+    "95501"
   ],
   "unassigned": [
     {
+      "job_id": "15648",
+      "reason_code": "NO_FEASIBLE_INSERTION",
+      "message": "Заявка выполнима в принципе, но не встаёт ни в один текущий маршрут"
+    },
+    {
       "job_id": "57299",
-      "reason_code": "SHIFT_CONFLICT",
-      "message": "Работа не помещается в рабочую смену бригады"
+      "reason_code": "NO_FEASIBLE_INSERTION",
+      "message": "Заявка выполнима в принципе, но не встаёт ни в один текущий маршрут"
+    },
+    {
+      "job_id": "37272",
+      "reason_code": "NO_FEASIBLE_INSERTION",
+      "message": "Заявка выполнима в принципе, но не встаёт ни в один текущий маршрут"
+    },
+    {
+      "job_id": "34366",
+      "reason_code": "NO_FEASIBLE_INSERTION",
+      "message": "Заявка выполнима в принципе, но не встаёт ни в один текущий маршрут"
     },
     {
       "job_id": "52405",
-      "reason_code": "SHIFT_CONFLICT",
-      "message": "Работа не помещается в рабочую смену бригады"
+      "reason_code": "NO_FEASIBLE_INSERTION",
+      "message": "Заявка выполнима в принципе, но не встаёт ни в один текущий маршрут"
+    },
+    {
+      "job_id": "98182",
+      "reason_code": "NO_FEASIBLE_INSERTION",
+      "message": "Заявка выполнима в принципе, но не встаёт ни в один текущий маршрут"
     },
     {
       "job_id": "77563",
-      "reason_code": "SHIFT_CONFLICT",
-      "message": "Работа не помещается в рабочую смену бригады"
+      "reason_code": "NO_FEASIBLE_INSERTION",
+      "message": "Заявка выполнима в принципе, но не встаёт ни в один текущий маршрут"
+    },
+    {
+      "job_id": "75745",
+      "reason_code": "NO_FEASIBLE_INSERTION",
+      "message": "Заявка выполнима в принципе, но не встаёт ни в один текущий маршрут"
     },
     {
       "job_id": "65717",
-      "reason_code": "SHIFT_CONFLICT",
-      "message": "Работа не помещается в рабочую смену бригады"
+      "reason_code": "NO_FEASIBLE_INSERTION",
+      "message": "Заявка выполнима в принципе, но не встаёт ни в один текущий маршрут"
     },
     {
       "job_id": "44117",
-      "reason_code": "SHIFT_CONFLICT",
-      "message": "Работа не помещается в рабочую смену бригады"
+      "reason_code": "NO_FEASIBLE_INSERTION",
+      "message": "Заявка выполнима в принципе, но не встаёт ни в один текущий маршрут"
+    },
+    {
+      "job_id": "876",
+      "reason_code": "NO_FEASIBLE_INSERTION",
+      "message": "Заявка выполнима в принципе, но не встаёт ни в один текущий маршрут"
     },
     {
       "job_id": "62011",
-      "reason_code": "SHIFT_CONFLICT",
-      "message": "Работа не помещается в рабочую смену бригады"
+      "reason_code": "NO_FEASIBLE_INSERTION",
+      "message": "Заявка выполнима в принципе, но не встаёт ни в один текущий маршрут"
     },
     {
       "job_id": "14494",
-      "reason_code": "SHIFT_CONFLICT",
-      "message": "Работа не помещается в рабочую смену бригады"
+      "reason_code": "NO_FEASIBLE_INSERTION",
+      "message": "Заявка выполнима в принципе, но не встаёт ни в один текущий маршрут"
     },
     {
       "job_id": "78876",
-      "reason_code": "SHIFT_CONFLICT",
-      "message": "Работа не помещается в рабочую смену бригады"
+      "reason_code": "NO_FEASIBLE_INSERTION",
+      "message": "Заявка выполнима в принципе, но не встаёт ни в один текущий маршрут"
     },
     {
       "job_id": "79144",
-      "reason_code": "SHIFT_CONFLICT",
-      "message": "Работа не помещается в рабочую смену бригады"
+      "reason_code": "NO_FEASIBLE_INSERTION",
+      "message": "Заявка выполнима в принципе, но не встаёт ни в один текущий маршрут"
     },
     {
       "job_id": "58129",
-      "reason_code": "SHIFT_CONFLICT",
-      "message": "Работа не помещается в рабочую смену бригады"
+      "reason_code": "NO_FEASIBLE_INSERTION",
+      "message": "Заявка выполнима в принципе, но не встаёт ни в один текущий маршрут"
     },
     {
       "job_id": "93798",
-      "reason_code": "SHIFT_CONFLICT",
-      "message": "Работа не помещается в рабочую смену бригады"
+      "reason_code": "NO_FEASIBLE_INSERTION",
+      "message": "Заявка выполнима в принципе, но не встаёт ни в один текущий маршрут"
+    },
+    {
+      "job_id": "94447",
+      "reason_code": "NO_FEASIBLE_INSERTION",
+      "message": "Заявка выполнима в принципе, но не встаёт ни в один текущий маршрут"
+    },
+    {
+      "job_id": "94431",
+      "reason_code": "NO_FEASIBLE_INSERTION",
+      "message": "Заявка выполнима в принципе, но не встаёт ни в один текущий маршрут"
     },
     {
       "job_id": "16024",
-      "reason_code": "SHIFT_CONFLICT",
-      "message": "Работа не помещается в рабочую смену бригады"
+      "reason_code": "NO_FEASIBLE_INSERTION",
+      "message": "Заявка выполнима в принципе, но не встаёт ни в один текущий маршрут"
     },
     {
       "job_id": "6957",
-      "reason_code": "SHIFT_CONFLICT",
-      "message": "Работа не помещается в рабочую смену бригады"
+      "reason_code": "NO_FEASIBLE_INSERTION",
+      "message": "Заявка выполнима в принципе, но не встаёт ни в один текущий маршрут"
+    },
+    {
+      "job_id": "94409",
+      "reason_code": "NO_FEASIBLE_INSERTION",
+      "message": "Заявка выполнима в принципе, но не встаёт ни в один текущий маршрут"
     },
     {
       "job_id": "10245",
-      "reason_code": "SHIFT_CONFLICT",
-      "message": "Работа не помещается в рабочую смену бригады"
+      "reason_code": "NO_FEASIBLE_INSERTION",
+      "message": "Заявка выполнима в принципе, но не встаёт ни в один текущий маршрут"
     },
     {
       "job_id": "76082",
-      "reason_code": "SHIFT_CONFLICT",
-      "message": "Работа не помещается в рабочую смену бригады"
+      "reason_code": "NO_FEASIBLE_INSERTION",
+      "message": "Заявка выполнима в принципе, но не встаёт ни в один текущий маршрут"
     },
     {
       "job_id": "29890",
-      "reason_code": "SHIFT_CONFLICT",
-      "message": "Работа не помещается в рабочую смену бригады"
+      "reason_code": "NO_FEASIBLE_INSERTION",
+      "message": "Заявка выполнима в принципе, но не встаёт ни в один текущий маршрут"
     },
     {
       "job_id": "53587",
-      "reason_code": "SHIFT_CONFLICT",
-      "message": "Работа не помещается в рабочую смену бригады"
+      "reason_code": "NO_FEASIBLE_INSERTION",
+      "message": "Заявка выполнима в принципе, но не встаёт ни в один текущий маршрут"
     },
     {
       "job_id": "7939",
-      "reason_code": "SHIFT_CONFLICT",
-      "message": "Работа не помещается в рабочую смену бригады"
-    },
-    {
-      "job_id": "2915",
-      "reason_code": "SHIFT_CONFLICT",
-      "message": "Работа не помещается в рабочую смену бригады"
+      "reason_code": "NO_FEASIBLE_INSERTION",
+      "message": "Заявка выполнима в принципе, но не встаёт ни в один текущий маршрут"
     },
     {
       "job_id": "3566",
-      "reason_code": "SHIFT_CONFLICT",
-      "message": "Работа не помещается в рабочую смену бригады"
+      "reason_code": "NO_FEASIBLE_INSERTION",
+      "message": "Заявка выполнима в принципе, но не встаёт ни в один текущий маршрут"
     },
     {
       "job_id": "55454",
-      "reason_code": "SHIFT_CONFLICT",
-      "message": "Работа не помещается в рабочую смену бригады"
+      "reason_code": "NO_FEASIBLE_INSERTION",
+      "message": "Заявка выполнима в принципе, но не встаёт ни в один текущий маршрут"
     },
     {
       "job_id": "57353",
-      "reason_code": "SHIFT_CONFLICT",
-      "message": "Работа не помещается в рабочую смену бригады"
+      "reason_code": "NO_FEASIBLE_INSERTION",
+      "message": "Заявка выполнима в принципе, но не встаёт ни в один текущий маршрут"
     },
     {
       "job_id": "78920",
-      "reason_code": "SHIFT_CONFLICT",
-      "message": "Работа не помещается в рабочую смену бригады"
+      "reason_code": "NO_FEASIBLE_INSERTION",
+      "message": "Заявка выполнима в принципе, но не встаёт ни в один текущий маршрут"
     },
     {
       "job_id": "23094",
-      "reason_code": "SHIFT_CONFLICT",
-      "message": "Работа не помещается в рабочую смену бригады"
+      "reason_code": "NO_FEASIBLE_INSERTION",
+      "message": "Заявка выполнима в принципе, но не встаёт ни в один текущий маршрут"
     },
     {
       "job_id": "60141",
-      "reason_code": "SHIFT_CONFLICT",
-      "message": "Работа не помещается в рабочую смену бригады"
+      "reason_code": "NO_FEASIBLE_INSERTION",
+      "message": "Заявка выполнима в принципе, но не встаёт ни в один текущий маршрут"
     },
     {
       "job_id": "79450",
-      "reason_code": "SHIFT_CONFLICT",
-      "message": "Работа не помещается в рабочую смену бригады"
+      "reason_code": "NO_FEASIBLE_INSERTION",
+      "message": "Заявка выполнима в принципе, но не встаёт ни в один текущий маршрут"
     },
     {
       "job_id": "40698",
-      "reason_code": "SHIFT_CONFLICT",
-      "message": "Работа не помещается в рабочую смену бригады"
+      "reason_code": "NO_FEASIBLE_INSERTION",
+      "message": "Заявка выполнима в принципе, но не встаёт ни в один текущий маршрут"
+    },
+    {
+      "job_id": "93544",
+      "reason_code": "NO_FEASIBLE_INSERTION",
+      "message": "Заявка выполнима в принципе, но не встаёт ни в один текущий маршрут"
     },
     {
       "job_id": "19203",
-      "reason_code": "SHIFT_CONFLICT",
-      "message": "Работа не помещается в рабочую смену бригады"
+      "reason_code": "NO_FEASIBLE_INSERTION",
+      "message": "Заявка выполнима в принципе, но не встаёт ни в один текущий маршрут"
     },
     {
       "job_id": "90373",
-      "reason_code": "SHIFT_CONFLICT",
-      "message": "Работа не помещается в рабочую смену бригады"
+      "reason_code": "NO_FEASIBLE_INSERTION",
+      "message": "Заявка выполнима в принципе, но не встаёт ни в один текущий маршрут"
     },
     {
       "job_id": "79719",
-      "reason_code": "SHIFT_CONFLICT",
-      "message": "Работа не помещается в рабочую смену бригады"
+      "reason_code": "NO_FEASIBLE_INSERTION",
+      "message": "Заявка выполнима в принципе, но не встаёт ни в один текущий маршрут"
     },
     {
       "job_id": "71388",
-      "reason_code": "SHIFT_CONFLICT",
-      "message": "Работа не помещается в рабочую смену бригады"
+      "reason_code": "NO_FEASIBLE_INSERTION",
+      "message": "Заявка выполнима в принципе, но не встаёт ни в один текущий маршрут"
     },
     {
       "job_id": "30769",
-      "reason_code": "SHIFT_CONFLICT",
-      "message": "Работа не помещается в рабочую смену бригады"
+      "reason_code": "NO_FEASIBLE_INSERTION",
+      "message": "Заявка выполнима в принципе, но не встаёт ни в один текущий маршрут"
     },
     {
       "job_id": "82808",
-      "reason_code": "SHIFT_CONFLICT",
-      "message": "Работа не помещается в рабочую смену бригады"
-    },
-    {
-      "job_id": "63591",
-      "reason_code": "SHIFT_CONFLICT",
-      "message": "Работа не помещается в рабочую смену бригады"
+      "reason_code": "NO_FEASIBLE_INSERTION",
+      "message": "Заявка выполнима в принципе, но не встаёт ни в один текущий маршрут"
     },
     {
       "job_id": "53552",
-      "reason_code": "SHIFT_CONFLICT",
-      "message": "Работа не помещается в рабочую смену бригады"
+      "reason_code": "NO_FEASIBLE_INSERTION",
+      "message": "Заявка выполнима в принципе, но не встаёт ни в один текущий маршрут"
     },
     {
       "job_id": "35057",
-      "reason_code": "SHIFT_CONFLICT",
-      "message": "Работа не помещается в рабочую смену бригады"
+      "reason_code": "NO_FEASIBLE_INSERTION",
+      "message": "Заявка выполнима в принципе, но не встаёт ни в один текущий маршрут"
     },
     {
       "job_id": "2245",
-      "reason_code": "SHIFT_CONFLICT",
-      "message": "Работа не помещается в рабочую смену бригады"
+      "reason_code": "NO_FEASIBLE_INSERTION",
+      "message": "Заявка выполнима в принципе, но не встаёт ни в один текущий маршрут"
     },
     {
       "job_id": "89696",
-      "reason_code": "SHIFT_CONFLICT",
-      "message": "Работа не помещается в рабочую смену бригады"
+      "reason_code": "NO_FEASIBLE_INSERTION",
+      "message": "Заявка выполнима в принципе, но не встаёт ни в один текущий маршрут"
     },
     {
       "job_id": "20362",
-      "reason_code": "SHIFT_CONFLICT",
-      "message": "Работа не помещается в рабочую смену бригады"
+      "reason_code": "NO_FEASIBLE_INSERTION",
+      "message": "Заявка выполнима в принципе, но не встаёт ни в один текущий маршрут"
     },
     {
-      "job_id": "14416",
-      "reason_code": "SHIFT_CONFLICT",
-      "message": "Работа не помещается в рабочую смену бригады"
+      "job_id": "87693",
+      "reason_code": "NO_FEASIBLE_INSERTION",
+      "message": "Заявка выполнима в принципе, но не встаёт ни в один текущий маршрут"
     },
     {
-      "job_id": "68359",
-      "reason_code": "SHIFT_CONFLICT",
-      "message": "Работа не помещается в рабочую смену бригады"
+      "job_id": "35675",
+      "reason_code": "NO_FEASIBLE_INSERTION",
+      "message": "Заявка выполнима в принципе, но не встаёт ни в один текущий маршрут"
     },
     {
       "job_id": "68946",
-      "reason_code": "SHIFT_CONFLICT",
-      "message": "Работа не помещается в рабочую смену бригады"
+      "reason_code": "NO_FEASIBLE_INSERTION",
+      "message": "Заявка выполнима в принципе, но не встаёт ни в один текущий маршрут"
     },
     {
       "job_id": "76173",
-      "reason_code": "SHIFT_CONFLICT",
-      "message": "Работа не помещается в рабочую смену бригады"
+      "reason_code": "NO_FEASIBLE_INSERTION",
+      "message": "Заявка выполнима в принципе, но не встаёт ни в один текущий маршрут"
+    },
+    {
+      "job_id": "80548",
+      "reason_code": "NO_FEASIBLE_INSERTION",
+      "message": "Заявка выполнима в принципе, но не встаёт ни в один текущий маршрут"
+    },
+    {
+      "job_id": "47560",
+      "reason_code": "NO_FEASIBLE_INSERTION",
+      "message": "Заявка выполнима в принципе, но не встаёт ни в один текущий маршрут"
     },
     {
       "job_id": "66315",
-      "reason_code": "SHIFT_CONFLICT",
-      "message": "Работа не помещается в рабочую смену бригады"
-    },
-    {
-      "job_id": "10135",
-      "reason_code": "SHIFT_CONFLICT",
-      "message": "Работа не помещается в рабочую смену бригады"
+      "reason_code": "NO_FEASIBLE_INSERTION",
+      "message": "Заявка выполнима в принципе, но не встаёт ни в один текущий маршрут"
     },
     {
       "job_id": "18754",
-      "reason_code": "SHIFT_CONFLICT",
-      "message": "Работа не помещается в рабочую смену бригады"
+      "reason_code": "NO_FEASIBLE_INSERTION",
+      "message": "Заявка выполнима в принципе, но не встаёт ни в один текущий маршрут"
     },
     {
       "job_id": "6185",
-      "reason_code": "SHIFT_CONFLICT",
-      "message": "Работа не помещается в рабочую смену бригады"
+      "reason_code": "NO_FEASIBLE_INSERTION",
+      "message": "Заявка выполнима в принципе, но не встаёт ни в один текущий маршрут"
     },
     {
       "job_id": "94575",
-      "reason_code": "SHIFT_CONFLICT",
-      "message": "Работа не помещается в рабочую смену бригады"
+      "reason_code": "NO_FEASIBLE_INSERTION",
+      "message": "Заявка выполнима в принципе, но не встаёт ни в один текущий маршрут"
     },
     {
       "job_id": "74198",
-      "reason_code": "SHIFT_CONFLICT",
-      "message": "Работа не помещается в рабочую смену бригады"
+      "reason_code": "NO_FEASIBLE_INSERTION",
+      "message": "Заявка выполнима в принципе, но не встаёт ни в один текущий маршрут"
     },
     {
       "job_id": "46393",
-      "reason_code": "SHIFT_CONFLICT",
-      "message": "Работа не помещается в рабочую смену бригады"
+      "reason_code": "NO_FEASIBLE_INSERTION",
+      "message": "Заявка выполнима в принципе, но не встаёт ни в один текущий маршрут"
     },
     {
       "job_id": "84627",
-      "reason_code": "SHIFT_CONFLICT",
-      "message": "Работа не помещается в рабочую смену бригады"
-    },
-    {
-      "job_id": "23637",
-      "reason_code": "SHIFT_CONFLICT",
-      "message": "Работа не помещается в рабочую смену бригады"
+      "reason_code": "NO_FEASIBLE_INSERTION",
+      "message": "Заявка выполнима в принципе, но не встаёт ни в один текущий маршрут"
     },
     {
       "job_id": "97770",
-      "reason_code": "SHIFT_CONFLICT",
-      "message": "Работа не помещается в рабочую смену бригады"
+      "reason_code": "NO_FEASIBLE_INSERTION",
+      "message": "Заявка выполнима в принципе, но не встаёт ни в один текущий маршрут"
     },
     {
       "job_id": "52576",
-      "reason_code": "SHIFT_CONFLICT",
-      "message": "Работа не помещается в рабочую смену бригады"
+      "reason_code": "NO_FEASIBLE_INSERTION",
+      "message": "Заявка выполнима в принципе, но не встаёт ни в один текущий маршрут"
     },
     {
       "job_id": "68476",
-      "reason_code": "SHIFT_CONFLICT",
-      "message": "Работа не помещается в рабочую смену бригады"
+      "reason_code": "NO_FEASIBLE_INSERTION",
+      "message": "Заявка выполнима в принципе, но не встаёт ни в один текущий маршрут"
     },
     {
       "job_id": "50219",
-      "reason_code": "SHIFT_CONFLICT",
-      "message": "Работа не помещается в рабочую смену бригады"
+      "reason_code": "NO_FEASIBLE_INSERTION",
+      "message": "Заявка выполнима в принципе, но не встаёт ни в один текущий маршрут"
     },
     {
       "job_id": "76678",
-      "reason_code": "SHIFT_CONFLICT",
-      "message": "Работа не помещается в рабочую смену бригады"
+      "reason_code": "NO_FEASIBLE_INSERTION",
+      "message": "Заявка выполнима в принципе, но не встаёт ни в один текущий маршрут"
     },
     {
       "job_id": "32807",
-      "reason_code": "SHIFT_CONFLICT",
-      "message": "Работа не помещается в рабочую смену бригады"
-    },
-    {
-      "job_id": "40111",
-      "reason_code": "SHIFT_CONFLICT",
-      "message": "Работа не помещается в рабочую смену бригады"
+      "reason_code": "NO_FEASIBLE_INSERTION",
+      "message": "Заявка выполнима в принципе, но не встаёт ни в один текущий маршрут"
     },
     {
       "job_id": "63577",
-      "reason_code": "SHIFT_CONFLICT",
-      "message": "Работа не помещается в рабочую смену бригады"
+      "reason_code": "NO_FEASIBLE_INSERTION",
+      "message": "Заявка выполнима в принципе, но не встаёт ни в один текущий маршрут"
     },
     {
       "job_id": "11899",
-      "reason_code": "SHIFT_CONFLICT",
-      "message": "Работа не помещается в рабочую смену бригады"
+      "reason_code": "NO_FEASIBLE_INSERTION",
+      "message": "Заявка выполнима в принципе, но не встаёт ни в один текущий маршрут"
     },
     {
       "job_id": "40919",
-      "reason_code": "SHIFT_CONFLICT",
-      "message": "Работа не помещается в рабочую смену бригады"
+      "reason_code": "NO_FEASIBLE_INSERTION",
+      "message": "Заявка выполнима в принципе, но не встаёт ни в один текущий маршрут"
     },
     {
       "job_id": "95692",
-      "reason_code": "SHIFT_CONFLICT",
-      "message": "Работа не помещается в рабочую смену бригады"
-    },
-    {
-      "job_id": "20263",
-      "reason_code": "SHIFT_CONFLICT",
-      "message": "Работа не помещается в рабочую смену бригады"
-    },
-    {
-      "job_id": "12263",
-      "reason_code": "SHIFT_CONFLICT",
-      "message": "Работа не помещается в рабочую смену бригады"
+      "reason_code": "NO_FEASIBLE_INSERTION",
+      "message": "Заявка выполнима в принципе, но не встаёт ни в один текущий маршрут"
     },
     {
       "job_id": "80308",
-      "reason_code": "SHIFT_CONFLICT",
-      "message": "Работа не помещается в рабочую смену бригады"
+      "reason_code": "NO_FEASIBLE_INSERTION",
+      "message": "Заявка выполнима в принципе, но не встаёт ни в один текущий маршрут"
     },
     {
       "job_id": "46513",
-      "reason_code": "SHIFT_CONFLICT",
-      "message": "Работа не помещается в рабочую смену бригады"
+      "reason_code": "NO_FEASIBLE_INSERTION",
+      "message": "Заявка выполнима в принципе, но не встаёт ни в один текущий маршрут"
     },
     {
       "job_id": "5406",
-      "reason_code": "SHIFT_CONFLICT",
-      "message": "Работа не помещается в рабочую смену бригады"
-    },
-    {
-      "job_id": "48227",
-      "reason_code": "SHIFT_CONFLICT",
-      "message": "Работа не помещается в рабочую смену бригады"
-    },
-    {
-      "job_id": "60720",
-      "reason_code": "SHIFT_CONFLICT",
-      "message": "Работа не помещается в рабочую смену бригады"
-    },
-    {
-      "job_id": "41912",
-      "reason_code": "SHIFT_CONFLICT",
-      "message": "Работа не помещается в рабочую смену бригады"
-    },
-    {
-      "job_id": "4893",
-      "reason_code": "SHIFT_CONFLICT",
-      "message": "Работа не помещается в рабочую смену бригады"
+      "reason_code": "NO_FEASIBLE_INSERTION",
+      "message": "Заявка выполнима в принципе, но не встаёт ни в один текущий маршрут"
     },
     {
       "job_id": "24076",
-      "reason_code": "SHIFT_CONFLICT",
-      "message": "Работа не помещается в рабочую смену бригады"
+      "reason_code": "NO_FEASIBLE_INSERTION",
+      "message": "Заявка выполнима в принципе, но не встаёт ни в один текущий маршрут"
     },
     {
-      "job_id": "46199",
-      "reason_code": "SHIFT_CONFLICT",
-      "message": "Работа не помещается в рабочую смену бригады"
+      "job_id": "19216",
+      "reason_code": "NO_FEASIBLE_INSERTION",
+      "message": "Заявка выполнима в принципе, но не встаёт ни в один текущий маршрут"
     },
     {
       "job_id": "63894",
-      "reason_code": "SHIFT_CONFLICT",
-      "message": "Работа не помещается в рабочую смену бригады"
+      "reason_code": "NO_FEASIBLE_INSERTION",
+      "message": "Заявка выполнима в принципе, но не встаёт ни в один текущий маршрут"
     },
     {
       "job_id": "12329",
-      "reason_code": "SHIFT_CONFLICT",
-      "message": "Работа не помещается в рабочую смену бригады"
+      "reason_code": "NO_FEASIBLE_INSERTION",
+      "message": "Заявка выполнима в принципе, но не встаёт ни в один текущий маршрут"
     },
     {
       "job_id": "3151",
-      "reason_code": "SHIFT_CONFLICT",
-      "message": "Работа не помещается в рабочую смену бригады"
+      "reason_code": "NO_FEASIBLE_INSERTION",
+      "message": "Заявка выполнима в принципе, но не встаёт ни в один текущий маршрут"
     },
     {
       "job_id": "20055",
-      "reason_code": "SHIFT_CONFLICT",
-      "message": "Работа не помещается в рабочую смену бригады"
-    },
-    {
-      "job_id": "51133",
-      "reason_code": "SHIFT_CONFLICT",
-      "message": "Работа не помещается в рабочую смену бригады"
+      "reason_code": "NO_FEASIBLE_INSERTION",
+      "message": "Заявка выполнима в принципе, но не встаёт ни в один текущий маршрут"
     },
     {
       "job_id": "26845",
-      "reason_code": "SHIFT_CONFLICT",
-      "message": "Работа не помещается в рабочую смену бригады"
-    },
-    {
-      "job_id": "48238",
-      "reason_code": "SHIFT_CONFLICT",
-      "message": "Работа не помещается в рабочую смену бригады"
-    },
-    {
-      "job_id": "47330",
-      "reason_code": "SHIFT_CONFLICT",
-      "message": "Работа не помещается в рабочую смену бригады"
+      "reason_code": "NO_FEASIBLE_INSERTION",
+      "message": "Заявка выполнима в принципе, но не встаёт ни в один текущий маршрут"
     },
     {
       "job_id": "73572",
-      "reason_code": "SHIFT_CONFLICT",
-      "message": "Работа не помещается в рабочую смену бригады"
+      "reason_code": "NO_FEASIBLE_INSERTION",
+      "message": "Заявка выполнима в принципе, но не встаёт ни в один текущий маршрут"
     },
     {
       "job_id": "11872",
-      "reason_code": "SHIFT_CONFLICT",
-      "message": "Работа не помещается в рабочую смену бригады"
+      "reason_code": "NO_FEASIBLE_INSERTION",
+      "message": "Заявка выполнима в принципе, но не встаёт ни в один текущий маршрут"
     },
     {
       "job_id": "32066",
-      "reason_code": "SHIFT_CONFLICT",
-      "message": "Работа не помещается в рабочую смену бригады"
+      "reason_code": "NO_FEASIBLE_INSERTION",
+      "message": "Заявка выполнима в принципе, но не встаёт ни в один текущий маршрут"
     },
     {
       "job_id": "13583",
-      "reason_code": "SHIFT_CONFLICT",
-      "message": "Работа не помещается в рабочую смену бригады"
+      "reason_code": "NO_FEASIBLE_INSERTION",
+      "message": "Заявка выполнима в принципе, но не встаёт ни в один текущий маршрут"
     },
     {
       "job_id": "45778",
-      "reason_code": "SHIFT_CONFLICT",
-      "message": "Работа не помещается в рабочую смену бригады"
-    },
-    {
-      "job_id": "13203",
-      "reason_code": "SHIFT_CONFLICT",
-      "message": "Работа не помещается в рабочую смену бригады"
-    },
-    {
-      "job_id": "87819",
-      "reason_code": "SHIFT_CONFLICT",
-      "message": "Работа не помещается в рабочую смену бригады"
-    },
-    {
-      "job_id": "17896",
-      "reason_code": "SHIFT_CONFLICT",
-      "message": "Работа не помещается в рабочую смену бригады"
-    },
-    {
-      "job_id": "26645",
-      "reason_code": "SHIFT_CONFLICT",
-      "message": "Работа не помещается в рабочую смену бригады"
-    },
-    {
-      "job_id": "90989",
-      "reason_code": "SHIFT_CONFLICT",
-      "message": "Работа не помещается в рабочую смену бригады"
+      "reason_code": "NO_FEASIBLE_INSERTION",
+      "message": "Заявка выполнима в принципе, но не встаёт ни в один текущий маршрут"
     },
     {
       "job_id": "75282",
-      "reason_code": "SHIFT_CONFLICT",
-      "message": "Работа не помещается в рабочую смену бригады"
+      "reason_code": "NO_FEASIBLE_INSERTION",
+      "message": "Заявка выполнима в принципе, но не встаёт ни в один текущий маршрут"
     },
     {
       "job_id": "54422",
-      "reason_code": "SHIFT_CONFLICT",
-      "message": "Работа не помещается в рабочую смену бригады"
+      "reason_code": "NO_FEASIBLE_INSERTION",
+      "message": "Заявка выполнима в принципе, но не встаёт ни в один текущий маршрут"
     },
     {
       "job_id": "60886",
-      "reason_code": "SHIFT_CONFLICT",
-      "message": "Работа не помещается в рабочую смену бригады"
+      "reason_code": "NO_FEASIBLE_INSERTION",
+      "message": "Заявка выполнима в принципе, но не встаёт ни в один текущий маршрут"
     },
     {
       "job_id": "64168",
-      "reason_code": "SHIFT_CONFLICT",
-      "message": "Работа не помещается в рабочую смену бригады"
-    },
-    {
-      "job_id": "90709",
-      "reason_code": "SHIFT_CONFLICT",
-      "message": "Работа не помещается в рабочую смену бригады"
-    },
-    {
-      "job_id": "93276",
-      "reason_code": "SHIFT_CONFLICT",
-      "message": "Работа не помещается в рабочую смену бригады"
-    },
-    {
-      "job_id": "61311",
-      "reason_code": "SHIFT_CONFLICT",
-      "message": "Работа не помещается в рабочую смену бригады"
+      "reason_code": "NO_FEASIBLE_INSERTION",
+      "message": "Заявка выполнима в принципе, но не встаёт ни в один текущий маршрут"
     },
     {
       "job_id": "35265",
-      "reason_code": "SHIFT_CONFLICT",
-      "message": "Работа не помещается в рабочую смену бригады"
+      "reason_code": "NO_FEASIBLE_INSERTION",
+      "message": "Заявка выполнима в принципе, но не встаёт ни в один текущий маршрут"
     },
     {
       "job_id": "86864",
-      "reason_code": "SHIFT_CONFLICT",
-      "message": "Работа не помещается в рабочую смену бригады"
+      "reason_code": "NO_FEASIBLE_INSERTION",
+      "message": "Заявка выполнима в принципе, но не встаёт ни в один текущий маршрут"
+    },
+    {
+      "job_id": "17892",
+      "reason_code": "NO_FEASIBLE_INSERTION",
+      "message": "Заявка выполнима в принципе, но не встаёт ни в один текущий маршрут"
     },
     {
       "job_id": "51115",
-      "reason_code": "SHIFT_CONFLICT",
-      "message": "Работа не помещается в рабочую смену бригады"
+      "reason_code": "NO_FEASIBLE_INSERTION",
+      "message": "Заявка выполнима в принципе, но не встаёт ни в один текущий маршрут"
+    },
+    {
+      "job_id": "76643",
+      "reason_code": "NO_FEASIBLE_INSERTION",
+      "message": "Заявка выполнима в принципе, но не встаёт ни в один текущий маршрут"
     },
     {
       "job_id": "48174",
-      "reason_code": "SHIFT_CONFLICT",
-      "message": "Работа не помещается в рабочую смену бригады"
+      "reason_code": "NO_FEASIBLE_INSERTION",
+      "message": "Заявка выполнима в принципе, но не встаёт ни в один текущий маршрут"
     },
     {
       "job_id": "30243",
-      "reason_code": "SHIFT_CONFLICT",
-      "message": "Работа не помещается в рабочую смену бригады"
+      "reason_code": "NO_FEASIBLE_INSERTION",
+      "message": "Заявка выполнима в принципе, но не встаёт ни в один текущий маршрут"
     },
     {
       "job_id": "89067",
-      "reason_code": "SHIFT_CONFLICT",
-      "message": "Работа не помещается в рабочую смену бригады"
+      "reason_code": "NO_FEASIBLE_INSERTION",
+      "message": "Заявка выполнима в принципе, но не встаёт ни в один текущий маршрут"
     },
     {
       "job_id": "33507",
-      "reason_code": "SHIFT_CONFLICT",
-      "message": "Работа не помещается в рабочую смену бригады"
+      "reason_code": "NO_FEASIBLE_INSERTION",
+      "message": "Заявка выполнима в принципе, но не встаёт ни в один текущий маршрут"
     },
     {
       "job_id": "7610",
-      "reason_code": "SHIFT_CONFLICT",
-      "message": "Работа не помещается в рабочую смену бригады"
+      "reason_code": "NO_FEASIBLE_INSERTION",
+      "message": "Заявка выполнима в принципе, но не встаёт ни в один текущий маршрут"
     },
     {
       "job_id": "4724",
-      "reason_code": "SHIFT_CONFLICT",
-      "message": "Работа не помещается в рабочую смену бригады"
+      "reason_code": "NO_FEASIBLE_INSERTION",
+      "message": "Заявка выполнима в принципе, но не встаёт ни в один текущий маршрут"
     },
     {
       "job_id": "36961",
-      "reason_code": "SHIFT_CONFLICT",
-      "message": "Работа не помещается в рабочую смену бригады"
-    },
-    {
-      "job_id": "77795",
-      "reason_code": "SHIFT_CONFLICT",
-      "message": "Работа не помещается в рабочую смену бригады"
+      "reason_code": "NO_FEASIBLE_INSERTION",
+      "message": "Заявка выполнима в принципе, но не встаёт ни в один текущий маршрут"
     },
     {
       "job_id": "99841",
-      "reason_code": "SHIFT_CONFLICT",
-      "message": "Работа не помещается в рабочую смену бригады"
+      "reason_code": "NO_FEASIBLE_INSERTION",
+      "message": "Заявка выполнима в принципе, но не встаёт ни в один текущий маршрут"
     },
     {
       "job_id": "92618",
-      "reason_code": "SHIFT_CONFLICT",
-      "message": "Работа не помещается в рабочую смену бригады"
-    },
-    {
-      "job_id": "26896",
-      "reason_code": "SHIFT_CONFLICT",
-      "message": "Работа не помещается в рабочую смену бригады"
-    },
-    {
-      "job_id": "47670",
-      "reason_code": "SHIFT_CONFLICT",
-      "message": "Работа не помещается в рабочую смену бригады"
-    },
-    {
-      "job_id": "43506",
-      "reason_code": "SHIFT_CONFLICT",
-      "message": "Работа не помещается в рабочую смену бригады"
-    },
-    {
-      "job_id": "65268",
-      "reason_code": "SHIFT_CONFLICT",
-      "message": "Работа не помещается в рабочую смену бригады"
+      "reason_code": "NO_FEASIBLE_INSERTION",
+      "message": "Заявка выполнима в принципе, но не встаёт ни в один текущий маршрут"
     },
     {
       "job_id": "33880",
-      "reason_code": "SHIFT_CONFLICT",
-      "message": "Работа не помещается в рабочую смену бригады"
+      "reason_code": "NO_FEASIBLE_INSERTION",
+      "message": "Заявка выполнима в принципе, но не встаёт ни в один текущий маршрут"
     },
     {
       "job_id": "37590",
-      "reason_code": "SHIFT_CONFLICT",
-      "message": "Работа не помещается в рабочую смену бригады"
+      "reason_code": "NO_FEASIBLE_INSERTION",
+      "message": "Заявка выполнима в принципе, но не встаёт ни в один текущий маршрут"
     },
     {
       "job_id": "24482",
-      "reason_code": "SHIFT_CONFLICT",
-      "message": "Работа не помещается в рабочую смену бригады"
-    },
-    {
-      "job_id": "26177",
-      "reason_code": "SHIFT_CONFLICT",
-      "message": "Работа не помещается в рабочую смену бригады"
+      "reason_code": "NO_FEASIBLE_INSERTION",
+      "message": "Заявка выполнима в принципе, но не встаёт ни в один текущий маршрут"
     },
     {
       "job_id": "24132",
-      "reason_code": "SHIFT_CONFLICT",
-      "message": "Работа не помещается в рабочую смену бригады"
+      "reason_code": "NO_FEASIBLE_INSERTION",
+      "message": "Заявка выполнима в принципе, но не встаёт ни в один текущий маршрут"
     },
     {
-      "job_id": "69967",
-      "reason_code": "SHIFT_CONFLICT",
-      "message": "Работа не помещается в рабочую смену бригады"
-    },
-    {
-      "job_id": "33527",
-      "reason_code": "SHIFT_CONFLICT",
-      "message": "Работа не помещается в рабочую смену бригады"
-    },
-    {
-      "job_id": "22634",
-      "reason_code": "SHIFT_CONFLICT",
-      "message": "Работа не помещается в рабочую смену бригады"
-    },
-    {
-      "job_id": "72476",
-      "reason_code": "SHIFT_CONFLICT",
-      "message": "Работа не помещается в рабочую смену бригады"
-    },
-    {
-      "job_id": "92031",
-      "reason_code": "SHIFT_CONFLICT",
-      "message": "Работа не помещается в рабочую смену бригады"
-    },
-    {
-      "job_id": "98815",
-      "reason_code": "SHIFT_CONFLICT",
-      "message": "Работа не помещается в рабочую смену бригады"
-    },
-    {
-      "job_id": "2427",
-      "reason_code": "SHIFT_CONFLICT",
-      "message": "Работа не помещается в рабочую смену бригады"
-    },
-    {
-      "job_id": "51603",
-      "reason_code": "SHIFT_CONFLICT",
-      "message": "Работа не помещается в рабочую смену бригады"
-    },
-    {
-      "job_id": "31260",
-      "reason_code": "SHIFT_CONFLICT",
-      "message": "Работа не помещается в рабочую смену бригады"
-    },
-    {
-      "job_id": "13404",
-      "reason_code": "SHIFT_CONFLICT",
-      "message": "Работа не помещается в рабочую смену бригады"
-    },
-    {
-      "job_id": "49105",
-      "reason_code": "SHIFT_CONFLICT",
-      "message": "Работа не помещается в рабочую смену бригады"
+      "job_id": "95501",
+      "reason_code": "NO_FEASIBLE_INSERTION",
+      "message": "Заявка выполнима в принципе, но не встаёт ни в один текущий маршрут"
     }
   ],
   "status": "VALID"

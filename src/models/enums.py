@@ -2,9 +2,12 @@ from enum import StrEnum
 
 
 class TransportType(StrEnum):
+    """Типы транспорта бригады (поддерживаются матрицей перемещений)."""
+
     CAR = "CAR"
-    TRUCK = "TRUCK"
-    MOTORCYCLE = "MOTORCYCLE"
+    WALK = "WALK"
+    BICYCLE = "BICYCLE"
+    PUBLIC_TRANSPORT = "PUBLIC_TRANSPORT"
 
 
 class Skill(StrEnum):
@@ -17,8 +20,7 @@ class JobPriority(StrEnum):
     LOW = "LOW"
     NORMAL = "NORMAL"
     HIGH = "HIGH"
-    URGENT = "URGENT"   
-
+    URGENT = "URGENT"
 
 
 class AssignmentStatus(StrEnum):
@@ -31,4 +33,5 @@ class UnassignmentReason(StrEnum):
     NO_TIME_WINDOW = "NO_TIME_WINDOW"
     SHIFT_CONFLICT = "SHIFT_CONFLICT"
     NO_TRAVEL_DATA = "NO_TRAVEL_DATA"
+    NO_FEASIBLE_INSERTION = "NO_FEASIBLE_INSERTION"
     OPTIMIZER_LIMIT = "OPTIMIZER_LIMIT"

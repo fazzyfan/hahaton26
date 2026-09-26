@@ -37,7 +37,7 @@ def test_travel_matrix_respects_transport_type():
     )
 
     assert matrix.travel_min("DEPOT", "LOC-A", TransportType.CAR) == 15
-    assert matrix.travel_min("DEPOT", "LOC-A", TransportType.TRUCK) is None
+    assert matrix.travel_min("DEPOT", "LOC-A", TransportType.WALK) is None
 
 
 def test_travel_matrix_missing_pair_returns_none():

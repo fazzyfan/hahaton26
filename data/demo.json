@@ -62,30 +62,36 @@
       ],
       "start_location_id": "DEPOT",
       "shift_start": "2026-09-17T08:00:00",
-      "shift_end": "2026-09-17T17:00:00"
+      "shift_end": "2026-09-17T17:00:00",
+      "service_districts": ["Восток"],
+      "allowed_work_types": ["CONNECTION", "LOCAL_WORK", "EMERGENCY"]
     },
     {
       "id": "ENG-002",
       "name": "Алексей Смирнов",
-      "transport_type": "TRUCK",
+      "transport_type": "CAR",
       "qualifications": [
         "MECHANIC"
       ],
       "start_location_id": "DEPOT",
       "shift_start": "2026-09-17T09:00:00",
-      "shift_end": "2026-09-17T18:00:00"
+      "shift_end": "2026-09-17T18:00:00",
+      "service_districts": ["Юго-восток"],
+      "allowed_work_types": ["CONNECTION", "LOCAL_WORK", "EMERGENCY"]
     },
     {
       "id": "ENG-003",
       "name": "Мария Иванова",
-      "transport_type": "MOTORCYCLE",
+      "transport_type": "BICYCLE",
       "qualifications": [
         "ELECTRIC",
         "NETWORK"
       ],
       "start_location_id": "DEPOT",
       "shift_start": "2026-09-17T08:30:00",
-      "shift_end": "2026-09-17T16:00:00"
+      "shift_end": "2026-09-17T16:00:00",
+      "service_districts": ["Югоцентр"],
+      "allowed_work_types": ["CONNECTION", "LOCAL_WORK", "EMERGENCY"]
     }
   ]
 }

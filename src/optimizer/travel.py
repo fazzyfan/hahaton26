@@ -13,6 +13,10 @@ class TravelMatrix:
 
     Отсутствующая пара возвращает None — никакого выдуманного
     нулевого времени (причина NO_TRAVEL_DATA).
+
+    Дубликаты ключа (origin, destination, transport_type) запрещены:
+    повторная запись с другим временем означала бы молчаливую перезапись
+    значений, поэтому при загрузке выбрасывается ValueError.
     """
 
     def __init__(self, entries: list[TravelMatrixEntry]) -> None:
@@ -24,6 +28,19 @@ class TravelMatrix:
                 entry.destination_location_id,
                 entry.transport_type,
             )
+
+            if key in self._entries:
+                previous = self._entries[key]
+
+                raise ValueError(
+                    "Дубликат записи матрицы перемещений: "
+                    f"{entry.origin_location_id!r} -> "
+                    f"{entry.destination_location_id!r} / "
+                    f"{entry.transport_type.value!r} "
+                    f"(matrix_version {previous.matrix_version!r} и "
+                    f"{entry.matrix_version!r})"
+                )
+
             self._entries[key] = entry
 
     def find(
