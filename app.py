@@ -51,40 +51,146 @@ REFERENCE_FILES = [
 ]
 
 YELLOW = "#F5C518"
+YELLOW_DARK = "#E0AE00"
 DARK = "#1A1A1A"
 LIGHT = "#FAFAF7"
+MUTED = "#6B7280"
 
 PAGE_CSS = f"""
 <style>
+    :root {{
+        --yellow: {YELLOW};
+        --dark: {DARK};
+        --muted: {MUTED};
+    }}
+
     .stApp {{
         background-color: {LIGHT};
         color: {DARK};
+        font-family: "Segoe UI", -apple-system, "Helvetica Neue", Arial, sans-serif;
     }}
+
+    /* Заголовки */
     h1, h2, h3 {{
         color: {DARK};
+        letter-spacing: -0.2px;
     }}
+
+    .app-hero {{
+        background: linear-gradient(135deg, #ffffff 0%, #fff8e1 100%);
+        border: 1px solid #f0e6c0;
+        border-radius: 14px;
+        padding: 18px 22px;
+        margin-bottom: 18px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }}
+    .app-hero h1 {{
+        margin: 0;
+        font-size: 26px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }}
+    .app-hero .tagline {{
+        color: {MUTED};
+        margin-top: 4px;
+        font-size: 14px;
+    }}
+
+    /* Карточки метрик */
     .metric-card {{
         background-color: #ffffff;
-        border-left: 4px solid {YELLOW};
-        border-radius: 6px;
-        padding: 10px 14px;
-        margin-bottom: 6px;
-        box-shadow: 0 1px 2px rgba(0,0,0,0.06);
+        border: 1px solid #ece9df;
+        border-radius: 12px;
+        padding: 12px 16px;
+        margin-bottom: 8px;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+        transition: transform 0.08s ease;
     }}
+    .metric-card:hover {{ transform: translateY(-1px); }}
+    .metric-icon {{ font-size: 20px; }}
     .metric-label {{
-        font-size: 12px;
-        color: #666666;
+        font-size: 11px;
+        color: {MUTED};
         text-transform: uppercase;
-        letter-spacing: 0.4px;
+        letter-spacing: 0.5px;
+        margin-top: 2px;
     }}
     .metric-value {{
-        font-size: 20px;
-        font-weight: 700;
+        font-size: 24px;
+        font-weight: 800;
         color: {DARK};
+        margin-top: 2px;
     }}
+    .metric-accent {{
+        border-top: 3px solid {YELLOW};
+    }}
+
+    /* Бейджи статусов */
+    .badge {{
+        display: inline-block;
+        padding: 3px 10px;
+        border-radius: 999px;
+        font-size: 13px;
+        font-weight: 600;
+    }}
+    .badge-ok {{ background: #e6f4ea; color: #1a7f37; }}
+    .badge-bad {{ background: #fdecea; color: #c62828; }}
+    .badge-warn {{ background: #fff4e0; color: #b26a00; }}
+
+    /* Карточка файла */
+    .file-card {{
+        background: #ffffff;
+        border: 1px solid #ece9df;
+        border-radius: 10px;
+        padding: 8px 12px;
+        margin: 4px 0;
+        font-size: 14px;
+    }}
+
+    /* Объяснение назначения */
     .explain-ok {{ color: #1a7f37; }}
     .explain-bad {{ color: #c62828; }}
     .explain-info {{ color: #555555; }}
+
+    /* Primary-кнопки */
+    .stButton > button[kind="primary"] {{
+        background-color: {YELLOW};
+        color: {DARK};
+        border: none;
+        border-radius: 10px;
+        font-weight: 700;
+        padding: 0.55rem 1.1rem;
+        box-shadow: 0 2px 6px rgba(224,174,0,0.35);
+        transition: background-color 0.12s ease;
+    }}
+    .stButton > button[kind="primary"]:hover {{
+        background-color: {YELLOW_DARK};
+        color: {DARK};
+    }}
+
+    /* Боковая панель */
+    [data-testid="stSidebar"] {{
+        background-color: #ffffff;
+        border-right: 1px solid #ece9df;
+    }}
+
+    /* Таблицы */
+    [data-testid="stDataFrame"] {{
+        border-radius: 10px;
+        overflow: hidden;
+        border: 1px solid #ece9df;
+    }}
+
+    /* Tabs */
+    .stTabs [data-baseweb="tab-list"] {{
+        gap: 6px;
+    }}
+    .stTabs [data-baseweb="tab"] {{
+        border-radius: 8px 8px 0 0;
+        padding: 8px 16px;
+        font-weight: 600;
+    }}
 </style>
 """
 
@@ -166,7 +272,7 @@ def _start_validation(bundle) -> None:
 
 def render_load() -> None:
     st.title("Планировщик выездных инженеров")
-    st.caption("MVP · распределение заявок по бригадам (multi-crew VRPTW)")
+    st.caption("🗺️ MVP · распределение заявок между бригадами (multi-crew VRPTW)")
 
     selected_mode = st.sidebar.radio(
         "Режим данных",
@@ -190,11 +296,18 @@ def render_load() -> None:
         )
 
         st.markdown("**Файлы набора:**")
+
         for path in csv_files:
-            st.write(f"📄 {path.name}")
+            st.markdown(
+                f'<div class="file-card">📄 {path.name}</div>',
+                unsafe_allow_html=True,
+            )
 
         for name in REFERENCE_FILES:
-            st.write(f"📄 {name}")
+            st.markdown(
+                f'<div class="file-card">📦 {name}</div>',
+                unsafe_allow_html=True,
+            )
 
         if st.button("Проверить данные", type="primary", use_container_width=True):
             bundle = load_input_directory(DEMO_INPUT_DIR)
@@ -315,7 +428,7 @@ def render_validate() -> None:
         set_stage("load")
         st.rerun()
 
-    st.title("Проверка данных")
+    st.title("📋 Проверка данных")
 
     total_rows = sum(report.rows_total for report in bundle.reports)
     total_empty = sum(report.skipped_empty for report in bundle.reports)
@@ -326,17 +439,22 @@ def render_validate() -> None:
     col1, col2, col3, col4 = st.columns(4)
 
     metric_cards = [
-        ("Строк-заявок", total_rows),
-        ("Принято заявок", len(bundle.jobs)),
-        ("Пропущено", f"{total_empty} пустых · {total_office} офисных"),
-        ("Ошибок", error_count),
+        ("📄", "Строк-заявок", total_rows),
+        ("✅", "Принято заявок", len(bundle.jobs)),
+        ("⏭️", "Пропущено", f"{total_empty} пустых · {total_office} офисных"),
+        ("⚠️", "Ошибок", error_count),
     ]
 
-    for column, (label, value) in zip((col1, col2, col3, col4), metric_cards):
+    for column, (icon, label, value) in zip(
+        (col1, col2, col3, col4),
+        metric_cards,
+    ):
         with column:
             st.markdown(
-                f'<div class="metric-card"><div class="metric-label">{label}'
-                f"</div><div class='metric-value'>{value}</div></div>",
+                '<div class="metric-card metric-accent">'
+                f'<div class="metric-icon">{icon}</div>'
+                f'<div class="metric-label">{label}</div>'
+                f'<div class="metric-value">{value}</div></div>',
                 unsafe_allow_html=True,
             )
 
@@ -485,7 +603,7 @@ def render_result() -> None:
     plan = result.plan
     bundle = result.bundle
 
-    st.title("Результат планирования")
+    st.title("📊 Результат планирования")
 
     used_engineers = {assignment.engineer_id for assignment in plan.assignments}
     total_travel_min = sum(route.total_travel_min for route in plan.routes)
@@ -495,21 +613,23 @@ def render_result() -> None:
     )
 
     metric_cards = [
-        ("Принято заявок", len(bundle.jobs)),
-        ("Назначено", len(plan.assignments)),
-        ("Не назначено", len(plan.unassigned)),
-        ("Бригад задействовано", len(used_engineers)),
-        ("Время в пути, мин", total_travel_min),
-        ("Расстояние, км", total_distance_km),
+        ("📥", "Принято заявок", len(bundle.jobs)),
+        ("✅", "Назначено", len(plan.assignments)),
+        ("⛔", "Не назначено", len(plan.unassigned)),
+        ("👥", "Бригад задействовано", len(used_engineers)),
+        ("⏱️", "Время в пути, мин", total_travel_min),
+        ("📏", "Расстояние, км", total_distance_km),
     ]
 
     columns = st.columns(6)
 
-    for column, (label, value) in zip(columns, metric_cards):
+    for column, (icon, label, value) in zip(columns, metric_cards):
         with column:
             st.markdown(
-                f'<div class="metric-card"><div class="metric-label">{label}'
-                f"</div><div class='metric-value'>{value}</div></div>",
+                '<div class="metric-card metric-accent">'
+                f'<div class="metric-icon">{icon}</div>'
+                f'<div class="metric-label">{label}</div>'
+                f'<div class="metric-value">{value}</div></div>',
                 unsafe_allow_html=True,
             )
 
@@ -532,9 +652,10 @@ def render_result() -> None:
         )
         st.dataframe(issues_df, use_container_width=True, hide_index=True)
     else:
-        st.success(
-            "Независимая проверка пройдена: нарушений обязательных "
-            "ограничений нет."
+        st.markdown(
+            '<span class="badge badge-ok">✅ Независимая проверка пройдена '
+            "— нарушений обязательных ограничений нет</span>",
+            unsafe_allow_html=True,
         )
 
     jobs_by_id: dict[str, JobRecord] = {job.id: job for job in bundle.jobs}
@@ -648,7 +769,7 @@ def render_route() -> None:
     engineers_by_id = {engineer.id: engineer for engineer in bundle.engineers}
     jobs_by_id = {job.id: job for job in bundle.jobs}
 
-    st.title("Маршрут бригады")
+    st.title("🚚 Маршрут бригады")
 
     if st.button("← Назад к результату"):
         set_stage("result")

@@ -24,23 +24,24 @@ def test_full_user_scenario_demo_mode():
     at.run()
 
     # Экран «Загрузка».
-    assert at.title[0].value == "Планировщик выездных инженеров"
+    assert "Планировщик выездных инженеров" in at.title[0].value
     assert _find_button(at, "Проверить данные")
 
     # Шаг 1: проверка данных (демонстрационный набор).
     _find_button(at, "Проверить данные").click()
     at.run()
 
-    assert at.title[0].value == "Проверка данных"
-    assert "Принято заявок" in " ".join(
-        str(block) for block in at.markdown
-    ) or any("Принято заявок" in str(block.value) for block in at.markdown)
+    assert "Проверка данных" in at.title[0].value
+
+    markdown_text = " ".join(str(m.value) for m in at.markdown)
+
+    assert "Принято заявок" in markdown_text
 
     # Шаг 2: построение плана.
     _find_button(at, "Построить план").click()
     at.run()
 
-    assert at.title[0].value == "Результат планирования"
+    assert "Результат планирования" in at.title[0].value
 
     plan_tabs = [tab.label for tab in at.tabs]
 
@@ -48,15 +49,15 @@ def test_full_user_scenario_demo_mode():
     assert "Неназначенные" in plan_tabs
     assert "Сравнение с baseline" in plan_tabs
 
-    success_text = " ".join(str(s.value) for s in at.success)
+    markdown_text = " ".join(str(m.value) for m in at.markdown)
 
-    assert "Независимая проверка пройдена" in success_text
+    assert "Независимая проверка пройдена" in markdown_text
 
     # Шаг 3: маршрут бригады.
     _find_button(at, "Показать маршрут").click()
     at.run()
 
-    assert at.title[0].value == "Маршрут бригады"
+    assert "Маршрут бригады" in at.title[0].value
     assert any("Стартовая точка" in str(m.value) for m in at.markdown)
 
     # На экране два выбора: «Бригада» и «Заявка» (для объяснения).
