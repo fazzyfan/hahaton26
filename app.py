@@ -39,6 +39,7 @@ from src.ui.tables import (
     comparison_summary_dataframe,
     errors_dataframe,
     import_summary_dataframe,
+    route_stops_dataframe,
     stops_dataframe,
     unassigned_dataframe,
 )
@@ -782,10 +783,15 @@ def render_result() -> None:
 def render_replanning(result: PlanningResult) -> None:
     """Секция «Событие: инженер стал недоступен» (демонстрация одного события).
 
-    Диспетчер задаёт время события; завершённые работы инженера сохраняются,
-    будущие заявки пересчитываются, невозможные остаются неназначенными
-    с причиной. GPS, дорожные происшествия и универсальный обработчик
-    всех ЧП в MVP не входят.
+    Диспетчер задаёт время события. Завершённые работы ВСЕХ бригад
+    сохраняются с прежними исполнителями и временами; будущее каждой
+    бригады рассчитывается как продолжение от её последней зафиксированной
+    точки, а не от утреннего офиса. Событие посреди работы недоступного
+    инженера отклоняется с понятным сообщением и предложенным временем.
+    После пересчёта можно выбрать бригаду и посмотреть её новый маршрут
+    с адресами и временами, а также скачать новый plan.json.
+    GPS, дорожные происшествия и универсальный обработчик всех ЧП
+    в MVP не входят.
     """
     bundle = result.bundle
     plan = result.plan
@@ -842,24 +848,44 @@ def render_replanning(result: PlanningResult) -> None:
     if replan is None or replan.engineer_id != selected:
         st.caption(
             "Демонстрация одного события: завершённые до события работы "
-            "инженера сохраняются, будущие заявки пересчитываются другими "
-            "бригадами; невозможные назначения остаются неназначенными "
-            "с причиной."
+            "ВСЕХ бригад сохраняются с прежними исполнителями и временами; "
+            "будущее каждой бригады рассчитывается как продолжение от её "
+            "последней зафиксированной точки; будущие заявки недоступного "
+            "инженера возвращаются в общий пул."
         )
         return
 
     jobs_by_id = {job.id: job for job in bundle.jobs}
+    engineers_by_id = {engineer.id: engineer for engineer in bundle.engineers}
 
-    c1, c2, c3, c4 = st.columns(4)
+    # --- Событие посреди работы недоступного инженера --------------------
+    if replan.rejected:
+        st.error(replan.message or "Событие отклонено.")
+
+        if replan.suggested_time is not None:
+            st.warning(
+                f"Предложенное время события: "
+                f"{replan.suggested_time.strftime('%H:%M')} — после окончания "
+                "текущей работы. Новый план не строился."
+            )
+
+        st.caption(
+            "Прерывание работ не моделируется: в момент события бригада "
+            "выполняет заявку, поэтому пересчёт не выполнен."
+        )
+        return
+
+    c1, c2, c3, c4, c5 = st.columns(5)
 
     cards = [
         ("📥", "Назначено до", replan.assigned_before),
         ("✅", "Назначено после", replan.assigned_after),
-        ("🧾", "Сохранено работ", len(replan.preserved_job_ids)),
-        ("📤", "Будущих заявок", len(replan.released_job_ids)),
+        ("🧾", "Сохранено (все бригады)", len(replan.preserved_job_ids)),
+        ("📤", f"Освобождено у {selected}", len(replan.released_job_ids)),
+        ("🔁", "Переназначено", len(replan.reassigned)),
     ]
 
-    for column, (icon, label, value) in zip((c1, c2, c3, c4), cards):
+    for column, (icon, label, value) in zip((c1, c2, c3, c4, c5), cards):
         with column:
             st.markdown(
                 '<div class="metric-card metric-accent">'
@@ -869,21 +895,48 @@ def render_replanning(result: PlanningResult) -> None:
                 unsafe_allow_html=True,
             )
 
-    if replan.issues:
+    if replan.history_issues:
         st.error(
-            f"План после события содержит {len(replan.issues)} нарушений "
-            "независимой проверки."
+            f"История нарушена: {len(replan.history_issues)} изменений "
+            "завершённых работ или назначений в прошлое. "
+            "План помечен INVALID и НЕ является успешным результатом."
         )
-    else:
+
+    if replan.validator_issues:
+        st.error(
+            f"План после события содержит {len(replan.validator_issues)} "
+            "нарушений независимой проверки. "
+            "План помечен INVALID и НЕ является успешным результатом."
+        )
+
+    if not replan.issues:
         st.markdown(
-            '<span class="badge badge-ok">✅ План после события прошёл '
-            "независимую проверку</span>",
+            '<span class="badge badge-ok">✅ Сохранность истории и независимая '
+            "проверка пройдены — нарушений нет</span>",
             unsafe_allow_html=True,
         )
+    else:
+        issues_df = pd.DataFrame(
+            [
+                {
+                    "Код": issue.code,
+                    "Сущность": issue.entity_type,
+                    "ID": issue.entity_id or "—",
+                    "Сообщение": issue.message,
+                }
+                for issue in replan.issues
+            ]
+        )
+        st.dataframe(issues_df, use_container_width=True, hide_index=True)
 
     preserved_df = pd.DataFrame(
         [
-            {"Заявка": job_id, "Адрес": jobs_by_id.get(job_id).address if jobs_by_id.get(job_id) else "—"}
+            {
+                "Заявка": job_id,
+                "Адрес": (
+                    jobs_by_id[job_id].address if job_id in jobs_by_id else "—"
+                ),
+            }
             for job_id in replan.preserved_job_ids
         ]
     )
@@ -892,9 +945,25 @@ def render_replanning(result: PlanningResult) -> None:
         [
             {
                 "Заявка": job_id,
-                "Новая бригада": engineer_options.get(engineer_id, engineer_id),
+                "Новая бригада": engineer_options.get(
+                    engineer_id,
+                    engineer_id,
+                ),
             }
             for job_id, engineer_id in replan.reassigned
+        ]
+    )
+
+    newly_df = pd.DataFrame(
+        [
+            {
+                "Заявка": job_id,
+                "Новая бригада": engineer_options.get(
+                    engineer_id,
+                    engineer_id,
+                ),
+            }
+            for job_id, engineer_id in replan.newly_assigned
         ]
     )
 
@@ -909,13 +978,18 @@ def render_replanning(result: PlanningResult) -> None:
         ]
     )
 
-    tab_preserved, tab_reassigned, tab_unassigned = st.tabs(
-        ["Сохранённые работы", "Переназначенные заявки", "Неназначенные"]
+    tab_preserved, tab_reassigned, tab_newly, tab_unassigned = st.tabs(
+        [
+            "Сохранённые работы",
+            "Переназначенные заявки",
+            "Новые назначения",
+            "Неназначенные",
+        ]
     )
 
     with tab_preserved:
         if preserved_df.empty:
-            st.info("Завершённых работ у инженера нет.")
+            st.info("Завершённых работ у бригад нет.")
         else:
             st.dataframe(preserved_df, use_container_width=True, hide_index=True)
 
@@ -925,16 +999,135 @@ def render_replanning(result: PlanningResult) -> None:
         else:
             st.dataframe(reassigned_df, use_container_width=True, hide_index=True)
 
+    with tab_newly:
+        if newly_df.empty:
+            st.info("Ранее неназначенные заявки не назначались.")
+        else:
+            st.dataframe(newly_df, use_container_width=True, hide_index=True)
+
     with tab_unassigned:
         if unassigned_df.empty:
-            st.success("Все освобождённые заявки переназначены.")
+            st.success("Все заявки из будущего переназначены.")
         else:
             st.dataframe(unassigned_df, use_container_width=True, hide_index=True)
             st.caption(
                 "Причины неназначения — те же коды, что и в основном плане "
-                "(например, NO_QUALIFIED_ENGINEER — нет бригады по району/"
-                "типу/оборудованию)."
+                "(например, NO_TIME_WINDOW — окно не вмещает работу от точки "
+                "продолжения бригады)."
             )
+
+    st.divider()
+
+    st.download_button(
+        "Скачать новый план (JSON)",
+        data=replan.new_plan.model_dump_json(indent=2),
+        file_name="plan_after_event.json",
+        mime="application/json",
+        key="download_replan_plan",
+    )
+
+    _render_replanned_routes(replan, bundle, jobs_by_id, engineers_by_id)
+
+
+def _render_replanned_routes(
+    replan: ReplanningResult,
+    bundle,
+    jobs_by_id: dict[str, JobRecord],
+    engineers_by_id: dict[str, Engineer],
+) -> None:
+    """Маршруты бригад после события: «неизменённые остановки + продолжение».
+
+    Позволяет выбрать бригаду и посмотреть её новый маршрут с адресами
+    и временами (а не только числа и списки переназначений).
+    """
+    st.subheader("Новый маршрут бригады (после события)")
+
+    new_routes = {
+        route.engineer_id: route for route in replan.new_plan.routes
+    }
+
+    if not new_routes:
+        st.info("После события маршрутов нет.")
+        return
+
+    new_engineer_options = {
+        engineer.id: f"{engineer.id} — {engineer.name}"
+        for engineer in bundle.engineers
+        if engineer.id in new_routes
+    }
+
+    if not new_engineer_options:
+        st.info("Бригады с маршрутами отсутствуют.")
+        return
+
+    selected_new = st.selectbox(
+        "Бригада (новый план)",
+        list(new_engineer_options),
+        format_func=lambda key: new_engineer_options[key],
+    )
+
+    new_engineer = engineers_by_id[selected_new]
+    new_route = new_routes[selected_new]
+
+    start_address = next(
+        (
+            item["address"]
+            for item in bundle.locations
+            if item.get("location_id") == new_engineer.start_location_id
+        ),
+        new_engineer.start_location_id,
+    )
+
+    st.markdown(
+        f"**Стартовая точка:** `{new_engineer.start_location_id}` — "
+        f"{start_address}"
+    )
+    st.caption(
+        f"Транспорт: {new_engineer.transport_type.value} · "
+        f"Смена: {new_engineer.shift_start.strftime('%H:%M')}–"
+        f"{new_engineer.shift_end.strftime('%H:%M')} · "
+        f"Время в пути: {new_route.total_travel_min} мин · "
+        f"Расстояние: {new_route.total_distance_km:.2f} км"
+    )
+
+    travel = TravelMatrix(bundle.travel_matrix)
+
+    route_points = [
+        {
+            "location_id": new_engineer.start_location_id,
+            "label": f"Офис ({new_engineer.start_location_id})",
+            "is_start": True,
+        }
+    ]
+
+    for stop in new_route.stops:
+        route_points.append(
+            {
+                "location_id": stop.location_id,
+                "label": stop.job_id,
+                "is_start": False,
+            }
+        )
+
+    deck = build_route_deck(bundle.locations, route_points)
+
+    if deck is not None:
+        st.pydeck_chart(deck)
+        st.caption(
+            "Маршрут после события: зафиксированные остановки сохранены, "
+            "продолжение рассчитано от последней точки бригады."
+        )
+
+    st.dataframe(
+        route_stops_dataframe(
+            new_engineer,
+            new_route,
+            jobs_by_id,
+            travel,
+        ),
+        use_container_width=True,
+        hide_index=True,
+    )
 
 
 # --- Экран «Маршрут бригады» -------------------------------------------------

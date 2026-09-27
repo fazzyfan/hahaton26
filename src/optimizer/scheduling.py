@@ -1,9 +1,9 @@
 from __future__ import annotations
 
-from datetime import timedelta
+from datetime import datetime, timedelta
 
 from src.models.entities import Engineer, JobRecord, RouteStop
-from src.models.enums import UnassignmentReason
+from src.models.enums import TransportType, UnassignmentReason
 from src.optimizer.travel import TravelMatrix
 
 # Статусы, исключаемые из активного планирования.
@@ -47,6 +47,8 @@ def empty_route_reason(
     travel: TravelMatrix,
     job: JobRecord,
     engineers: list[Engineer],
+    cursor_times: dict[str, datetime] | None = None,
+    cursor_locations: dict[str, str] | None = None,
 ) -> UnassignmentReason | None:
     """
     Проверяет выполнимость заявки на пустом маршруте
@@ -55,11 +57,27 @@ def empty_route_reason(
     None — хотя бы одна совместимая бригада может выполнить заявку;
     иначе — наиболее точная причина. SHIFT_CONFLICT возвращается только
     когда ВСЕ совместимые бригады упираются именно в смену.
+
+    При перепланировании (передача cursor_times/cursor_locations) проверка
+    выполняется от точки продолжения бригады, а не от утреннего офиса.
     """
     reasons: set[UnassignmentReason] = set()
 
     for engineer in engineers:
-        _, reason = schedule_route(travel, [job], engineer)
+        cursor_time = (
+            cursor_times.get(engineer.id) if cursor_times else None
+        ) or engineer.shift_start
+        cursor_location = (
+            cursor_locations.get(engineer.id) if cursor_locations else None
+        ) or engineer.start_location_id
+
+        _, reason = schedule_continuation(
+            travel,
+            [job],
+            engineer,
+            cursor_time,
+            cursor_location,
+        )
 
         if reason is None:
             return None
@@ -99,10 +117,40 @@ def schedule_route(
     Правило окна: работа должна не только начаться внутри окна, но и
     ЗАВЕРШИТЬСЯ не позже window_end (planned_end <= window_end).
     Окончание ровно на границе окна допустимо.
+
+    Статический вариант: маршрут считается от утреннего офиса и начала
+    смены. Для продолжения после события используйте schedule_continuation.
+    """
+    return schedule_continuation(
+        travel,
+        jobs,
+        engineer,
+        engineer.shift_start,
+        engineer.start_location_id,
+    )
+
+
+def schedule_continuation(
+    travel: TravelMatrix,
+    jobs: list[JobRecord],
+    engineer: Engineer,
+    cursor_time: datetime,
+    cursor_location: str,
+) -> tuple[list[RouteStop] | None, UnassignmentReason | None]:
+    """
+    Считает времена остановок ПРОДОЛЖЕНИЯ маршрута бригады.
+
+    В отличие от schedule_route стартует не от утреннего офиса и начала
+    смены, а от произвольной точки модели — cursor_time/cursor_location
+    (например, последней зафиксированной остановки бригады и времени
+    события). Первая остановка рассчитывается от этой точки.
+
+    Ограничения те же, что в schedule_route: travel matrix, клиентское
+    окно (включая planned_end <= window_end), конец смены.
     """
     stops: list[RouteStop] = []
-    cursor = engineer.shift_start
-    prev_location = engineer.start_location_id
+    cursor = cursor_time
+    prev_location = cursor_location
 
     for job in jobs:
         travel_min = travel.travel_min(
@@ -204,3 +252,67 @@ def total_distance_km(
         prev_location = job.location_id
 
     return total
+
+
+def travel_min_for_locations(
+    travel: TravelMatrix,
+    locations: list[str],
+    transport_type: TransportType,
+) -> int:
+    """Суммарное время в пути по последовательности локаций (в минутах)."""
+    total = 0
+    prev_location = locations[0]
+
+    for location in locations[1:]:
+        travel_min = travel.travel_min(
+            prev_location,
+            location,
+            transport_type,
+        )
+
+        if travel_min is None:
+            return 0
+
+        total += travel_min
+        prev_location = location
+
+    return total
+
+
+def route_totals(
+    travel: TravelMatrix,
+    engineer: Engineer,
+    stops: list[RouteStop],
+) -> tuple[int, float]:
+    """Суммарное время в пути (мин) и расстояние (км) по маршруту.
+
+    Маршрут считается от стартовой точки бригады через все остановки —
+    включая зафиксированные (история до события) и рассчитанное
+    продолжение. Недостающие пары матрицы пропускаются.
+    """
+    travel_total = 0
+    distance_total = 0.0
+    prev_location = engineer.start_location_id
+
+    for stop in stops:
+        travel_min = travel.travel_min(
+            prev_location,
+            stop.location_id,
+            engineer.transport_type,
+        )
+
+        if travel_min is not None:
+            travel_total += travel_min
+
+        entry = travel.find(
+            prev_location,
+            stop.location_id,
+            engineer.transport_type,
+        )
+
+        if entry is not None:
+            distance_total += entry.distance_km
+
+        prev_location = stop.location_id
+
+    return travel_total, distance_total

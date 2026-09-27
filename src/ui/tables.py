@@ -93,7 +93,7 @@ def stops_dataframe(
     jobs_by_id: dict[str, JobRecord],
     travel: TravelMatrix,
 ) -> pd.DataFrame:
-    """Таблица остановок маршрута бригады."""
+    """Таблица остановок маршрута бригады (план планирования)."""
     route = next(
         (
             route
@@ -103,6 +103,23 @@ def stops_dataframe(
         None,
     )
 
+    if route is None:
+        return pd.DataFrame()
+
+    return route_stops_dataframe(engineer, route, jobs_by_id, travel)
+
+
+def route_stops_dataframe(
+    engineer: Engineer,
+    route,
+    jobs_by_id: dict[str, JobRecord],
+    travel: TravelMatrix,
+) -> pd.DataFrame:
+    """Таблица остановок произвольного маршрута бригады.
+
+    Используется и для основного плана, и для маршрута после события
+    («неизменённые остановки + рассчитанное продолжение»).
+    """
     if route is None:
         return pd.DataFrame()
 

@@ -8,6 +8,7 @@ from src.models.entities import (
     JobRecord,
     Plan,
     Route,
+    RouteStop,
     UnassignedJob,
 )
 from src.models.enums import UnassignmentReason
@@ -15,9 +16,9 @@ from src.optimizer.scheduling import (
     empty_route_reason,
     is_active,
     is_compatible,
-    schedule_route,
-    total_distance_km,
-    total_travel_min,
+    route_totals,
+    schedule_continuation,
+    travel_min_for_locations,
 )
 from src.optimizer.travel import TravelMatrix
 
@@ -73,6 +74,11 @@ class RoutePlanner:
 
     Заявки со статусом COMPLETED/CANCELLED в активное планирование
     не попадают. Неназначенные заявки получают стабильный reason_code.
+
+    При перепланировании (build_plan с fixed_prefixes/cursor_times/
+    cursor_locations) маршруты строятся как «зафиксированная история +
+    рассчитанное продолжение»: прошлое каждой бригады не изменяется,
+    будущее считается от последней зафиксированной точки модели.
     """
 
     def __init__(self, travel_matrix: TravelMatrix) -> None:
@@ -82,7 +88,31 @@ class RoutePlanner:
         self,
         jobs: list[JobRecord],
         engineers: list[Engineer],
+        *,
+        fixed_prefixes: dict[str, list[RouteStop]] | None = None,
+        cursor_times: dict[str, datetime] | None = None,
+        cursor_locations: dict[str, str] | None = None,
     ) -> Plan:
+        """
+        Строит многобригадный план.
+
+        Параметры перепланирования (необязательные):
+
+            fixed_prefixes   — engineer_id -> неизменяемые остановки
+                               (завершённые до события / выполняемые
+                               в момент события);
+            cursor_times     — engineer_id -> время, с которого считается
+                               продолжение (не раньше времени события);
+            cursor_locations — engineer_id -> точка, от которой считается
+                               путь к первой работе продолжения.
+
+        Без этих параметров поведение совпадает со статическим
+        планированием от утреннего офиса и начала смены.
+        """
+        prefixes = fixed_prefixes or {}
+        cursors = cursor_times or {}
+        cursor_locs = cursor_locations or {}
+
         routes: dict[str, list[JobRecord]] = {
             engineer.id: [] for engineer in engineers
         }
@@ -109,9 +139,16 @@ class RoutePlanner:
                 continue
 
             # Причина определяется по выполнимости на пустом маршруте:
-            # если заявку в принципе нельзя выполнить (нет данных о пути,
-            # окно или смена не позволяют) — фиксируем причину сразу.
-            empty_reason = empty_route_reason(self.travel, job, compatible)
+            # если заявку в принципе нельзя выполнить от точки продолжения
+            # (нет данных о пути, окно или смена не позволяют) —
+            # фиксируем причину сразу.
+            empty_reason = empty_route_reason(
+                self.travel,
+                job,
+                compatible,
+                cursor_times=cursors,
+                cursor_locations=cursor_locs,
+            )
 
             if empty_reason is not None:
                 unassigned.append(self._unassigned(job, empty_reason))
@@ -122,10 +159,19 @@ class RoutePlanner:
 
             for engineer in compatible:
                 current_route = routes[engineer.id]
-                current_travel = total_travel_min(
+                cursor_time = cursors.get(engineer.id, engineer.shift_start)
+                cursor_loc = cursor_locs.get(
+                    engineer.id,
+                    engineer.start_location_id,
+                )
+
+                current_locations = [cursor_loc] + [
+                    job.location_id for job in current_route
+                ]
+                current_travel = travel_min_for_locations(
                     self.travel,
-                    current_route,
-                    engineer,
+                    current_locations,
+                    engineer.transport_type,
                 )
 
                 for position in range(len(current_route) + 1):
@@ -134,17 +180,27 @@ class RoutePlanner:
                         + [job]
                         + current_route[position:]
                     )
-                    stops, reason = schedule_route(
+                    stops, reason = schedule_continuation(
                         self.travel,
                         candidate,
                         engineer,
+                        cursor_time,
+                        cursor_loc,
                     )
 
                     if reason is not None:
                         continue
 
+                    candidate_locations = [cursor_loc] + [
+                        item.location_id for item in candidate
+                    ]
+
                     extra = (
-                        total_travel_min(self.travel, candidate, engineer)
+                        travel_min_for_locations(
+                            self.travel,
+                            candidate_locations,
+                            engineer.transport_type,
+                        )
                         - current_travel
                     )
 
@@ -175,7 +231,13 @@ class RoutePlanner:
                 Assignment(job_id=job.id, engineer_id=engineer.id)
             )
 
-        result_routes = self._build_routes(routes, engineers)
+        result_routes = self._build_routes(
+            routes,
+            engineers,
+            prefixes,
+            cursors,
+            cursor_locs,
+        )
 
         return Plan(
             assignments=assignments,
@@ -191,31 +253,48 @@ class RoutePlanner:
         self,
         routes: dict[str, list[JobRecord]],
         engineers: list[Engineer],
+        prefixes: dict[str, list[RouteStop]],
+        cursors: dict[str, datetime],
+        cursor_locs: dict[str, str],
     ) -> list[Route]:
         result: list[Route] = []
 
         for engineer in engineers:
             route_jobs = routes[engineer.id]
+            prefix = prefixes.get(engineer.id, [])
 
-            if not route_jobs:
+            if not prefix and not route_jobs:
                 continue
 
-            stops, _ = schedule_route(self.travel, route_jobs, engineer)
+            cursor_time = cursors.get(engineer.id, engineer.shift_start)
+            cursor_loc = cursor_locs.get(
+                engineer.id,
+                engineer.start_location_id,
+            )
+
+            stops, _ = schedule_continuation(
+                self.travel,
+                route_jobs,
+                engineer,
+                cursor_time,
+                cursor_loc,
+            )
+
+            # Итоговый маршрут = зафиксированная история + продолжение.
+            full_stops = list(prefix) + (stops or [])
+
+            travel_total, distance_total = route_totals(
+                self.travel,
+                engineer,
+                full_stops,
+            )
 
             result.append(
                 Route(
                     engineer_id=engineer.id,
-                    stops=stops,
-                    total_travel_min=total_travel_min(
-                        self.travel,
-                        route_jobs,
-                        engineer,
-                    ),
-                    total_distance_km=total_distance_km(
-                        self.travel,
-                        route_jobs,
-                        engineer,
-                    ),
+                    stops=full_stops,
+                    total_travel_min=travel_total,
+                    total_distance_km=distance_total,
                 )
             )
 
